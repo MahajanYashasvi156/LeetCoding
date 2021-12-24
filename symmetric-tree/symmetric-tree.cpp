@@ -18,7 +18,7 @@ Recursive -
 TC      - O(N)
 Aux SC  - O(N)
 SC      - O(1)
-*/
+
 class Solution {
 public:
     bool check(TreeNode* leftNode, TreeNode* rightNode)
@@ -35,5 +35,37 @@ public:
     bool isSymmetric(TreeNode* root) 
     {
         return check(root->left,root->right);
+    }
+};
+*/
+
+class Solution 
+{
+public:
+    bool isSymmetric(TreeNode* root) 
+    {
+        stack<pair<TreeNode*,TreeNode*>> s;
+        s.push({root->left,root->right});
+       
+        while(!s.empty())
+        {
+            auto currNodes=s.top();
+            s.pop();
+            if(currNodes.first ==NULL and currNodes.second==NULL)
+                continue;
+            
+            if(currNodes.first ==NULL or currNodes.second==NULL)
+                return false;
+            
+            if(currNodes.first->val == currNodes.second->val)
+            {
+                s.push({currNodes.first->left,currNodes.second->right});
+                s.push({currNodes.first->right,currNodes.second->left});
+            }
+            else
+                return false;
+        }
+        
+        return true;
     }
 };
