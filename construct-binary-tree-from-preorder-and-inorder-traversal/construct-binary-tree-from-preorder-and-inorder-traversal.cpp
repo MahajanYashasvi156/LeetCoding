@@ -29,16 +29,29 @@ public:
             int in = indexInorder[preorder[i]];
             while(curr)
             {
-                par=curr;
+              
+                
                 if(indexInorder[curr->val]>in)
+                {
+                    par=curr;
                     curr=curr->left;
+                }
                 else 
-                    curr=curr->right;  
+                {
+                    par=curr;
+                    curr=curr->right;
+                }   
+                
             }
             if(indexInorder[par->val]>in)
-                par->left=new TreeNode(preorder[i]);
+            {
+                    par->left=new TreeNode(preorder[i]);
+            }
             else 
+            {
                par->right=new TreeNode(preorder[i]);
+            } 
+           
         }
         return root;
     }
