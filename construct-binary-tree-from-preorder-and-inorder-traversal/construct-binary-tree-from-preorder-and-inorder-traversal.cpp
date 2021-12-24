@@ -21,7 +21,7 @@ public:
         TreeNode* root=new TreeNode(preorder[0]);
         
         TreeNode* curr=NULL;
-        TreeNode* par=root;
+        TreeNode* par=NULL;
         
         for(int i=1;i<preorder.size();i++)
         {
@@ -29,29 +29,16 @@ public:
             int in = indexInorder[preorder[i]];
             while(curr)
             {
-              
-                
+                par=curr;
                 if(indexInorder[curr->val]>in)
-                {
-                    par=curr;
                     curr=curr->left;
-                }
                 else 
-                {
-                    par=curr;
-                    curr=curr->right;
-                }   
-                
+                    curr=curr->right;  
             }
             if(indexInorder[par->val]>in)
-            {
-                    par->left=new TreeNode(preorder[i]);
-            }
+                par->left=new TreeNode(preorder[i]);
             else 
-            {
                par->right=new TreeNode(preorder[i]);
-            } 
-           
         }
         return root;
     }
