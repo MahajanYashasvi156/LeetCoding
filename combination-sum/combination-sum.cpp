@@ -1,40 +1,59 @@
+//Link - https://leetcode.com/problems/combination-sum/
 
+
+/* 
+ 0ms
+
+Paradigm - Recursive - Same as Subset- 1
+
+Time Complexity: O(2^t * k) where t is the target, k is the average length
+Space Complexity: O(k*x), k is the average length and x is the no. of combinations
+AS - O(t)
+
+Reason: Assume if you were not allowed to pick a single element multiple times, every element will have a couple of options: pick or not pick which is 2^n different recursion calls, also assuming that the average length of every combination generated is k. (to put length k data structure into another data structure)
+
+Why not (2^n) but (2^t) (where n is the size of an array)?
+
+Assume that there is 1 and the target you want to reach is 10 so 10 times you can “pick or not pick” an element.
+
+
+
+Here No need to handle the case of duplicates as all candidates are unique and there is no chance of duplicate subset.
+
+*/
+/*
 class Solution 
 {
 public:
-    void combinationSumUtility(vector<int>& candidates,int index,int target,set<vector<int>>&setResult,vector<int> comb)
+    void combinationSumUtility(vector<int>& candidates,int index,int target, vector<vector<int>>&result,vector<int>&path)
     {
-        if(target<0)
+        if(target<0 or index==candidates.size())
             return;
+        
         if(target==0)
         {
-            sort(comb.begin(),comb.end());
-            setResult.insert(comb);
-        }
-        if(index==candidates.size())
+            result.push_back(comb);
             return;
-        comb.push_back(candidates[index]);
-        combinationSumUtility(candidates,index,target-candidates[index],setResult,comb);
-        comb.pop_back();
-        combinationSumUtility(candidates,index+1,target,setResult,comb);
+        }
+        path.push_back(candidates[index]);
+        combinationSumUtility(candidates,index,target-candidates[index],result,path);
+        path.pop_back();
+        combinationSumUtility(candidates,index+1,target,result,path);
     }
     
     vector<vector<int>> combinationSum(vector<int>& candidates, int target)
     {
-        set<vector<int>>setResult;
         vector<vector<int>>result;
-        vector<int>comb;
-        combinationSumUtility(candidates,0,target,setResult,comb);
-        for(auto a: setResult)
-            result.push_back(a);
+        vector<int>path;
+        combinationSumUtility(candidates,0,target,result,path);
         return result;
     }
 };
-
+*/
 /*
-Time Complexity: O(2^n) 
-Space Complexity: O(2^n * k)
-
+Time Complexity: O(2^t * k) 
+Space Complexity: O(x * k) k is the average length and x is the no. of combinations
+AS - O(t)
 Intution - almost same as subset-II
 
 Here, the catch is we can take any element from the set infinite number of times. So for that if we can't simply make decision for particular element and go ahead. 
@@ -55,23 +74,22 @@ Result-<<1,1,1>,<1,2>>
 i=2 - call(target=0,index=2) continue and then loop terminates.
 Result-<<1,1,1>,<1,2>,<3>>
 
-
+*/
 class Solution 
 {
 public:
      void combinationSumUtility(vector<int>& candidates,int index,int target, vector<vector<int>>&result,vector<int>comb)
     {  
         if(target<0)
-            return;  
-         
+            return; 
+        if(target==0)
+        {
+            result.push_back(comb);
+            return;
+        }
         for(int i=index;i<candidates.size();i++)
         {
             comb.push_back(candidates[i]);
-            if(target-candidates[i]==0)
-            {
-                result.push_back(comb);
-                continue;
-            }
             combinationSumUtility(candidates,i,target-candidates[i],result,comb);
             comb.pop_back();
         }
@@ -85,4 +103,3 @@ public:
         return result;
     }
 };
-*/
