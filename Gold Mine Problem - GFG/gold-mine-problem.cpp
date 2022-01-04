@@ -12,11 +12,11 @@ class Solution
 public:
     int maxGold(int n, int m, vector<vector<int>> M)
     {
-        
-        vector<vector<int>> dp(n,vector<int>(m));
         if(n==1)
             return accumulate(M[0].begin(),M[0].end(),0);
             
+        vector<vector<int>> dp(n,vector<int>(m));
+        
         for(int col=m-1 ; col>=0 ; col--)
         {
             for(int row=n-1 ; row>=0;row--)
