@@ -61,10 +61,10 @@ public:
     TC - O(M*N)
     SC - O(M*N)
     
-    Structure and Meaning - 2D table and each cell represents the minimum cost of reaching target from that cell.
-    
-    Direction - Smallest Problem - From target to target.
-    Largest Problem - From source to target. 
+    Meaning of dp - Each cell will store minimum distance from that cell to target
+    Smaller problem is min distance of last cell (n-1,m-1) to target (n-1,m-1)
+    Bigger problem is min distance of last cell (0,0) to target (n-1,m-1)
+    Traversal - Hence, bottom to up, right to left.
     */
     
     int minPathSumIterativeDP(vector<vector<int>>& grid,int row,int col,vector<vector<int>>& dp)
