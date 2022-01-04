@@ -10,34 +10,38 @@ using namespace std;
 class Solution
 {
 public:
-    int maxGoldMemoization(int row,int col,int n,int m,vector<vector<int>>&M,vector<vector<int>>&dp)
-    {
-        
-        if(row > n-1 or row<0)
-            return INT_MIN;
-            
-        if(col==m-1)
-            return M[row][col];
-            
-        if(dp[row][col] !=-1)
-            return dp[row][col];
-        
-        int upRight = maxGoldMemoization(row-1,col+1,n,m,M,dp);
-        int right   = maxGoldMemoization(row,col+1,n,m,M,dp);
-        int downRight = maxGoldMemoization(row+1,col+1,n,m,M,dp);
-        
-        dp[row][col] = M[row][col]+max(upRight,max(right,downRight));
-        return dp[row][col];
-    }
     int maxGold(int n, int m, vector<vector<int>> M)
     {
-        int result=INT_MIN;
+        int gold=INT_MIN;
         vector<vector<int>> dp(n,vector<int>(m,-1));
-        for(int i=0 ; i< n ;i++)
+        
+        for(int col=m-1 ; col>=0 ; col--)
         {
-            result=max(result,maxGoldMemoization(i,0,n,m,M,dp));
+            for(int row=0 ; row<n;row++)
+            {
+                if(col==m-1)
+                {
+                    dp[row][col]=M[row][col];
+                    continue;
+                }
+                
+                int upRight = INT_MIN;
+                int right   = INT_MIN;
+                int downRight =INT_MIN;
+                
+                if(row>0)
+                    upRight = dp[row-1][col+1];
+                right = dp[row][col+1];
+                if(row<n-1)
+                    downRight = dp[row+1][col+1];
+                
+                dp[row][col] = M[row][col]+max(upRight,max(right,downRight));
+            }
         }
-        return result;
+        for(int row=0;row<n;row++)
+            gold=max(gold,dp[row][0]);
+        
+        return gold;
     }
 };
 
