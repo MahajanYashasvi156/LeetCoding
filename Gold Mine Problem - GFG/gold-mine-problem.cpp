@@ -12,32 +12,29 @@ class Solution
 public:
     int maxGold(int n, int m, vector<vector<int>> M)
     {
-        int gold=INT_MIN;
-        vector<vector<int>> dp(n,vector<int>(m,-1));
         
+        vector<vector<int>> dp(n,vector<int>(m));
+        if(n==1)
+            return accumulate(M[0].begin(),M[0].end(),0);
+            
         for(int col=m-1 ; col>=0 ; col--)
         {
-            for(int row=0 ; row<n;row++)
+            for(int row=n-1 ; row>=0;row--)
             {
                 if(col==m-1)
-                {
                     dp[row][col]=M[row][col];
-                    continue;
-                }
+                    
+                else if(row == 0 )
+                    dp[row][col] = M[row][col] + max(dp[row][col+1],dp[row+1][col+1]);
                 
-                int upRight = INT_MIN;
-                int right   = INT_MIN;
-                int downRight =INT_MIN;
+                else if(row == n-1)  
+                    dp[row][col] = M[row][col] + max(dp[row][col+1],dp[row-1][col+1]);
                 
-                if(row>0)
-                    upRight = dp[row-1][col+1];
-                right = dp[row][col+1];
-                if(row<n-1)
-                    downRight = dp[row+1][col+1];
-                
-                dp[row][col] = M[row][col]+max(upRight,max(right,downRight));
+                else 
+                    dp[row][col] = M[row][col]+max(dp[row][col+1],max(dp[row-1][col+1],dp[row+1][col+1]));
             }
         }
+        int gold=INT_MIN;
         for(int row=0;row<n;row++)
             gold=max(gold,dp[row][0]);
         
