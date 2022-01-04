@@ -2,6 +2,12 @@ class Solution
 {
 public:
     /* 
+    Link - https://leetcode.com/problems/minimum-path-sum/
+
+    Recursion - TLE
+    TC - O(2^(MN))
+    Aux SC - O(M+N)
+
     int minPathSumRecursionTLE(vector<vector<int>>& grid,int row,int col)
     {
         if(row==grid.size()-1 and col==grid[0].size()-1)
@@ -17,11 +23,16 @@ public:
     }
     int minPathSum(vector<vector<int>>& grid) 
     {
-         
         return minPathSumRecursionTLE(grid,0,0);
     }
     */
+    
     /*
+    Recursion - Memoization
+    TC - O(MN)
+    Aux SC - O(M+N)
+    SC - O(MN)
+    
     int minPathSumMemoization(vector<vector<int>>& grid,int row,int col,vector<vector<int>>& dp)
     {
         if(row==grid.size()-1 and col==grid[0].size()-1)
@@ -44,6 +55,18 @@ public:
          return minPathSumMemoization(grid,0,0,dp);
     }
     */
+    
+    /*
+    Iterative DP 
+    TC - O(M*N)
+    SC - O(M*N)
+    
+    Structure and Meaning - 2D table and each cell represents the minimum cost of reaching target from that cell.
+    
+    Direction - Smallest Problem - From target to target.
+    Largest Problem - From source to target. 
+    */
+    
     int minPathSumIterativeDP(vector<vector<int>>& grid,int row,int col,vector<vector<int>>& dp)
     {
         for(int i=row-1;i>=0;i--)
@@ -55,6 +78,7 @@ public:
                     dp[i][j]=grid[i][j];
                     continue;
                 } 
+                //If there is no right and no down, then take it infinity.
                 int right = INT_MAX;
                 int down  = INT_MAX;
                 if(j!=col-1)
