@@ -5,28 +5,66 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
   public:
-    // Function to return a list containing the DFS traversal of the graph.
+    /*
+    Link - https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
+    
+    TC - O(V + E)
+    Aux SC - O(V)
+    SC - O(V)
+    
+    Approach - Call recursively on the first child.
+    Maintain visited array so every node will be visited exactly once
+    Only call recursively on a child if it is not visited
+
+   */
+    
     void dfsPreorder(int V, int src, vector<int> adj[],vector<int> &dfsTraversal,vector<int> &visited)
     {
         dfsTraversal.push_back(src);
-        visited[src]=1;
-        
         for(int dst:adj[src])
         {
             if(visited[dst]==0)
+            {
+                visited[dst]=1;
                 dfsPreorder(V,dst,adj,dfsTraversal,visited);
+            }
+                
         }
     }
-    
+    // Function to return a list containing the DFS traversal of the graph.
     vector<int> dfsOfGraph(int V, vector<int> adj[]) 
     {
         vector<int> dfsTraversal;
         vector<int> visited(V,0);
         int src=0;
+        visited[src]=1;
         dfsPreorder(V,src,adj,dfsTraversal,visited);
         
         return dfsTraversal;
     }
+     
+     /*
+     vector<int> dfsOfGraph(int V, vector<int> adj[]) 
+    {
+        vector<int> dfsTraversal;
+        vector<int> visited(V,0);
+        int src=0;
+        
+        stack<int> s;
+        s.push(0);
+        int src;
+        while(!s.empty())
+        {
+            src=s.top();
+            dfsTraversal.push_back(src);
+            s.pop();
+            
+            
+        }
+        
+        return dfsTraversal;
+    }
+    */
 };
 
 // { Driver Code Starts.
