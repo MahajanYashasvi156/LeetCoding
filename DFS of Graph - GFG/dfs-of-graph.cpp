@@ -42,14 +42,19 @@ class Solution {
     }
      */
      
-     vector<int> dfsOfGraph(int V, vector<int> adj[]) 
+     /*
+    Appraoch 2 - Iterative 
+    TC - O(V + E)
+    SC - O(V)
+    */
+
+    vector<int> dfsOfGraph(int V, vector<int> adj[]) 
     {
         vector<int> dfsTraversal;
         vector<int> visited(V,0);
         int src=0;
-        
+    
         stack<int> s;
-        
         s.push(src);
         
         while(!s.empty())
@@ -57,6 +62,7 @@ class Solution {
             src=s.top();
             s.pop();
             
+            //If not already visited then only explore that node.
             if(visited[src]!=1)
             {
                 visited[src]=1;
@@ -67,10 +73,7 @@ class Solution {
                         s.push(*dst);
                 }
             }
-            
-            
         }
-        
         return dfsTraversal;
     }
     
