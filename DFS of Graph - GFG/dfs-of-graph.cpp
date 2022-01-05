@@ -67,9 +67,7 @@ class Solution {
                 for(auto i=adj[src].rbegin();i!=adj[src].rend();i++)
                 {
                     if(visited[*i]==0)
-                    {
                         s.push(*i);
-                    }
                 }
             }
             
