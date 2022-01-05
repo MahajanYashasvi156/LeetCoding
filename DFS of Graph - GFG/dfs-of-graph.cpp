@@ -22,14 +22,12 @@ class Solution {
     void dfsPreorder(int V, int src, vector<int> adj[],vector<int> &dfsTraversal,vector<int> &visited)
     {
         dfsTraversal.push_back(src);
+        visited[src]=1;
+        
         for(int dst:adj[src])
         {
             if(visited[dst]==0)
-            {
-                visited[dst]=1;
                 dfsPreorder(V,dst,adj,dfsTraversal,visited);
-            }
-                
         }
     }
     // Function to return a list containing the DFS traversal of the graph.
@@ -38,7 +36,6 @@ class Solution {
         vector<int> dfsTraversal;
         vector<int> visited(V,0);
         int src=0;
-        visited[src]=1;
         dfsPreorder(V,src,adj,dfsTraversal,visited);
         
         return dfsTraversal;
@@ -64,10 +61,10 @@ class Solution {
             {
                 visited[src]=1;
                 dfsTraversal.push_back(src);
-                for(auto i=adj[src].rbegin();i!=adj[src].rend();i++)
+                for(auto dst=adj[src].rbegin();dst!=adj[src].rend();dst++)
                 {
-                    if(visited[*i]==0)
-                        s.push(*i);
+                    if(visited[*dst]==0)
+                        s.push(*dst);
                 }
             }
             
