@@ -12,13 +12,13 @@ class Solution {
     Aux SC - O(V)
     SC - O(V)
     
-    Approach - Call recursively on the first child.
-    
+    Approach - 1  Recusrive
+    Call recursively on the first child.
     Maintain visited array so every node will be visited exactly once
-    Only call recursively on a child if it is not visited and set it visited before making call to the child.
-
-   */
-    /*
+    Only call recursively on a child if it is not visited
+    Set a node visited before exploring the neighbours of that node
+    
+    
     void dfsPreorder(int V, int src, vector<int> adj[],vector<int> &dfsTraversal,vector<int> &visited)
     {
         dfsTraversal.push_back(src);
@@ -46,6 +46,8 @@ class Solution {
     Appraoch 2 - Iterative 
     TC - O(V + E)
     SC - O(V)
+    
+    Push from right to left children in stack as we have to traverse the left child first as per question
     */
 
     vector<int> dfsOfGraph(int V, vector<int> adj[]) 
