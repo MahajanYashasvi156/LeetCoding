@@ -6,18 +6,28 @@ using namespace std;
 class Solution 
 {
   public:
+  /*
+  Link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1#
+  TC - O(V+E)
+  SC - O(V)
+  
+  Approach - Apply BFS to detect cycle in an undirected graph.
+  
+  For an undirected graph we have to maintain parent of the node.
+  
+  In BFS if the visited node again appears as the ajacent node during traversal and this node is not the parent node then there is a cycle.
+  */
     bool checkCycle(int src,vector<int> adj[],vector<bool> &visited)
     {
         queue<pair<int,int>> q; //queue(child,par)
+        
         visited[src]=1;
         q.push({src,-1});
-        pair<int,int> node;
         
         while(!q.empty())
         {
-            node=q.front();
-            int start=node.first;
-            int parent=node.second;
+            int start=q.front().first;
+            int parent=q.front().second;
             q.pop();
             for(int end:adj[start])
             {
