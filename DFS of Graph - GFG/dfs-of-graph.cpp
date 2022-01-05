@@ -13,11 +13,12 @@ class Solution {
     SC - O(V)
     
     Approach - Call recursively on the first child.
+    
     Maintain visited array so every node will be visited exactly once
-    Only call recursively on a child if it is not visited
+    Only call recursively on a child if it is not visited and set it visited before making call to the child.
 
    */
-    
+    /*
     void dfsPreorder(int V, int src, vector<int> adj[],vector<int> &dfsTraversal,vector<int> &visited)
     {
         dfsTraversal.push_back(src);
@@ -42,8 +43,8 @@ class Solution {
         
         return dfsTraversal;
     }
+     */
      
-     /*
      vector<int> dfsOfGraph(int V, vector<int> adj[]) 
     {
         vector<int> dfsTraversal;
@@ -51,20 +52,33 @@ class Solution {
         int src=0;
         
         stack<int> s;
-        s.push(0);
-        int src;
+        
+        s.push(src);
+        
         while(!s.empty())
         {
             src=s.top();
-            dfsTraversal.push_back(src);
             s.pop();
+            
+            if(visited[src]!=1)
+            {
+                visited[src]=1;
+                dfsTraversal.push_back(src);
+                for(auto i=adj[src].rbegin();i!=adj[src].rend();i++)
+                {
+                    if(visited[*i]==0)
+                    {
+                        s.push(*i);
+                    }
+                }
+            }
             
             
         }
         
         return dfsTraversal;
     }
-    */
+    
 };
 
 // { Driver Code Starts.
