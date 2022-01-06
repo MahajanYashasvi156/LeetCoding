@@ -12,7 +12,23 @@ class Solution
     SC - O(2V)
     ASC - O(V)
     
-    */
+    
+    Appraoch - 
+    
+    Topo Sort - Only in Directed Acyclic Graph
+    Meaning 1 - Nodes which comes first are written first in topo sort
+    Meaning 2 - Nodes whose indegree is 0 come first. Then we remove edges from that node to its neighbours, then we pick another node with 0 indegree aas next node in topo sort
+    
+    Approach - 
+    So in our approach, the nodes which appears first in the DFS path should appear first as per topo sort 
+    so perform postorder traversal, and store nodes in stack .
+    Now popping stack will reverse the order
+    
+    In short - 
+    Just perform DFS. But while leaving a node, just push that node into stack(postorder)
+    Then pop stack and we will get topo sort.
+
+    
 	public:
 	void postOrderdFS(vector<int> adj[],int src,vector<bool> &visited,stack<int>&s)
 	{
@@ -42,6 +58,54 @@ class Solution
 	      result.push_back(s.top());
 	      s.pop();
 	  }
+	   return result;
+	}
+	*/
+	void bFSIndegree(vector<int> adj[],vector<bool> &visited,queue<int>&q,vector<int>&indegree,vector<int> &result)
+	{
+    	  while(!q.empty())
+    	  {
+    	     int source = q.front();
+    	     result.push_back(source);
+    	     q.pop();
+    	     for(int dest:adj[source])
+    	     {
+    	         indegree[dest]--;
+    	         if(indegree[dest]==0)
+    	           {
+    	              visited[dest]=true;
+    	              q.push(dest); 
+    	           } 
+    	     }
+    	  }
+	}
+	public:
+	//Function to return list containing vertices in Topological order. 
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	   queue<int> q;
+	   vector<int> result;
+	   vector<bool> visited(V+1);
+	   vector<int>indegree(V+1,0);
+	   for(int start=0;start<V;start++)
+	   {
+	       for(int end:adj[start])
+	       {
+	           indegree[end]++;
+	       }
+	   }
+	   
+	   for(int i=0;i<V;i++)
+	   {
+	       if(indegree[i]==0)
+           {
+               visited[i]=true;
+               q.push(i); 
+           } 
+	   }
+	   
+	   bFSIndegree(adj,visited,q,indegree,result);
+
 	   return result;
 	}
 	
