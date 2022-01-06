@@ -75,12 +75,12 @@ class Solution
                 {
                     if(colors[dest]==-1)
                     {
-                        colors[dest]=assignColor;
                         for(int adj:graph[dest])
                         {
                             if(colors[adj]==assignColor)
                                 return false;
                         }
+                        colors[dest]=assignColor;
                         q.push(dest);
                     }
                 }
