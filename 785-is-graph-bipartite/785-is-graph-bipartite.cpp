@@ -60,6 +60,7 @@ class Solution
     bool bfs(int src,vector<vector<int>>& graph, vector<int>& colors, queue<int> &q)
     {
         q.push(src);
+        
         int assignColor=0;
         
         while(!q.empty())
@@ -69,17 +70,16 @@ class Solution
             {
                 int start = q.front();
                 q.pop();
-                for(int dest: graph[start])
-                {
-                    if(colors[dest]==assignColor)
-                        return false;
-                }
+                
                 colors[start]=assignColor;
                 
                 for(int dest : graph[start])
                 {
                     if(colors[dest]==-1)
                         q.push(dest);
+                    
+                    else if(colors[dest]==colors[start])
+                        return false;
                 }
             }
             assignColor=assignColor^1;
