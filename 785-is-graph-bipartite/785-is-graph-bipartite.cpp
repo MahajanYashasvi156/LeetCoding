@@ -58,7 +58,6 @@ public:
 */
 
 /*
-
 Intuition - If the graph is 2 colorable, then it is bipartite, else it is not bipartite
 
 Approach 2 - BFS
@@ -67,17 +66,15 @@ For level 0 node, give 0 color
 For level 1 node, give 1 color, and check if it is safe
 For level 2 node, give 0 color, and check if it is safe and so on
 
-So give colors alternatively and check if giving that color is safe or not, if it is not safe, then return false as graph is not bipartite
-
 In nutshell,
-Just perform modified BFS/Level order traversal with modifications : 
-1. Visit the root node by setting a color
-2. Visit nodes in each level by setting color, then check if giving that color is safe, and then only push to queue
-3. Flip the color as we switch to next level
+Just perform modified BFS with modifications : 
+1. Visit the adjacent nodes in traversal by setting a opposite color than parent.
+2. While traversing the adjacent nodes to push unvisited nodes in queue, also check if any adjacent node has same color as current source's color, if yes return false as graph is not bipartite
+
+Assign color to the node then while exploring its adjacent check if its neighbour has same color.
 
 TC - O(V + E)
 SC - O(V)
-
 */
 class Solution
 {
@@ -90,11 +87,13 @@ class Solution
         {    
             int start = q.front();
             q.pop();
+            
             for(int dest : graph[start])
             {
+                
                 if(colors[dest]==-1)//if dest is unvisited
                 {
-                    colors[dest]=1-colors[start];
+                    colors[dest]=1-colors[start]; 
                     q.push(dest);
                 }
                 else if(colors[dest]==colors[start])
