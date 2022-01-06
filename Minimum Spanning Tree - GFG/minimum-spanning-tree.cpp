@@ -4,9 +4,20 @@ using namespace std;
 
  // } Driver Code Ends
 
+/*
+Link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
+
+TC - O(V^3) or O(VE)
+
+Detailed expression - V * (V + E) = O(VE) = O(V^3)
+
+SC - O(V)
+
+*/
 
 class Solution
 {
+    
     int minWeightNode(vector<int> &nodeWeight,vector<bool> &visited)
     {
         int minWeight=INT_MAX;
@@ -27,22 +38,32 @@ class Solution
     {
         vector<bool> visited(V,false);
         vector<int> nodeWeight(V,INT_MAX);
+        
+        //Setting first node's distance as 0 to start the algo
         nodeWeight[0]=0;
         
         int minSTCost=0;
         
         while(V--)
         {
-           int node=minWeightNode(nodeWeight,visited);
-           visited[node]=true;
-           minSTCost+=nodeWeight[node];
-           for(auto it : adj[node])
-                nodeWeight[it[0]]=min(nodeWeight[it[0]],it[1]);
-    
+           //Finding node at minimum distance from visited nodes.
+           int source=minWeightNode(nodeWeight,visited);
+           
+           //marking the node visited 
+           visited[source]=true;
+           //adding the edge wt to that node in total cost
+           minSTCost+=nodeWeight[source];
+           
+            //Relaxing the edges to adjacent nodes
+            //Relaxing means, if a adjacent node can be reached from current vertex in lesser distance
+            //than the already stored distance, then update the distance of adjancent node in nodeWeight.
+           for(auto dest : adj[source])
+           {
+               if(visited[dest[0]]==false)
+                    nodeWeight[dest[0]]=min(nodeWeight[dest[0]],dest[1]);
+           }
         }
-        
         return minSTCost;
-        
     }
 };
 
