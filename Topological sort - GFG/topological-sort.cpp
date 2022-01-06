@@ -16,7 +16,7 @@ class Solution
     Appraoch - 
     
     Topo Sort - Only in Directed Acyclic Graph
-    Meaning 1 - Nodes which comes first are written first in topo sort
+    Meaning 1 - Nodes which comes first are written first in topo sort(Hen, then egg).
     Meaning 2 - Nodes whose indegree is 0 come first. Then we remove edges from that node to its neighbours, then we pick another node with 0 indegree aas next node in topo sort
     
     Approach - 
@@ -61,6 +61,12 @@ class Solution
 	   return result;
 	}
 	*/
+	
+	/*
+	    Approach 2 - Using BFS with Indegree 0. 
+	    TC - O(V+E) //For finding indegree also we require V+E + BFS Traversal.
+	    SC - O(V)   //queue,visited,indegree.
+	*/
 	void bFSIndegree(vector<int> adj[],vector<bool> &visited,queue<int>&q,vector<int>&indegree,vector<int> &result)
 	{
     	  while(!q.empty())
@@ -68,6 +74,12 @@ class Solution
     	     int source = q.front();
     	     result.push_back(source);
     	     q.pop();
+    	     
+            //Performing BFS traversal with a modification, 
+            //while traversing adjacent nodes, decrementing their indegrees(as if we removing the edge)
+            //if indegree became 0, then marking it visited and pushing it to our queue
+            //So modified BFS where node is called visited when the node have 0 indegree 
+    	     
     	     for(int dest:adj[source])
     	     {
     	         indegree[dest]--;
@@ -87,6 +99,9 @@ class Solution
 	   vector<int> result;
 	   vector<bool> visited(V+1);
 	   vector<int>indegree(V+1,0);
+	   
+	   //Find Indegree of all the nodes. 
+	   //Indegree of nodes is the number of incoming edges.
 	   for(int start=0;start<V;start++)
 	   {
 	       for(int end:adj[start])
@@ -95,6 +110,7 @@ class Solution
 	       }
 	   }
 	   
+	   //Push all the nodes to the queue whose indegree is zero.
 	   for(int i=0;i<V;i++)
 	   {
 	       if(indegree[i]==0)
@@ -104,6 +120,7 @@ class Solution
            } 
 	   }
 	   
+	   //All nodes whose indegree 0 are already pushes into the queue so all components will be traversed.
 	   bFSIndegree(adj,visited,q,indegree,result);
 
 	   return result;
