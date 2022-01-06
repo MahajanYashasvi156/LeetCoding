@@ -7,7 +7,6 @@ ASC - O(V)
 
 Intuition - If the graph is 2 colorable, then it is bipartite, else it is not bipartite
 Approach - 1 DFS
-*/
 class Solution
 {
     
@@ -52,6 +51,56 @@ public:
             }
         }
         //Graph is bipartite
+        return true;
+    }
+};
+*/
+class Solution
+{
+    bool bfs(int src,vector<vector<int>>& graph, vector<int>& colors, queue<int> &q)
+    {
+        q.push(src);
+        int assignColor=0;
+        
+        while(!q.empty())
+        {
+            int levelNodes = q.size();
+            while(levelNodes--)
+            {
+                int start = q.front();
+                q.pop();
+                for(int dest: graph[start])
+                {
+                    if(colors[dest]==assignColor)
+                        return false;
+                }
+                colors[start]=assignColor;
+                
+                for(int dest : graph[start])
+                {
+                    if(colors[dest]==-1)
+                        q.push(dest);
+                }
+            }
+            assignColor=assignColor^1;
+        }
+        return true;
+    }
+public:
+    bool isBipartite(vector<vector<int>>& graph) 
+    {
+        int vertices = graph.size();
+        queue<int> q;
+        vector<int>colors(vertices,-1);
+        
+        for(int src = 0;src<vertices;src++)
+        {
+            if(colors[src]==-1)
+            {
+                if(bfs(src,graph,colors,q)==false)
+                    return false;
+            }
+        }
         return true;
     }
 };
