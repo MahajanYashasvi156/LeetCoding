@@ -85,31 +85,21 @@ class Solution
     {
         q.push(src);
         colors[src]=0;
-        int assignColor=1;
         
         while(!q.empty())
-        {
-            int levelNodes = q.size();
-            while(levelNodes--)
+        {    
+            int start = q.front();
+            q.pop();
+            for(int dest : graph[start])
             {
-                int start = q.front();
-                q.pop();
-                
-                for(int dest : graph[start])
+                if(colors[dest]==-1)//if dest is unvisited
                 {
-                    if(colors[dest]==-1)//if dest is unvisited
-                    {
-                        for(int adj:graph[dest])//check if giving this color is safe 
-                        {
-                            if(colors[adj]==assignColor)
-                                return false;
-                        }
-                        colors[dest]=assignColor;
-                        q.push(dest);
-                    }
+                    colors[dest]=1-colors[start];
+                    q.push(dest);
                 }
+                else if(colors[dest]==colors[start])
+                    return false;
             }
-            assignColor=assignColor^1;//Flip color
         }
         return true;
     }
