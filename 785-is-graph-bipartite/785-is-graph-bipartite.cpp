@@ -7,6 +7,7 @@ ASC - O(V)
 
 Intuition - If the graph is 2 colorable, then it is bipartite, else it is not bipartite
 Approach - 1 DFS
+
 class Solution
 {
     
@@ -55,6 +56,29 @@ public:
     }
 };
 */
+
+/*
+
+Intuition - If the graph is 2 colorable, then it is bipartite, else it is not bipartite
+
+Approach 2 - BFS
+
+For level 0 node, give 0 color
+For level 1 node, give 1 color, and check if it is safe
+For level 2 node, give 0 color, and check if it is safe and so on
+
+So give colors alternatively and check if giving that color is safe or not, if it is not safe, then return false as graph is not bipartite
+
+In nutshell,
+Just perform modified BFS/Level order traversal with modifications : 
+1. Visit the root node by setting a color
+2. Visit nodes in each level by setting color, then check if giving that color is safe, and then only push to queue
+3. Flip the color as we switch to next level
+
+TC - O(V + E)
+SC - O(V)
+
+*/
 class Solution
 {
     bool bfs(int src,vector<vector<int>>& graph, vector<int>& colors, queue<int> &q)
@@ -73,9 +97,9 @@ class Solution
                 
                 for(int dest : graph[start])
                 {
-                    if(colors[dest]==-1)
+                    if(colors[dest]==-1)//if dest is unvisited
                     {
-                        for(int adj:graph[dest])
+                        for(int adj:graph[dest])//check if giving this color is safe 
                         {
                             if(colors[adj]==assignColor)
                                 return false;
@@ -85,7 +109,7 @@ class Solution
                     }
                 }
             }
-            assignColor=assignColor^1;
+            assignColor=assignColor^1;//Flip color
         }
         return true;
     }
@@ -94,16 +118,18 @@ public:
     {
         int vertices = graph.size();
         queue<int> q;
-        vector<int>colors(vertices,-1);
+        vector<int>colors(vertices,-1);//default color, also showing node is unvisited
         
         for(int src = 0;src<vertices;src++)
         {
             if(colors[src]==-1)
             {
+                //If any component is not bipartite then return false
                 if(bfs(src,graph,colors,q)==false)
                     return false;
             }
         }
+        //graph is bipartite
         return true;
     }
 };
