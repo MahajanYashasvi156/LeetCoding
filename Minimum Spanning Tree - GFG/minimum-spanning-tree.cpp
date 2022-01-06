@@ -14,6 +14,9 @@ Detailed expression - V * (V + E) = O(VE) = O(V^3)
 SC - O(V)
 
 source - {{dest,weight},{dest,weight}}
+
+so if 1 and 2 are adjacent to 0 node then
+0 - {1, 12}, {2, 15}
 */
 
 class Solution
