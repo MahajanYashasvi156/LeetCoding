@@ -6,7 +6,7 @@ using namespace std;
 class Solution 
 {
     /*
-    Approach 2 - Using Topological sort with Indegree 0. 
+    Approach 2 - Using Topological sort(Modified BFS) with Indegree 0. 
     TC - O(V+E) //For finding indegree also we require V+E + BFS Traversal.
     SC - O(V)   //queue,visited,indegree.
     
