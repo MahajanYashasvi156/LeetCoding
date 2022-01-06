@@ -13,7 +13,7 @@ class Solution
         int pos = -1;
         for(int i=0;i<nodeWeight.size();i++)
         {
-            if(minWeight>nodeWeight[i] and visited[i]==false)
+            if(visited[i]==false and minWeight>nodeWeight[i])
             {
                 minWeight=nodeWeight[i];
                 pos=i;
@@ -37,9 +37,8 @@ class Solution
            visited[node]=true;
            minSTCost+=nodeWeight[node];
            for(auto it : adj[node])
-           {
                 nodeWeight[it[0]]=min(nodeWeight[it[0]],it[1]);
-           }
+    
         }
         
         return minSTCost;
