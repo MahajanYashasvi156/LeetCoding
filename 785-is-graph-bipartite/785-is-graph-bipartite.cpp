@@ -7,22 +7,13 @@ ASC - O(V)
 
 Intuition - If the graph is 2 colorable, then it is bipartite, else it is not bipartite
 Approach - 1 DFS
-
+*/
 class Solution
 {
     
     bool dFS2Colorable(vector<int> &colors,int src,int assignColor, vector<vector<int>>& graph)
     {
         colors[src] = assignColor;
-        
-        //check if giving this color is safe
-        for(int dest:graph[src])
-        {
-            if(colors[dest]==assignColor)
-            {
-                return false;
-            }
-        }
         
         //dFS2Colorable call for unvisited adjacent nodes(if color is -1, then node is unvisited)
         //and passing flipped color to child(e.g. if parent color 0 then pass 1 to child and vice versa)
@@ -33,6 +24,8 @@ class Solution
                 if(dFS2Colorable(colors,dest,assignColor^1,graph)==false) //can also use !assignColor
                     return false;
             }
+            else if(colors[dest]==colors[src])
+                return false;
         }
         return true;
     }
@@ -55,7 +48,7 @@ public:
         return true;
     }
 };
-*/
+
 
 /*
 Intuition - If the graph is 2 colorable, then it is bipartite, else it is not bipartite
@@ -74,7 +67,7 @@ Just perform modified BFS with modifications :
 
 TC - O(V + E)
 SC - O(V)
-*/
+
 class Solution
 {
     bool bfs(int src,vector<vector<int>>& graph, vector<int>& colors, queue<int> &q)
@@ -122,3 +115,4 @@ public:
         return true;
     }
 };
+*/
