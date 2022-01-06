@@ -10,6 +10,9 @@ class Solution
     TC - O(V+E) //For finding indegree also we require V+E + BFS Traversal.
     SC - O(V)   //queue,visited,indegree.
     
+    Intuition - If graph have cycle, then while performing topo sort, we will have 
+    some vertices unvisited because there indegree never became 0.
+    
     */
     void TopoIndegree(vector<int> adj[],vector<bool> &visited,queue<int>&q,vector<int>&indegree)
 	{
