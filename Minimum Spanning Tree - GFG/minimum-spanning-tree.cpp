@@ -38,8 +38,7 @@ class Solution
            minSTCost+=nodeWeight[node];
            for(auto it : adj[node])
            {
-               if(visited[it[0]]==false)
-                    nodeWeight[it[0]]=min(nodeWeight[it[0]],it[1]);
+                nodeWeight[it[0]]=min(nodeWeight[it[0]],it[1]);
            }
         }
         
