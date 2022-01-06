@@ -6,15 +6,22 @@ using namespace std;
 class Solution
 {
     /*
+    Link - https://practice.geeksforgeeks.org/problems/topological-sort/1#
+    
+    TC- O(V+E)
+    SC - O(2V)
+    ASC - O(V)
+    
+    */
 	public:
-	void dFS(vector<int> adj[],int src,vector<bool> &visited,stack<int>&s)
+	void postOrderdFS(vector<int> adj[],int src,vector<bool> &visited,stack<int>&s)
 	{
 	    visited[src]=1;
 	    for(int dest:adj[src])
 	    {
 	        if(visited[dest]==false)
 	        {
-	             dFS(adj,dest,visited,s);
+	             postOrderdFS(adj,dest,visited,s);
 	        }
 	    }
 	   s.push(src);
@@ -28,7 +35,7 @@ class Solution
 	   for(int src=0;src<V;src++)
 	   {
 	       if(visited[src]==false)
-	            dFS(adj,src,visited,s);
+	            postOrderdFS(adj,src,visited,s);
 	   }
 	   while(!s.empty())
 	  {
