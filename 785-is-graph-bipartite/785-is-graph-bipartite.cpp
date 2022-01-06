@@ -5,7 +5,8 @@ TC - O(V+E)
 SC - O(V)
 ASC - O(V)
 
-Approach - If the graph is 2 colorable, then it is bipartite, else it is not bipartite.
+Intuition - If the graph is 2 colorable, then it is bipartite, else it is not bipartite
+Approach - 1 DFS
 */
 class Solution
 {
