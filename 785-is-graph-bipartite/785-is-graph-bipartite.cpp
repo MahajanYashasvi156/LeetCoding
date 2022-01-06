@@ -71,7 +71,6 @@ Just perform modified BFS with modifications :
 1. Visit the adjacent nodes in traversal by setting a opposite color than parent.
 2. While traversing the adjacent nodes to push unvisited nodes in queue, also check if any adjacent node has same color as current source's color, if yes return false as graph is not bipartite
 
-Assign color to the node then while exploring its adjacent check if its neighbour has same color.
 
 TC - O(V + E)
 SC - O(V)
@@ -93,6 +92,7 @@ class Solution
                 
                 if(colors[dest]==-1)//if dest is unvisited
                 {
+                    //as of now, assign color as it is, while exploring it in next level we will check if its neighbours have same color or not
                     colors[dest]=1-colors[start]; 
                     q.push(dest);
                 }
