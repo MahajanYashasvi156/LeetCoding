@@ -5,8 +5,9 @@ using namespace std;
  // } Driver Code Ends
 class Solution
 {
+    /*
 	public:
-	void dFS(vector<int> adj[],int src,vector<bool> &visited,vector<int>&s)
+	void dFS(vector<int> adj[],int src,vector<bool> &visited,stack<int>&s)
 	{
 	    visited[src]=1;
 	    for(int dest:adj[src])
@@ -16,8 +17,7 @@ class Solution
 	             dFS(adj,dest,visited,s);
 	        }
 	    }
-	   // s.push(src);
-	   s.insert(s.begin(),src);
+	   s.push(src);
 	}
 	//Function to return list containing vertices in Topological order. 
 	vector<int> topoSort(int V, vector<int> adj[]) 
@@ -28,13 +28,13 @@ class Solution
 	   for(int src=0;src<V;src++)
 	   {
 	       if(visited[src]==false)
-	            dFS(adj,src,visited,result);
+	            dFS(adj,src,visited,s);
 	   }
-// 	   while(!s.empty())
-// 	  {
-// 	      result.push_back(s.top());
-// 	      s.pop();
-// 	  }
+	   while(!s.empty())
+	  {
+	      result.push_back(s.top());
+	      s.pop();
+	  }
 	   return result;
 	}
 	
