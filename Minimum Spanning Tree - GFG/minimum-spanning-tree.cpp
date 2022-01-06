@@ -13,6 +13,7 @@ Detailed expression - V * (V + E) = O(VE) = O(V^3)
 
 SC - O(V)
 
+source - {{dest,weight},{dest,weight}}
 */
 
 class Solution
