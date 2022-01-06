@@ -5,7 +5,13 @@ using namespace std;
  // } Driver Code Ends
 class Solution 
 {
-    void bFSIndegree(vector<int> adj[],vector<bool> &visited,queue<int>&q,vector<int>&indegree)
+    /*
+    Approach 2 - Using Topological sort with Indegree 0. 
+    TC - O(V+E) //For finding indegree also we require V+E + BFS Traversal.
+    SC - O(V)   //queue,visited,indegree.
+    
+    */
+    void TopoIndegree(vector<int> adj[],vector<bool> &visited,queue<int>&q,vector<int>&indegree)
 	{
     	  while(!q.empty())
     	  {
@@ -58,8 +64,10 @@ class Solution
 	   }
 	   
 	   //All nodes whose indegree 0 are already pushes into the queue so all components will be traversed.
-	    bFSIndegree(adj,visited,q,indegree);
+	    TopoIndegree(adj,visited,q,indegree);
 	    
+	    //After Topological Sort if any of the node is not visited.
+	    //That means its indegree not became 0 and were not added into the queue thus graph has cycle.
 	    for(int i=0;i<V;i++)
 	    {
 	        if(visited[i]==false)
