@@ -140,7 +140,7 @@ TC - O(ElogE + V) = O(ElogV)
 Detailed - ElogE for sorting all edges and  for each edge E(precisely V-1) we have to find use unionSet which takes O(4*alpha) time i.e. constant,so total V time.
 
 SC - O(3E +2V) = O(E+V)
-*/
+
 class Solution
 {
     int findPar(vector<int> &parent,int X)
@@ -211,9 +211,7 @@ class Solution
     }
     
 };
-
-
-
+*/
 /*
 Link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
 
@@ -284,6 +282,7 @@ class Solution
     
 };
 */
+
 /*
 Approach 2 - Using min heap + distance array
 
@@ -291,8 +290,7 @@ TC - O(E logV)
 
 Detailed expression - VlogV + (V + E)logV =  O(E logV)
 SC - O(V)
-
-
+*/
 
 class Solution
 {
@@ -311,12 +309,15 @@ class Solution
         pq.push({0,0});
         int minSTCost=0;
         
-        while(V--)
+        while(!pq.empty())
         {
            //Finding node at minimum distance from visited nodes.
            int source=pq.top().second;
            pq.pop();
            
+           if(visited[source])
+                continue;
+                
            //marking the node visited 
            visited[source]=true;
            //adding the edge wt to that node in total cost
@@ -325,8 +326,10 @@ class Solution
             //Relaxing the edges to adjacent nodes
             //Relaxing means, if a adjacent node can be reached from current vertex in lesser distance
             //than the already stored distance, then update the distance of adjancent node in distance.
+           
            for(auto dest : adj[source])
            {
+        
               if(visited[dest[0]]==false and distance[dest[0]]>dest[1])
               {
                   distance[dest[0]]=dest[1];
@@ -338,7 +341,7 @@ class Solution
     }
     
 };
-*/
+
 
 // { Driver Code Starts.
 
