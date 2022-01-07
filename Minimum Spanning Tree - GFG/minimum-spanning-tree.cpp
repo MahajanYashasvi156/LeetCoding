@@ -12,7 +12,7 @@ Detailed - ElogE for sorting all edges and  for each edge E we have to find use 
 
 SC - O(3E +2V)
 
-*/
+
 
 class Solution
 {
@@ -84,7 +84,7 @@ class Solution
     }
     
 };
-
+*/
 /*
 Link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1#
 
@@ -93,7 +93,7 @@ TC - O(E(LogE+V))
 Detailed - ElogE for sorting all edges and  for each edge E we have to find use unionSet which takes V times,in total EV time.
 
 SC - O(3E +V)
-
+*/
 
 class Solution
 {
@@ -137,14 +137,19 @@ class Solution
        
        sort(edgeList.begin(),edgeList.end());
        
+       int edgeCount = V-1;
        for(auto a : edgeList)
        {
            int weight = a.first;
            int start = a.second.first;
            int end  = a.second.second;
-           
            if(unionSet(parent,start,end))
+           {
                 minSTCost += weight;
+                edgeCount--;
+                if(edgeCount==0)
+                    return minSTCost;
+           }
        }
         
         return minSTCost;
@@ -152,7 +157,7 @@ class Solution
     
 };
 
-*/
+
 
 /*
 Link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
