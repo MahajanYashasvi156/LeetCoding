@@ -13,6 +13,81 @@ class Solution
           return findPar(parent,parent[X]);
     }
     
+    bool unionSet(vector<int> &parent,vector<int> &rank,int X,int Z)
+    {
+    	int AbsoluteParentX = findPar(parent,X);
+    	int AbsoluteParentZ = findPar(parent,Z);
+    	
+    	if(AbsoluteParentX!=AbsoluteParentZ)
+    	{
+    	    if(rank[AbsoluteParentX] < rank[AbsoluteParentZ])
+    	        parent[AbsoluteParentX]=AbsoluteParentZ;
+    	    else if (rank[AbsoluteParentX] > rank[AbsoluteParentZ])
+    	        parent[AbsoluteParentZ]=AbsoluteParentX;
+    	    else 
+    	    {
+    	        parent[AbsoluteParentZ]=AbsoluteParentX;
+    	        rank[AbsoluteParentX]++;
+    	    }
+    	   return true;
+    	} 
+    	return false;
+    }
+	public:
+	//Function to find sum of weights of edges of the Minimum Spanning Tree.
+    int spanningTree(int V, vector<vector<int>> adj[])
+    {
+       vector<int>parent(V,-1);
+       vector<int>rank(V,0);
+       
+       vector<pair<int,pair<int,int>>> edgeList;
+       int minSTCost = 0;
+       
+       for(int start=0; start<V;start++)
+       {
+           for(auto endList : adj[start])
+           {
+               int end = endList[0];
+               int weight = endList[1];
+               edgeList.push_back({weight,{start,end}});
+           }
+       }
+       
+       sort(edgeList.begin(),edgeList.end());
+       
+       for(auto a : edgeList)
+       {
+           int weight = a.first;
+           int start = a.second.first;
+           int end  = a.second.second;
+           if(unionSet(parent,rank,start,end))
+                minSTCost += weight;
+       }
+        
+        return minSTCost;
+    }
+    
+};
+
+/*
+Link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1#
+
+Without Path Compression and union by rank. 
+TC - O(E(LogE+V))
+Detailed - ElogE for sorting all edges and  for each edge E we have to find use unionSet which takes V times,in total EV time.
+
+SC - O(3E +V)
+
+
+class Solution
+{
+    int findPar(vector<int> &parent,int X)
+    {
+          if(parent[X]==-1)
+                return X;
+          return findPar(parent,parent[X]);
+    }
+    
     bool unionSet(vector<int> &parent,int X,int Z)
     {
     	int AbsoluteParentX = findPar(parent,X);
@@ -61,31 +136,7 @@ class Solution
     
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 /*
 Link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
