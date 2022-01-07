@@ -5,6 +5,61 @@ using namespace std;
  // } Driver Code Ends
 class Solution
 {
+	public:
+	//Function to find the shortest distance of all the vertices
+    //from the source vertex S.
+    vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
+    {
+        vector<int> distance(V,INT_MAX);
+    
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> minpq;
+        
+        //Setting source node's distance as 0 to start the algo
+        distance[S]=0;
+        minpq.push({0,S});
+        
+        int source;
+        
+        while(!minpq.empty())
+        {
+            //Finding node at minimum distance from visited nodes
+            source = minpq.top().second;
+            minpq.pop();
+            
+            //Relaxing the edges to adjacent nodes
+            //Relaxing means, if a adjacent node can be reached through current vertex in lesser distance
+            //than the already stored distance, then update the distance of adjancent node in distance array
+            for(auto list : adj[source])
+            {
+                int dest = list[0];
+                int weight= list[1];
+                
+                if(distance[dest]>(distance[source]+weight))
+                {
+                    distance[dest]=distance[source]+weight;
+                    minpq.push({distance[dest],dest});
+                } 
+            }
+        }
+        //distances array is having shortest distance from source node to all the vertices
+        return distance;
+    }
+};
+/*
+Link - https://practice.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1#
+
+Dijkstra's Algorithm - To find shortest distance of all vertex from source vertex
+Algo is slight modification of prims
+TC - O(V^2)
+SC - O(V)
+
+Here, in distance array implementation, we will need visited array otherwise while picking minimum from distance array it will 
+always pick source vertex whose distance is 0.
+
+But in min heap implementation, while picking minimum we will pop the node(node,weight pair), so we will not need visited array
+
+class Solution
+{
     int pickMinDistanceVertex(int V,vector<int> &distance,vector<bool> &visited)
     {
         int vertex = -1;
@@ -58,18 +113,6 @@ class Solution
         return distance;
     }
 };
-/*
-Link - https://practice.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1#
-
-Dijkstra's Algorithm - To find shortest distance of all vertex from source vertex
-Algo is slight modification of prims
-TC - O(V^2)
-SC - O(V)
-
-Here, in distance array implementation, we will need visited array otherwise while picking minimum from distance array it will 
-always pick source vertex whose distance is 0.
-
-But in min heap implementation, while picking minimum we will pop the node(node,weight pair), so we will not need visited array
 */
 
 // { Driver Code Starts.
