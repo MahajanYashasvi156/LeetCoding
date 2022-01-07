@@ -4,33 +4,118 @@ using namespace std;
 
  // } Driver Code Ends
 
+class Solution
+{
+    int findPar(vector<int> &parent,int X)
+    {
+          if(parent[X]==-1)
+                return X;
+          return findPar(parent,parent[X]);
+    }
+    
+    bool unionSet(vector<int> &parent,int X,int Z)
+    {
+    	int AbsoluteParentX = findPar(parent,X);
+    	int AbsoluteParentZ = findPar(parent,Z);
+    	
+    	if(AbsoluteParentX!=AbsoluteParentZ)
+    	{
+    	   parent[AbsoluteParentX]=AbsoluteParentZ;
+    	   return true;
+    	} 
+    	return false;
+    }
+	public:
+	//Function to find sum of weights of edges of the Minimum Spanning Tree.
+    int spanningTree(int V, vector<vector<int>> adj[])
+    {
+       vector<int>parent(V,-1);
+       //vector<int>rank(V,0);
+       
+       vector<pair<int,pair<int,int>>> edgeList;
+       int minSTCost = 0;
+       
+       for(int start=0; start<V;start++)
+       {
+           for(auto endList : adj[start])
+           {
+               int end = endList[0];
+               int weight = endList[1];
+               edgeList.push_back({weight,{start,end}});
+           }
+       }
+       
+       sort(edgeList.begin(),edgeList.end());
+       
+       for(auto a : edgeList)
+       {
+           int weight = a.first;
+           int start = a.second.first;
+           int end  = a.second.second;
+           if(unionSet(parent,start,end))
+                minSTCost += weight;
+       }
+        
+        return minSTCost;
+    }
+    
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 Link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
 
-TC - O(V^3) or O(VE)
+Approach 1 - Using distance array
+TC - O(V^2) 
 
-Detailed expression - V * (V + E) = O(VE) = O(V^3)
-
+Detailed expression - V^2 + (V + E) =  O(V^2)
 SC - O(V)
 
-source - {{dest,weight},{dest,weight}}
+adj -> 
+source - { {dest,weight}, {dest,weight} }
 
 so if 1 and 2 are adjacent to 0 node then
 0 - {1, 12}, {2, 15}
-*/
+
+
 
 class Solution
 {
     
-    int minWeightNode(vector<int> &nodeWeight,vector<bool> &visited)
+    int minWeightNode(vector<int> &distance,vector<bool> &visited)
     {
         int minWeight=INT_MAX;
         int pos = -1;
-        for(int i=0;i<nodeWeight.size();i++)
+        for(int i=0;i<distance.size();i++)
         {
-            if(visited[i]==false and minWeight>nodeWeight[i])
+            if(visited[i]==false and minWeight>distance[i])
             {
-                minWeight=nodeWeight[i];
+                minWeight=distance[i];
                 pos=i;
             }
         }
@@ -41,35 +126,92 @@ class Solution
     int spanningTree(int V, vector<vector<int>> adj[])
     {
         vector<bool> visited(V,false);
-        vector<int> nodeWeight(V,INT_MAX);
+        vector<int> distance(V,INT_MAX);
         
         //Setting first node's distance as 0 to start the algo
-        nodeWeight[0]=0;
+        distance[0]=0;
         
         int minSTCost=0;
         
         while(V--)
         {
            //Finding node at minimum distance from visited nodes.
-           int source=minWeightNode(nodeWeight,visited);
+           int source=minWeightNode(distance,visited);
            
            //marking the node visited 
            visited[source]=true;
            //adding the edge wt to that node in total cost
-           minSTCost+=nodeWeight[source];
+           minSTCost+=distance[source];
            
             //Relaxing the edges to adjacent nodes
             //Relaxing means, if a adjacent node can be reached from current vertex in lesser distance
-            //than the already stored distance, then update the distance of adjancent node in nodeWeight.
+            //than the already stored distance, then update the distance of adjancent node in distance.
            for(auto dest : adj[source])
            {
                if(visited[dest[0]]==false)
-                    nodeWeight[dest[0]]=min(nodeWeight[dest[0]],dest[1]);
+                    distance[dest[0]]=min(distance[dest[0]],dest[1]);
            }
         }
         return minSTCost;
     }
+    
 };
+*/
+/*
+Approach 2 - Using min heap + distance array
+
+TC - O(E logV) 
+
+Detailed expression - VlogV + (V + E)logV =  O(E logV)
+SC - O(V)
+
+
+
+class Solution
+{
+	public:
+	//Function to find sum of weights of edges of the Minimum Spanning Tree.
+    int spanningTree(int V, vector<vector<int>> adj[])
+    {
+        vector<bool> visited(V,false);
+        vector<int> distance(V,INT_MAX);
+        
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        
+        //Setting first node's distance as 0 to start the algo
+        distance[0]=0;
+        
+        pq.push({0,0});
+        int minSTCost=0;
+        
+        while(V--)
+        {
+           //Finding node at minimum distance from visited nodes.
+           int source=pq.top().second;
+           pq.pop();
+           
+           //marking the node visited 
+           visited[source]=true;
+           //adding the edge wt to that node in total cost
+           minSTCost+=distance[source];
+           
+            //Relaxing the edges to adjacent nodes
+            //Relaxing means, if a adjacent node can be reached from current vertex in lesser distance
+            //than the already stored distance, then update the distance of adjancent node in distance.
+           for(auto dest : adj[source])
+           {
+              if(visited[dest[0]]==false and distance[dest[0]]>dest[1])
+              {
+                  distance[dest[0]]=dest[1];
+                  pq.push({dest[1],dest[0]});
+              }  
+           }
+        }
+        return minSTCost;
+    }
+    
+};
+*/
 
 // { Driver Code Starts.
 
