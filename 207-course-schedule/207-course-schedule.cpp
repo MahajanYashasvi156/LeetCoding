@@ -24,12 +24,12 @@ ASC - O(V)
 
 class Solution 
 {
-    bool dfsCanTakeCourse(vector<vector<int>> &adj,vector<int> &status,int src)
+    bool dfsCanTakeCourse(vector<vector<int>> &adj,vector<int> &status,int course)
     {
         //In processing State.
-        status[src]=1;
+        status[course]=1;
         
-        for(int dest : adj[src])
+        for(int dest : adj[course])
         {
             //If not viisted then only call further.
             if(status[dest]==0)
@@ -42,7 +42,7 @@ class Solution
                 return false;
         }
         
-        status[src]=2;
+        status[course]=2;
         return true;
     }
 public:
@@ -63,11 +63,11 @@ public:
         }
         
         //For all Components.
-        for(int src = 0;src< numCourses;src++)
+        for(int course = 0;course< numCourses;course++)
         {
-            if(status[src]==0)
+            if(status[course]==0)
             {
-                if(dfsCanTakeCourse(adj, status,src)==false)
+                if(dfsCanTakeCourse(adj, status,course)==false)
                     return false;
             }
         }
