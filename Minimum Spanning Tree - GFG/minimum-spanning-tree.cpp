@@ -70,7 +70,7 @@ TC - O(ElogE+V^2)
 Detailed - ElogE for sorting all edges and  for each edge E(precisely V-1) we have to find use unionSet which takes V times,in total V^2 time.
 
 SC - O(3E +V) = O(E+V)
-*/
+
 class Solution
 {
     int findPar(vector<int> &parent,int X)
@@ -132,7 +132,7 @@ class Solution
     }
     
 };
-
+*/
 /*
 Approach 2) ii) - Union by Rank with path compression
 
@@ -140,7 +140,7 @@ TC - O(ElogE + V) = O(ElogV)
 Detailed - ElogE for sorting all edges and  for each edge E(precisely V-1) we have to find use unionSet which takes O(4*alpha) time i.e. constant,so total V time.
 
 SC - O(3E +2V) = O(E+V)
-
+*/
 class Solution
 {
     int findPar(vector<int> &parent,int X)
@@ -213,8 +213,6 @@ class Solution
 };
 
 
-
-*/
 
 /*
 Link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
