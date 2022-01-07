@@ -67,10 +67,14 @@ public:
         {
             if(status[course]==0)
             {
+                //cycle, so courses can't be finished
                 if(dfsCanTakeCourse(adj, status,course)==false)
                     return false;
             }
         }
+        //no cycle, so courses can be finished
         return true;
     }
 };
+
+
