@@ -226,7 +226,7 @@ source - { {dest,weight}, {dest,weight} }
 
 so if 1 and 2 are adjacent to 0 node then
 0 - {1, 12}, {2, 15}
-*/
+
 
 class Solution
 {
@@ -281,15 +281,16 @@ class Solution
     }
     
 };
+*/
 
 /*
-Approach 2 - Using min heap + distance array
+Approach 2 - Prims Using min heap + distance array
 
 TC - O(E logV) 
 
 Detailed expression - VlogV + (V + E)logV =  O(E logV)
 SC - O(V)
-
+*/
 
 class Solution
 {
@@ -314,6 +315,11 @@ class Solution
            int source=pq.top().second;
            pq.pop();
            
+           //if an unvisited node was added in priority queue with one its adjacent edge weights(let 4) 
+           //then after if it gets reached with its another adjancent edge whose weight is less than the previous edge 
+           //then our algo will add that unvisited node both times with diffrent weight.
+           //hence, there might be duplicates in heap, and so when we pop vertex from heap, 
+           //then if it is already visited, then we will not process it.
            if(visited[source])
                 continue;
                 
@@ -328,7 +334,6 @@ class Solution
            
            for(auto dest : adj[source])
            {
-        
               if(visited[dest[0]]==false and distance[dest[0]]>dest[1])
               {
                   distance[dest[0]]=dest[1];
@@ -340,7 +345,6 @@ class Solution
     }
     
 };
-*/
 
 // { Driver Code Starts.
 
