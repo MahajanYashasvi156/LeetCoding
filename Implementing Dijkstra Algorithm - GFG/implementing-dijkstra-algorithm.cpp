@@ -19,6 +19,7 @@ class Solution
         }
         return vertex;
     }
+    
 	public:
 	//Function to find the shortest distance of all the vertices
     //from the source vertex S.
@@ -27,22 +28,33 @@ class Solution
         vector<int> distance(V,INT_MAX);
         vector<bool> visited(V);
         
+        //Setting source node's distance as 0 to start the algo
         distance[S]=0;
         
         int source;
         
         for(int i=0;i<V;i++)
         {
+            //Finding node at minimum distance from visited nodes
             source = pickMinDistanceVertex(V,distance, visited);
+            
+            //marking the node visited.
+            //this means its min distance from start node is finalized
             visited[source] = true;
+            
+            //Relaxing the edges to adjacent nodes
+            //Relaxing means, if a adjacent node can be reached through current vertex in lesser distance
+            //than the already stored distance, then update the distance of adjancent node in distance array
             for(auto list : adj[source])
             {
                 int dest = list[0];
                 int weight= list[1];
+                
                 if(visited[dest] ==false and distance[dest]>(distance[source]+weight))
                     distance[dest]=distance[source]+weight;
             }
         }
+        //distances array is having shortest distance from source node to all the vertices
         return distance;
     }
 };
