@@ -215,7 +215,7 @@ class Solution
 /*
 Link - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
 
-Approach 1 - Using distance array
+Approach 1 - Prims Using distance array
 TC - O(V^2) 
 
 Detailed expression - V^2 + (V + E) =  O(V^2)
@@ -226,8 +226,7 @@ source - { {dest,weight}, {dest,weight} }
 
 so if 1 and 2 are adjacent to 0 node then
 0 - {1, 12}, {2, 15}
-
-
+*/
 
 class Solution
 {
@@ -271,6 +270,7 @@ class Solution
             //Relaxing the edges to adjacent nodes
             //Relaxing means, if a adjacent node can be reached from current vertex in lesser distance
             //than the already stored distance, then update the distance of adjancent node in distance.
+           
            for(auto dest : adj[source])
            {
                if(visited[dest[0]]==false)
@@ -281,7 +281,6 @@ class Solution
     }
     
 };
-*/
 
 /*
 Approach 2 - Using min heap + distance array
@@ -290,7 +289,7 @@ TC - O(E logV)
 
 Detailed expression - VlogV + (V + E)logV =  O(E logV)
 SC - O(V)
-*/
+
 
 class Solution
 {
@@ -341,7 +340,7 @@ class Solution
     }
     
 };
-
+*/
 
 // { Driver Code Starts.
 
