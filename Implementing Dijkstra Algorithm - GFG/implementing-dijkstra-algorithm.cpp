@@ -5,52 +5,45 @@ using namespace std;
  // } Driver Code Ends
 class Solution
 {
-    int minWeightNode(vector<int> &distance,vector<bool> &visited)
+    int pickMinDistanceVertex(int V,vector<int> &distance,vector<bool> &visited)
     {
-        int minWeight=INT_MAX;
-        int pos = -1;
-        for(int i=0;i<distance.size();i++)
+        int vertex = -1;
+        int minDistance =INT_MAX;
+        for(int i = 0 ;i<V ; i++)
         {
-            if(visited[i]==false and minWeight>distance[i])
+            if(visited[i]==false and distance[i]<minDistance)
             {
-                minWeight=distance[i];
-                pos=i;
+                vertex = i;
+                minDistance = distance[i];
             }
         }
-        return pos;
+        return vertex;
     }
-    
 	public:
-	
 	//Function to find the shortest distance of all the vertices
     //from the source vertex S.
     vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
     {
-        vector<bool> visited(V,false);
         vector<int> distance(V,INT_MAX);
+        vector<bool> visited(V);
         
-        //Setting source node's distance as 0 to start the algo
         distance[S]=0;
         
-        while(V--)
+        int source;
+        
+        for(int i=0;i<V;i++)
         {
-           //Finding node at minimum distance from visited nodes.
-           int source=minWeightNode(distance,visited);
-           
-           //marking the node visited 
-           visited[source]=true;
-           
-            //Relaxing the edges to adjacent nodes
-            //Relaxing means, if a adjacent node can be reached from current vertex in lesser distance
-            //than the already stored distance, then update the distance of adjancent node in distance.
-           for(auto dest : adj[source])
-           {
-               if(visited[dest[0]]==false)
-                    distance[dest[0]]=min(distance[dest[0]],distance[source]+dest[1]);
-           }
+            source = pickMinDistanceVertex(V,distance, visited);
+            visited[source] = true;
+            for(auto list : adj[source])
+            {
+                int dest = list[0];
+                int weight= list[1];
+                if(visited[dest] ==false and distance[dest]>(distance[source]+weight))
+                    distance[dest]=distance[source]+weight;
+            }
         }
         return distance;
-    
     }
 };
 
