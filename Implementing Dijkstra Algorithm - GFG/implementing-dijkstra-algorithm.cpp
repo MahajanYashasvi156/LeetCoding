@@ -5,6 +5,14 @@ using namespace std;
  // } Driver Code Ends
 class Solution
 {
+/*
+Approach 2 - Using min heap + distance array
+
+TC - O(E logV) 
+
+Detailed expression - VlogV + (V + E)logV =  O(E logV)
+SC - O(V)
+*/
 	public:
 	//Function to find the shortest distance of all the vertices
     //from the source vertex S.
