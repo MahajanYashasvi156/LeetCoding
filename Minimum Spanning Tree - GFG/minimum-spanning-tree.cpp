@@ -4,13 +4,23 @@ using namespace std;
 
  // } Driver Code Ends
 
+/*
+Path Compression and union by rank.
+
+TC - O(ElogE + V) ~ O(ElogV)
+Detailed - ElogE for sorting all edges and  for each edge E we have to find use unionSet which takes O(4*alpha) time i.e. constant,in total V time.
+
+SC - O(3E +2V)
+
+*/
+
 class Solution
 {
     int findPar(vector<int> &parent,int X)
     {
           if(parent[X]==-1)
                 return X;
-          return findPar(parent,parent[X]);
+          return parent[X] = findPar(parent,parent[X]);
     }
     
     bool unionSet(vector<int> &parent,vector<int> &rank,int X,int Z)
@@ -55,13 +65,19 @@ class Solution
        
        sort(edgeList.begin(),edgeList.end());
        
+       int edgeCount = V-1;
        for(auto a : edgeList)
        {
            int weight = a.first;
            int start = a.second.first;
            int end  = a.second.second;
            if(unionSet(parent,rank,start,end))
+           {
                 minSTCost += weight;
+                edgeCount--;
+                if(edgeCount==0)
+                    return minSTCost;
+           }
        }
         
         return minSTCost;
@@ -105,7 +121,6 @@ class Solution
     int spanningTree(int V, vector<vector<int>> adj[])
     {
        vector<int>parent(V,-1);
-       //vector<int>rank(V,0);
        
        vector<pair<int,pair<int,int>>> edgeList;
        int minSTCost = 0;
@@ -127,6 +142,7 @@ class Solution
            int weight = a.first;
            int start = a.second.first;
            int end  = a.second.second;
+           
            if(unionSet(parent,start,end))
                 minSTCost += weight;
        }
