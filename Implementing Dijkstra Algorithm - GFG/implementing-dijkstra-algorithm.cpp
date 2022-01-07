@@ -58,7 +58,19 @@ class Solution
         return distance;
     }
 };
+/*
+Link - https://practice.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1#
 
+Dijkstra's Algorithm - To find shortest distance of all vertex from source vertex
+Algo is slight modification of prims
+TC - O(V^2)
+SC - O(V)
+
+Here, in distance array implementation, we will need visited array otherwise while picking minimum from distance array it will 
+always pick source vertex whose distance is 0.
+
+But in min heap implementation, while picking minimum we will pop the node(node,weight pair), so we will not need visited array
+*/
 
 // { Driver Code Starts.
 
