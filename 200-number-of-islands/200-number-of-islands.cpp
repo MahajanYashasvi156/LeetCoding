@@ -5,8 +5,6 @@ class Solution
         if(i<0 or i>=m or j<0 or j>=n or visited[i][j]==true or grid[i][j]=='0')
             return ;
         
-        cout<<i<<" "<<j<<" "<<endl;
-        
         visited[i][j]=true;
         //grid[i][j] = '-1';
         
