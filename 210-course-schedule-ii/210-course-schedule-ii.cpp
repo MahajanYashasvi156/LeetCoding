@@ -14,6 +14,8 @@ TC - O(V+E)
 SC - O(V+E)
 ASC - O(V)
 
+Approach 1 -
+
 class Solution 
 {
     bool topoDFS(int src,int numCourses,vector<vector<int>> &adj,vector<bool> &visited,vector<bool> &localvis,stack<int>&s)
@@ -72,15 +74,71 @@ public:
 */
 
 /*
-Logic : Topo sort BFS(kahn's algo) + cycle detection.
+Appraoch 2 - Topo sort DFS with 3 colors/states (0,1,2) for cycle detection check
+
+class Solution 
+{
+    bool topoDFS(int src,int numCourses,vector<vector<int>> &adj,vector<int> &color,stack<int>&s)
+    {
+        color[src]=1;
+        
+        for(int dest:adj[src])
+        {
+            if(color[dest]==0)
+            {
+                if(topoDFS(dest,numCourses,adj,color,s)==false)
+                    return false;
+            }
+            else if(color[dest]==1)
+                return false;
+            
+        }
+        s.push(src);
+        color[src]=2;
+        return true;
+    }
+public:
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) 
+    {
+        vector<vector<int>> adj(numCourses);
+        vector<int> color(numCourses,0);
+        stack<int>s;
+        vector<int> order;
+        
+        //Directed Graph.
+        for(auto edge:prerequisites)
+        {
+            int start = edge[1];
+            int end = edge[0];
+            adj[start].push_back(end);
+        }
+        for(int src=0;src<numCourses;src++)
+        {
+            if(color[src]==0)
+            {
+                if(topoDFS(src,numCourses,adj,color,s)==false)
+                    return order;
+            }  
+        }
+        
+        while(!s.empty())
+        {
+            order.push_back(s.top());
+            s.pop();
+        }
+        return order;
+    }
+};
+
+*/
+/*
+Appraoch 3 - Topo sort BFS(kahn's algo) + cycle detection.
 
 for cycle detection we can use any algo bt here we have to also provide order in which courses can be opted so topological sort is necessary to applied.
 
 TC - O(V+E)
 SC - O(V+E)
-
-
-
+*/
 class Solution 
 {
 public:
@@ -146,58 +204,5 @@ public:
             return {};
     }
 };
-*/
 
-class Solution 
-{
-    bool topoDFS(int src,int numCourses,vector<vector<int>> &adj,vector<int> &color,stack<int>&s)
-    {
-        color[src]=1;
-        
-        for(int dest:adj[src])
-        {
-            if(color[dest]==0)
-            {
-                if(topoDFS(dest,numCourses,adj,color,s)==false)
-                    return false;
-            }
-            else if(color[dest]==1)
-                return false;
-            
-        }
-        s.push(src);
-        color[src]=2;
-        return true;
-    }
-public:
-    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) 
-    {
-        vector<vector<int>> adj(numCourses);
-        vector<int> color(numCourses,0);
-        stack<int>s;
-        vector<int> order;
-        
-        //Directed Graph.
-        for(auto edge:prerequisites)
-        {
-            int start = edge[1];
-            int end = edge[0];
-            adj[start].push_back(end);
-        }
-        for(int src=0;src<numCourses;src++)
-        {
-            if(color[src]==0)
-            {
-                if(topoDFS(src,numCourses,adj,color,s)==false)
-                    return order;
-            }  
-        }
-        
-        while(!s.empty())
-        {
-            order.push_back(s.top());
-            s.pop();
-        }
-        return order;
-    }
-};
+
