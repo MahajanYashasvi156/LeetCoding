@@ -13,7 +13,6 @@ We are using approach 1 which is combo of our topo sort DFS + localVisited array
 TC - O(V+E)
 SC - O(V+E)
 ASC - O(V)
-*/
 
 class Solution 
 {
@@ -47,10 +46,10 @@ public:
         vector<int> order;
         
         //Directed Graph.
-        for(auto list:prerequisites)
+        for(auto edge:prerequisites)
         {
-            int start = list[1];
-            int end = list[0];
+            int start = edge[1];
+            int end = edge[0];
             adj[start].push_back(end);
         }
         for(int src=0;src<numCourses;src++)
@@ -68,5 +67,65 @@ public:
             s.pop();
         }
         return order;
+    }
+};
+*/
+class Solution 
+{
+public:
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) 
+    {
+        vector<vector<int>> adj(numCourses);
+        vector<bool> visited(numCourses,false);
+        queue<int>q;
+        vector<int> order;
+        vector<int>indegree(numCourses,0);
+        
+        //Directed Graph.
+        for(auto edge:prerequisites)
+        {
+            int start = edge[1];
+            int end = edge[0];
+            adj[start].push_back(end);
+        }
+        
+        for(int start=0;start<numCourses;start++)
+        {
+            for(int end:adj[start])
+            {
+                indegree[end]++;
+            }
+        }
+        
+        for(int course=0;course<numCourses;course++)
+        {
+            if(indegree[course]==0)
+            {
+                visited[course]=true;
+                q.push(course);
+            }      
+        }
+        while(!q.empty())
+        {
+            int src =q.front();
+            q.pop();
+            order.push_back(src);
+            for(int dest:adj[src])
+            {
+                if(visited[dest]==false)
+                {
+                    indegree[dest]--;
+                    if(indegree[dest]==0)
+                    {
+                        q.push(dest);
+                        visited[dest]=true;
+                    }
+                }
+            }
+        }
+        if(order.size()==numCourses)
+            return order;
+        else
+            return {};
     }
 };
