@@ -1,3 +1,20 @@
+/*
+Link - https://leetcode.com/problems/course-schedule-ii/
+
+This problem boils down to cycle detection + topo sort in directed graph
+We know two approaches for this
+
+1. Topo sort DFS with localVisited for cycle detection check
+2. Topo sort DFS with 3 colors/states (0,1,2) for cycle detection check
+2. Topo sort BFS with cycle detection check
+
+We are using approach 1 which is combo of our topo sort DFS + localVisited array to detect cycle in directed graph using DFS
+
+TC - O(V+E)
+SC - O(V+E)
+ASC - O(V)
+*/
+
 class Solution 
 {
     bool topoDFS(int src,int numCourses,vector<vector<int>> &adj,vector<bool> &visited,vector<bool> &localvis,stack<int>&s)
