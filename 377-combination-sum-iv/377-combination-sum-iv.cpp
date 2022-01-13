@@ -1,3 +1,13 @@
+/*
+Problem - Similare to Coin Change Permuations.
+
+Link - https://leetcode.com/problems/combination-sum-iv/submissions/
+
+TC - O(n*target) , where n is the size of nums or number of coins.
+SC - O(target)
+
+At smaller step explore possibility with all coins then only go to higher amount/target.
+*/
 class Solution 
 {
 public:
