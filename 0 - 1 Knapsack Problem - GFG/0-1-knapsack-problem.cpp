@@ -8,16 +8,17 @@ using namespace std;
 /*
 Link - https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1#
 
-Recursion TLE - Bottom up approach.
+Recursion TLE -
 
-Divide problems such that each subproblem have a sack of smaller weight,
+Divide problems such that each subproblem have a bag of smaller weight,
 will try to pick and unpick current item and will calculate max profit, 
-and return max profit to calling subproblem
+and return max profit to calling subproblem.
 
 TC - O(2^n)
 SC - O(1)
 ASC - O(n)
 */
+
 /*
 class Solution
 {
@@ -80,7 +81,6 @@ class Solution
         return memoization(0,W,wt,val,n,dp);
     }
 };
-
 */
 
 /*
