@@ -29,6 +29,7 @@ class Solution
         return recursion(0,W,wt,val,n);
     }
     */
+    /*
     int memoization(int item,int W, int wt[], int val[], int n,vector<vector<int>> &dp) 
     {
          if(item==n)
@@ -53,6 +54,26 @@ class Solution
     { 
         vector<vector<int>> dp(n,vector<int>(W+1,-1));
         return memoization(0,W,wt,val,n,dp);
+    }
+    */
+    public:
+    //Function to return max value that can be put in knapsack of capacity W.
+    int knapSack(int W, int wt[], int val[], int n) 
+    { 
+        vector<vector<int>> dp(n+1,vector<int>(W+1,0));
+        
+        for(int item=1;item<=n;item++)
+        {
+            for(int weight=1;weight<=W;weight++)
+            {
+                if(weight-wt[item-1]>=0)
+                    dp[item][weight]=max(dp[item-1][weight],dp[item-1][weight-wt[item-1]]+val[item-1]);
+                else
+                    dp[item][weight]=dp[item-1][weight];
+            }
+        }
+        
+        return dp[n][W];
     }
 };
 
