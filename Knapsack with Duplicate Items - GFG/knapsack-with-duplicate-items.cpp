@@ -30,7 +30,7 @@ public:
         return recursive(N,W,val,wt,0);
     }
 };
-*/
+
 class Solution
 {
     
@@ -54,7 +54,32 @@ public:
     int knapSack(int N, int W, int val[], int wt[])
     {
         vector<vector<int>>dp(N+1,vector<int>(W+1,-1));
-      return memoization(N,W,val,wt,0,dp);
+        return memoization(N,W,val,wt,0,dp);
+    }
+};
+*/
+class Solution
+{
+    
+public:
+    
+    int knapSack(int N, int W, int val[], int wt[])
+    {
+        vector<int>dp(W+1,0);
+        for(int i=0;i<N;i++)
+        {
+            for(int j=1; j<=W;j++)
+            {
+                if(j>=wt[i])
+                {
+                    int pick = dp[j-wt[i]]+val[i];
+                    int notPick = dp[j];
+                    dp[j]=max(pick,notPick);
+                }
+            }
+        }
+        
+        return dp[W];
     }
 };
 
