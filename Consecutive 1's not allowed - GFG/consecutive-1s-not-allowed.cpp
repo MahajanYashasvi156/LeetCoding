@@ -6,6 +6,12 @@ using namespace std;
 
  // } Driver Code Ends
 //User function template for C++
+/*
+Link - https://practice.geeksforgeeks.org/problems/consecutive-1s-not-allowed1912/1/#
+
+TC - O(N)
+SC - O(1)
+*/
 class Solution
 {
 public:
