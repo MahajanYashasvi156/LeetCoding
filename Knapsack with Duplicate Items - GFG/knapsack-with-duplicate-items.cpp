@@ -60,7 +60,6 @@ public:
 */
 class Solution
 {
-    
 public:
     
     int knapSack(int N, int W, int val[], int wt[])
@@ -68,14 +67,11 @@ public:
         vector<int>dp(W+1,0);
         for(int i=0;i<N;i++)
         {
-            for(int j=1; j<=W;j++)
+            for(int j=wt[i]; j<=W;j++)
             {
-                if(j>=wt[i])
-                {
-                    int pick = dp[j-wt[i]]+val[i];
-                    int notPick = dp[j];
-                    dp[j]=max(pick,notPick);
-                }
+                int pick = dp[j-wt[i]]+val[i];
+                int notPick = dp[j];
+                dp[j]=max(pick,notPick);
             }
         }
         
