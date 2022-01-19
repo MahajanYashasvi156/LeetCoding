@@ -11,6 +11,9 @@ Link - https://practice.geeksforgeeks.org/problems/consecutive-1s-not-allowed191
 
 TC - O(N)
 SC - O(1)
+
+Approach - maintain two variables to track no of strings of len-1 where consecutive 1's not allowed ending with 0 and 1
+Based on there ending digit, update them in each iteration
 */
 class Solution
 {
