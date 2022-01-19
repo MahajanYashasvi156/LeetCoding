@@ -36,7 +36,7 @@ public:
                 int first=s[i-1]-'0';
                 int second = s[i]-'0';
                 int num=first*10+second;
-                cout<<num;
+                
                 if(num>0 and num<=26)
                 {
                     if(i>=2)
