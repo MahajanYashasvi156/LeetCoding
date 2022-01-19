@@ -8,6 +8,17 @@ using namespace std;
 // User function Template for C++
 
 /*
+This is unboundeed knapsack. 
+similar to coin change 2 problem.
+Link - https://practice.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1/
+
+Recursion TLE
+TC - O(2^N)
+SC - O(1)
+ASC - O(N)
+*/
+
+/*
 class Solution
 {
     int recursive(int N, int W,int val[],int wt[],int item)
@@ -31,6 +42,13 @@ public:
     }
 };
 
+/*
+Recursion + Memoization
+TC - O(NW)
+SC - O(NW)
+ASC - O(N)
+*/
+/*
 class Solution
 {
     
@@ -57,6 +75,14 @@ public:
         return memoization(N,W,val,wt,0,dp);
     }
 };
+*/
+/*
+Iterative DP
+As repeatation of same item allowed(unbounded knapsack), we don't need to distinguish states of each item
+So 1-D DP is required
+
+TC - O(NW)
+SC - O(W)
 */
 class Solution
 {
