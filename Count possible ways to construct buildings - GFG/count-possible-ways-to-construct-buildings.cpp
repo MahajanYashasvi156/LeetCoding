@@ -21,6 +21,16 @@ class Solution
 	}
 };
 
+/*
+Link - https://practice.geeksforgeeks.org/problems/count-possible-ways-to-construct-buildings5007/1
+
+TC - O(N)
+SC - O(1)
+
+Approach - maintain two variables to track no of ways of len-1 where consecutive buildings not allowed ending with building and space
+Based on there ending object, update them in each iteration
+*/
+
 // { Driver Code Starts.
 int main(){
 	int tc;
