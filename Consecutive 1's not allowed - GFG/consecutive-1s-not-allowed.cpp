@@ -22,7 +22,7 @@ public:
 	  int stringEnd1=1;//length 1 
 	  int stringEnd0=1;//length 1
 	  
-	  for(int i=2;i<=n;i++)
+	  for(int len=2;len<=n;len++)
 	  {
 	      int prevstringEnd1=stringEnd1;
 	      stringEnd1=(stringEnd1+stringEnd0)%(1000000007);
