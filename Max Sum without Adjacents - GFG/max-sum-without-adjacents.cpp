@@ -16,10 +16,13 @@ public:
 	    
 	    for(int i=0;i<n;i++)
 	    {
-	        int temp=included;
-	        included=excluded +arr[i];
-	        excluded=max(temp,excluded);
+	        int newincluded=excluded +arr[i];
+	        int newexcluded=max(included,excluded);
+	        
+	        included = newincluded;
+	        excluded = newexcluded;
 	    }
+	    
 	    return max(included,excluded);
 	}
 };
