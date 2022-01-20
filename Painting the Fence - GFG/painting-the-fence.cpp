@@ -27,6 +27,13 @@ class Solution
     }
 };
 
+/*
+Link - https://practice.geeksforgeeks.org/problems/painting-the-fence3727/1/#
+TC - O(N)
+SC - O(1)
+*/
+
+
 // { Driver Code Starts.
 
 int main()
