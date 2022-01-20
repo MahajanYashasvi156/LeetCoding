@@ -26,11 +26,9 @@ class Solution
         {
             if(s[i]=='a')
             {
-                
                dp[0][i]=(2*dp[0][i-1]+1)%1000000007;
                dp[1][i]=dp[1][i-1];
                dp[2][i]=dp[2][i-1];
-                   
             }
             else if(s[i]=='b')
             {
@@ -45,7 +43,7 @@ class Solution
                dp[2][i]=((2*dp[2][i-1])%1000000007+dp[1][i-1])%1000000007;//in c case 2*(abc)+ab
             }
         }
-       return dp[2][s.size()-1];
+        return dp[2][s.size()-1];
     }
 };
 
