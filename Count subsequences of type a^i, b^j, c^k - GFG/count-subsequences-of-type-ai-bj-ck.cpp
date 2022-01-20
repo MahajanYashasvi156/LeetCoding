@@ -16,7 +16,7 @@ class Solution
     // return the expected answer
     int fun(string &s) 
     {
-        vector<vector<int>> dp(3,vector<int>(s.size(),0));
+        vector<vector<int>> dp(3,vector<int>(s.size()+1,0));
         
         //0th row - a+
         //1st row - a+b+
@@ -26,24 +26,24 @@ class Solution
         {
             if(s[i]=='a')
             {
-               dp[0][i]=(2*dp[0][i-1]+1)%1000000007;
-               dp[1][i]=dp[1][i-1];
-               dp[2][i]=dp[2][i-1];
+               dp[0][i+1]=(2*dp[0][i]+1)%1000000007;
+               dp[1][i+1]=dp[1][i];
+               dp[2][i+1]=dp[2][i];
             }
             else if(s[i]=='b')
             {
-                dp[0][i]=dp[0][i-1];
-                dp[1][i]=((2*dp[1][i-1])%1000000007+dp[0][i-1])%1000000007;//in b case 2*(ab)+a
-                dp[2][i]=dp[2][i-1];
+                dp[0][i+1]=dp[0][i];
+                dp[1][i+1]=((2*dp[1][i])%1000000007+dp[0][i])%1000000007;//in b case 2*(ab)+a
+                dp[2][i+1]=dp[2][i];
             }
             else 
             {
-               dp[0][i]=dp[0][i-1];
-               dp[1][i]=dp[1][i-1];
-               dp[2][i]=((2*dp[2][i-1])%1000000007+dp[1][i-1])%1000000007;//in c case 2*(abc)+ab
+               dp[0][i+1]=dp[0][i];
+               dp[1][i+1]=dp[1][i];
+               dp[2][i+1]=((2*dp[2][i])%1000000007+dp[1][i])%1000000007;//in c case 2*(abc)+ab
             }
         }
-        return dp[2][s.size()-1];
+        return dp[2][s.size()];
     }
 };
 
