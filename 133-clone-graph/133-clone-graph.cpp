@@ -41,9 +41,6 @@ class Solution
 {
     Node* dfs(Node* node,map<Node*,Node*> &visited)
     {
-        if(node==NULL)
-            return NULL;
-        
         Node * curr = new Node(node->val); 
         visited[node]=curr;
         
@@ -60,6 +57,8 @@ class Solution
 public:
     Node* cloneGraph(Node* node) 
     {
+        if(node==NULL)
+            return NULL;
         map<Node*,Node*> visited;
         return dfs(node,visited); 
     }
