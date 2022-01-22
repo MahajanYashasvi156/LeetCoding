@@ -1,10 +1,10 @@
 class Solution 
 {
-    void dfs(int src, vector<int>& visited,vector<vector<int>>& graph, vector<vector<int>>&allPath,vector<int>&path,int n )
+    void dfs(int src,int dest, vector<int>& visited,vector<vector<int>>& graph, vector<vector<int>>&allPath,vector<int>&path)
     {
         path.push_back(src);
         
-        if(src==n-1)
+        if(src==dest)
         {
             allPath.push_back(path);
             path.pop_back();
@@ -13,11 +13,11 @@ class Solution
         
         visited[src]=1;
         
-        for(int dest : graph[src])
+        for(int end : graph[src])
         {
-            if(visited[dest]==0)
+            if(visited[end]==0)
             {
-                dfs(dest,visited,graph,allPath,path,n);
+                dfs(end,dest,visited,graph,allPath,path);
             }
         }
         path.pop_back();
@@ -30,7 +30,7 @@ public:
         vector<int> visited(n,0);
         vector<vector<int>> allPath;
         vector<int> path;
-        dfs(0,visited,graph,allPath,path,n);
+        dfs(0,n-1,visited,graph,allPath,path);
         return allPath;
     }
 };
