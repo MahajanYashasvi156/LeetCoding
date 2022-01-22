@@ -9,22 +9,22 @@ class Solution
         
         bool result = false;
         
-        if(i+1<heights.size() and visited[i+1][j]==0 and abs(heights[i][j]- heights[i+1][j])<=cutoff)
+        if(!result and i+1<heights.size() and visited[i+1][j]==0 and abs(heights[i][j]- heights[i+1][j])<=cutoff)
         {
             result = result or dfs(i+1,j,cutoff,visited,heights);
         }
             
-        if(i-1>=0 and visited[i-1][j]==0 and abs(heights[i][j]- heights[i-1][j])<=cutoff)
+        if(!result and i-1>=0 and visited[i-1][j]==0 and abs(heights[i][j]- heights[i-1][j])<=cutoff)
         {
             result = result or dfs(i-1,j,cutoff,visited,heights);
         } 
         
-        if(j-1>=0 and visited[i][j-1]==0 and abs(heights[i][j]- heights[i][j-1])<=cutoff)
+        if(!result and j-1>=0 and visited[i][j-1]==0 and abs(heights[i][j]- heights[i][j-1])<=cutoff)
         {
            result = result or dfs(i,j-1,cutoff,visited,heights); 
         }
         
-        if(j+1<heights[0].size() and visited[i][j+1]==0 and abs(heights[i][j]- heights[i][j+1])<=cutoff)
+        if(!result and j+1<heights[0].size() and visited[i][j+1]==0 and abs(heights[i][j]- heights[i][j+1])<=cutoff)
         {
             result = result or dfs(i,j+1,cutoff,visited,heights);
         }    
