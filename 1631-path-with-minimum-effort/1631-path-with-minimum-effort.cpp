@@ -36,8 +36,20 @@ class Solution
 public:
     int minimumEffortPath(vector<vector<int>>& heights) 
     {
+        int minElement=INT_MAX;
+        int maxElement = INT_MIN;
+        
+        for(auto a:heights)
+        {
+            for(int b :a)
+            {
+                minElement = min(b,minElement);
+                maxElement = max(b,maxElement);
+            }
+        }
+        
         int minRange = 0;
-        int maxRange = 1000000;
+        int maxRange = abs(maxElement-minElement);
         int ans;
         
         while(minRange<=maxRange)
