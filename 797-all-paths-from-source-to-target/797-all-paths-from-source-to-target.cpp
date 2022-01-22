@@ -1,3 +1,10 @@
+/*
+Link - https://leetcode.com/problems/all-paths-from-source-to-target/submissions/
+
+TC - O(V+E)
+SC - O(V)
+*/
+
 class Solution 
 {
     void dfs(int src,int dest, vector<int>& visited,vector<vector<int>>& graph, vector<vector<int>>&allPath,vector<int>&path)
@@ -10,7 +17,7 @@ class Solution
             path.pop_back();
             return ;
         }
-        
+         
         visited[src]=1;
         
         for(int end : graph[src])
