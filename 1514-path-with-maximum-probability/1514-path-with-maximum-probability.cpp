@@ -1,4 +1,21 @@
-class Solution {
+/*
+Link - https://leetcode.com/problems/path-with-maximum-probability/submissions/
+
+Here we have to apply Dijkstra with some modifications
+We will consider more probable path as closer path
+So while chosing closer node, we will chose more probable node
+So we will need maxHeap here instead of minHeap
+
+Approach - Dijkstra using max heap + distance array
+
+TC - O(E logV) 
+Detailed expression - VlogV + (V + E)logV =  O(E logV)
+
+SC - O(V)
+*/
+
+class Solution 
+{
 public:
     double maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start, int end) 
     {
@@ -22,6 +39,7 @@ public:
                 int dest = a.first;
                 double prob = a.second;
                 
+                //if path through source to dest is more probable
                 if(distance[dest]<(distance[source]*prob))
                 {
                     distance[dest]=distance[source]*prob;
