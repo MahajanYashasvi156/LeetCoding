@@ -47,7 +47,7 @@ class Solution
         {
            result = result or dfs(i,j-1,cutoff,visited,heights); 
         }
-        
+        //visited[i][j]=0;
         
         return result;
     }
