@@ -1,3 +1,11 @@
+/*
+Link - https://leetcode.com/problems/couples-holding-hands/submissions/
+TC - O(N^2)
+SC - O(1)
+
+Approach 1 - Greedy
+
+*/
 class Solution 
 {
 public:
