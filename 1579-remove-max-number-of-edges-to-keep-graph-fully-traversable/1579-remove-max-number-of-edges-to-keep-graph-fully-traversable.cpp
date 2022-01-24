@@ -7,11 +7,13 @@ class Solution
         return dsuf[x]=findParent(dsuf,dsuf[x]);
     }
     
-    void unionSet(vector<int> &dsuf,vector<int> &rank ,int x,int y)
+    bool unionSet(vector<int> &dsuf,vector<int> &rank ,int x,int y)
     {
         int xpar = findParent(dsuf,x);
         int ypar = findParent(dsuf,y);
         
+        if(xpar==ypar)
+            return true;
         if(xpar!=ypar)
         {
            if(rank[xpar]>rank[ypar])
@@ -28,6 +30,7 @@ class Solution
                 rank[xpar]+=1;
             }
         }
+        return false;
     }
     
 public:
@@ -41,10 +44,12 @@ public:
         
        sort(edges.begin(),edges.end());
         
-        //Type 3 edges will be at the end.
-        //We have to give more prioirty of type 3 so reverse iterate.
+        
         int ans =0;
         int e = edges.size()-1;
+        
+        //Type 3 edges will be at the end.
+        //We have to give more prioirty of type 3 so reverse iterate.
         for(int i=e;i>=0; i--)
         {
             int type = edges[i][0];
@@ -52,35 +57,25 @@ public:
             int end = edges[i][2];
             if(type==1)
             {
-                if(findParent(dsuf_a,start)!=findParent(dsuf_a,end))
-                {
-                    unionSet(dsuf_a,rank_a,start,end);
-                }
-                else
+                if(unionSet(dsuf_a,rank_a,start,end)==true)
                     ans++;
             }
             
             else if(type==2)
             {
-                if(findParent(dsuf_b,start)!=findParent(dsuf_b,end))
-                {
-                    unionSet(dsuf_b,rank_b,start,end);
-                }
-                else
+                if(unionSet(dsuf_b,rank_b,start,end)==true)
                     ans++;
             }
 
             else
             {
-                if(findParent(dsuf_a,start)!=findParent(dsuf_a,end))
+                if(unionSet(dsuf_a,rank_a,start,end)==false)
                 {
-                    unionSet(dsuf_a,rank_a,start,end);
                     unionSet(dsuf_b,rank_b,start,end);
                 }
                 else
                     ans++;
             }
-            
         } 
         
         int compa=0;
@@ -92,9 +87,10 @@ public:
                 compa++;
             if(dsuf_b[i]==-1)
                 compb++;
+            if(compa>1 or compb>1)
+                return -1;
         }
-        if(compa!=1 or compb!=1)
-            return -1;
+        
         return ans;
     }
 };
