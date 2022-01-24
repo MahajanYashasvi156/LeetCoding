@@ -49,7 +49,8 @@ public:
         int e = edges.size()-1;
         
         //Type 3 edges will be at the end.
-        //We have to give more prioirty of type 3 so reverse iterate.
+        //We want to give preference to type 3 edges as they can be traversed by both alice and bob
+        //So iterating edges in reverse order.
         for(int i=e;i>=0; i--)
         {
             int type = edges[i][0];
@@ -57,22 +58,27 @@ public:
             int end = edges[i][2];
             if(type==1)
             {
+                //if cycle can get created, remove this edge
                 if(unionSet(dsuf_a,rank_a,start,end)==true)
                     ans++;
             }
             
             else if(type==2)
             {
+                //if cycle can get created, remove this edge
                 if(unionSet(dsuf_b,rank_b,start,end)==true)
                     ans++;
             }
 
+            
             else
             {
                 if(unionSet(dsuf_a,rank_a,start,end)==false)
                 {
+                    //when adding u and v doesn't create cycle, so add them to both alice and bob disjoin sets
                     unionSet(dsuf_b,rank_b,start,end);
                 }
+                //if cycle can get created, remove this edge
                 else
                     ans++;
             }
