@@ -1,34 +1,29 @@
 class Solution 
 {
-int findParent(vector<int> &dsuf,int x)
+    int findParent(vector<int> &dsuf,int x)
     {
         if(dsuf[x]==-1)
             return x;
+        
         return dsuf[x]=findParent(dsuf,dsuf[x]);
     }
-    
-    bool unionSet(vector<int> &dsuf,vector<int> &rank ,int x,int y)
+        
+    bool unionRank(vector<int> &dsuf,vector<int> &rank,int x,int y)
     {
         int xpar = findParent(dsuf,x);
         int ypar = findParent(dsuf,y);
         
         if(xpar==ypar)
             return true;
-        if(xpar!=ypar)
+        
+        if(rank[xpar]>rank[ypar])
+            dsuf[ypar]=xpar;
+        else if(rank[xpar]<rank[ypar])
+            dsuf[xpar]=ypar;
+        else
         {
-           if(rank[xpar]>rank[ypar])
-           {
-                dsuf[ypar]=xpar;
-           }
-            else if(rank[ypar]>rank[xpar])
-           {
-                dsuf[xpar]=ypar;
-           }
-            else
-            {
-                dsuf[ypar]=xpar;
-                rank[xpar]+=1;
-            }
+            dsuf[ypar]=xpar;
+            rank[xpar]+=1;
         }
         return false;
     }
@@ -45,7 +40,7 @@ public:
             {
                 if(isConnected[i][j]==1)
                 {
-                     unionSet(dsuf,rank,i,j);
+                     unionRank(dsuf,rank,i,j);
                 }
             }
         }
