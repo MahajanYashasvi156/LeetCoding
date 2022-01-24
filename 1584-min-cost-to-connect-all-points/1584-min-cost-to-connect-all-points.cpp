@@ -4,17 +4,6 @@ public:
     int minCostConnectPoints(vector<vector<int>>& points) 
     {
         int n = points.size();
-        vector<vector<pair<int,int>>> adj(n);
-        
-        for(int i=0;i<n;i++)
-        {
-            for(int j=i+1;j<n;j++)
-            {
-                 int cost = abs(points[i][0]-points[j][0]) + abs(points[i][1]-points[j][1]);
-                 adj[i].push_back({j,cost});
-                 adj[j].push_back({i,cost});
-            }
-        }
         
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> minHeap;
         vector<int> nodeWeight(n,INT_MAX);
@@ -32,10 +21,11 @@ public:
                continue;
             minCost +=cost;
             visited[src]=1;
-            for(auto a:adj[src])
+            for(int dest=0;dest<n;dest++)
             {
-                int dest=a.first;
-                int weight = a.second;
+                if(dest==src)
+                    continue;
+                int weight = abs(points[src][0]-points[dest][0]) + abs(points[src][1]-points[dest][1]);
                 if(visited[dest]==0 and nodeWeight[dest]>weight)
                 {
                     nodeWeight[dest] =weight;
