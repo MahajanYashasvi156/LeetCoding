@@ -1,3 +1,13 @@
+/*
+Link - https://leetcode.com/problems/number-of-provinces/submissions/
+TC - O(N^2)
+SC - O(N)
+
+No of provinces boils down to calculating no of components of graph.
+We will use disjoint sets to do this.
+No of components = No of nodes whose parent is -1
+*/
+
 class Solution 
 {
     int findParent(vector<int> &dsuf,int x)
