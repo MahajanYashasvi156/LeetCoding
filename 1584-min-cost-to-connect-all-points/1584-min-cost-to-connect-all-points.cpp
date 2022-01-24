@@ -28,9 +28,9 @@ public:
             int src = minHeap.top().second;
             int cost = minHeap.top().first;
             minHeap.pop();
-           if(visited[src]==0)
-               minCost +=cost;
-            
+           if(visited[src]==1)
+               continue;
+            minCost +=cost;
             visited[src]=1;
             for(auto a:adj[src])
             {
