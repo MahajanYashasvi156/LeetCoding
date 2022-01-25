@@ -26,9 +26,8 @@ public:
                 sell=i;
                 buy=i;
             }
-            if(i==n-1)
-                maxProfit+=(prices[sell]-prices[buy]);
         }
+        maxProfit+=(prices[sell]-prices[buy]);
         return maxProfit;
     }
 };
