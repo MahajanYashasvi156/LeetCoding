@@ -1,5 +1,5 @@
 # Count the number of ways to tile the floor of size n x m using 1 x m size tiles
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a floor of size n x m and tiles of size 1 x m. The problem is to count the number of ways to tile the given floor using 1 x m tiles. A tile can either be placed horizontally or vertically.<br>
 Both n and m are positive integers and 2 &lt; = m.</span><br>
