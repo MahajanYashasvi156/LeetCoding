@@ -1,9 +1,11 @@
 /*
 Link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/submissions/
-
 TC - O(n)
 SC - O(1)
+
+Sum of all profits achievable following sequence : BSBSBSBS...
 */
+
 class Solution 
 {
 public:
