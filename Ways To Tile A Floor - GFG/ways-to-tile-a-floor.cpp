@@ -7,18 +7,28 @@ class Solution {
   public:
     long long numberOfWays(long long N)
     {
-        vector<long long>dp(N+1);
-        
-        dp[1]=1;
-        dp[2]=2;
+        if(N<3)
+            return N;
+        int n1=1;
+        int n2=2;
         for(int i=3;i<=N;i++)
         {
-            dp[i]=(dp[i-1]+dp[i-2])%1000000007;
+            int temp=n2;
+            n2=(n1+n2)%1000000007;
+            n1=temp;
         }
         
-        return dp[N];
+        return n2;
     }
 };
+
+/*
+Link - https://practice.geeksforgeeks.org/problems/ways-to-tile-a-floor5836/1/#
+TC - O(N)
+SC - O(1)
+Boils down to fibonacci series
+*/
+
 
 // { Driver Code Starts.
 int main() {
