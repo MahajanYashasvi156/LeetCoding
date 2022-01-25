@@ -16,14 +16,11 @@ class Solution
 	public:
 	int countWays(int n, int m)
     {
-        vector<int> dp(n+1);
-        dp[1]=1;
+        vector<int> dp(n+1,1);
         dp[0]=0;
-        for(int i=2;i<=n;i++)
+        for(int i=m;i<=n;i++)
         {
-            if(i<m)
-                dp[i]=dp[i-1];
-            else if(i==m)
+            if(i==m)
                 dp[i]=2;
             else
                 dp[i]=(dp[i-1]+dp[i-m])%1000000007;
