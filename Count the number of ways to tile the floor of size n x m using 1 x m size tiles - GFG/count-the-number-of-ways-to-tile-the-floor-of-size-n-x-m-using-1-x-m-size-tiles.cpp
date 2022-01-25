@@ -5,16 +5,28 @@ using namespace std;
 
  // } Driver Code Ends
 
+
+/*
+Link - https://practice.geeksforgeeks.org/problems/count-the-number-of-ways-to-tile-the-floor-of-size-n-x-m-using-1-x-m-size-tiles0509/1/#
+TC - O(N)
+SC - O(1)
+*/
 class Solution
 {
 	public:
 	int countWays(int n, int m)
     {
-        vector<int> dp(n+1,1);
-        
-        for(int i=m;i<=n;i++)
+        vector<int> dp(n+1);
+        dp[1]=1;
+        dp[0]=0;
+        for(int i=2;i<=n;i++)
         {
-            dp[i]=(dp[i-1]+dp[i-m])%1000000007;
+            if(i<m)
+                dp[i]=dp[i-1];
+            else if(i==m)
+                dp[i]=2;
+            else
+                dp[i]=(dp[i-1]+dp[i-m])%1000000007;
         }
         return dp[n];
     }
