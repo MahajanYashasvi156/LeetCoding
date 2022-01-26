@@ -1,8 +1,8 @@
 /*
 Link - https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/submissions/
 
-TC -
-SC - 
+TC - O(N^3)
+SC - O(N^2)
 */
 
 class Solution 
