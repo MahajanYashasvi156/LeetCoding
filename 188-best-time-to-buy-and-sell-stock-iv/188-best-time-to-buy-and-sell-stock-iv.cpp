@@ -37,12 +37,19 @@ public:
     }
 };
 */
-/*
 
+/*
 TC - O(NK)
 SC - O(NK)
+Approach 2 - Slightly diff than abobe approach. We are maintaining maxi just because we don't need to loop through preivous days to see what was the profit they did to complete one less transactions than current. 
 
-Approach 2 - Slightly diff than above approach. We are maintaining prevmax just because we don't need to loop through previous days to see what was the profit they did to complete one less transactions than current. 
+dp[1][3] = max{
+            dp[1][2]
+            d[0][2] + prices[3]-prices[2]
+            d[0][1] + prices[3]-prices[1]
+            d[0][0] + prices[3]-prices[0]
+            }
+Here prices[3] is common, so we will maitain max of dp[t-1][i] - prices[i] so as to avoid the third inner for loop            
 */
 
 
