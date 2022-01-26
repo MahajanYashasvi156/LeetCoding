@@ -1,3 +1,10 @@
+/*
+Link - https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/submissions/
+
+TC -
+SC - 
+*/
+
 class Solution 
 {
 public:
@@ -38,9 +45,6 @@ public:
                 if(mat[i][j]<=distanceThreshold)
                     count++;
             }
-            count--;
-            cout<<count;
-            cout<<endl;
             if(count<=minNeighbours)
             {
                 minNeighbours=count;
