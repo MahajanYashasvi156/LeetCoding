@@ -1,5 +1,11 @@
+
 /*
-Link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
+Link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
+TC - O(N^2 * K)
+SC - O(NK)
+
+Approach 1 -
+dp[t][d] stores max profit till dth day with at most t transactions
 
 
 class Solution 
@@ -14,16 +20,16 @@ public:
         
         vector<vector<int>> dp(k+1,vector<int>(n,0));
         
-        for(int trans=1;trans<=k;trans++)
+        for(int t=1;t<=k;t++)
         {
-            for(int day=1;day<n;day++)
+            for(int d=1;d<n;d++)
             {
-                int m = dp[trans][day-1];
-                for(int prevdays=0;prevdays<day;prevdays++)
+                int m = dp[t][d-1];
+                for(int pd=0;pd<d;pd++)
                 {
-                    m=max(dp[trans-1][prevdays]+(prices[day]-prices[prevdays]),m);
+                    m=max(dp[t-1][pd]+(prices[d]-prices[pd]),m);
                 }
-                dp[trans][day]=m;
+                dp[t][d]=m;
                 
             }
         }
@@ -31,6 +37,14 @@ public:
     }
 };
 */
+/*
+
+TC - O(NK)
+SC - O(NK)
+
+Approach 2 - Slightly diff than above approach. We are maintaining prevmax just because we don't need to loop through previous days to see what was the profit they did to complete one less transactions than current. 
+*/
+
 
 class Solution 
 {
@@ -44,13 +58,13 @@ public:
         
         vector<vector<int>> dp(k+1,vector<int>(n,0));
         
-        for(int trans=1;trans<=k;trans++)
+        for(int t=1;t<=k;t++)
         {
             int prevmax=-1*prices[0];
-            for(int day=1;day<n;day++)
+            for(int d=1;d<n;d++)
             {
-               dp[trans][day]=max(dp[trans][day-1],prices[day]+prevmax);
-               prevmax=max(prevmax,dp[trans-1][day]-prices[day]);
+               dp[t][d]=max(dp[t][d-1],prices[d]+prevmax);
+               prevmax=max(prevmax,dp[t-1][d]-prices[d]);
             }
         }
         return dp[k][n-1];
