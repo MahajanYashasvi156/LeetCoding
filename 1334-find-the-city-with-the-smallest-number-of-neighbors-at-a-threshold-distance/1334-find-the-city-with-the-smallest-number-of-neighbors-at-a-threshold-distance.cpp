@@ -3,6 +3,8 @@ Link - https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-n
 
 TC - O(N^3)
 SC - O(N^2)
+
+Floyd Warshall Algo - All pair shortest path
 */
 
 class Solution 
