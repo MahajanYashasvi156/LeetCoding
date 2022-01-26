@@ -13,19 +13,19 @@ class Solution
 public:
     int maxProfit(vector<int>& prices) 
     {
-        int prevSell=0;
-        int lastBuy = -1*prices[0];
-        int lastSell = 0;
+        int prevSellProfit=0;
+        int lastBuyProfit = -1*prices[0];
+        int lastSellProfit = 0;
     
         for(int i=1;i<prices.size();i++)
         {
-            int newLastSell=max(lastSell,prices[i]+lastBuy);
-            int newLastBuy = max(lastBuy,prevSell-prices[i]);
+            int newLastSellProfit=max(lastSellProfit,prices[i]+lastBuyProfit);
+            int newLastBuyProfit = max(lastBuyProfit,prevSellProfit-prices[i]);
 
-            prevSell=lastSell;
-            lastSell=newLastSell;
-            lastBuy=newLastBuy;
+            prevSellProfit=lastSellProfit;
+            lastSellProfit=newLastSellProfit;
+            lastBuyProfit=newLastBuyProfit;
         }
-        return lastSell;
+        return lastSellProfit;
     }
 };
