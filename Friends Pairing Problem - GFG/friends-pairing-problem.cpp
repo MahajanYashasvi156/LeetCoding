@@ -8,6 +8,26 @@ class Solution
 public:
     int countFriendsPairings(int n) 
     { 
+        long long last = 1;
+        long long lastSecond =1;
+        for(int i=2;i<=n;i++)
+        {
+           long long newlast=(last+lastSecond*(i-1))%1000000007;
+           
+           lastSecond = last;
+           last = newlast;
+        }
+            
+        
+        return last%1000000007;
+    }
+}; 
+/*
+class Solution
+{
+public:
+    int countFriendsPairings(int n) 
+    { 
         vector<long long> dp(n+1);
         dp[0]=1;
         dp[1]=1;
@@ -16,7 +36,9 @@ public:
         
         return dp[n]%1000000007;
     }
-};    
+}; 
+
+*/
  
 
 // { Driver Code Starts.
