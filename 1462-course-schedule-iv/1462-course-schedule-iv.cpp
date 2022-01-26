@@ -1,4 +1,14 @@
-class Solution {
+/*
+Link - https://leetcode.com/problems/course-schedule-iv/
+
+TC - O(N^3 + Q)
+SC - O(N^2)
+
+Floyd Warshall Algo - All pair shortest path
+*/
+
+class Solution 
+{
 public:
     vector<bool> checkIfPrerequisite(int numCourses, vector<vector<int>>& prerequisites, vector<vector<int>>& queries) 
     {
