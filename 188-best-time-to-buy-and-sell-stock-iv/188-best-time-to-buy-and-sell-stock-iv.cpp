@@ -60,7 +60,7 @@ public:
         
         for(int t=1;t<=k;t++)
         {
-            int prevmax=-1*prices[0];
+            int prevmax=dp[t-1][0]-prices[0];
             for(int d=1;d<n;d++)
             {
                dp[t][d]=max(dp[t][d-1],prices[d]+prevmax);
