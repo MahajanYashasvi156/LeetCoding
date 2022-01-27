@@ -14,7 +14,6 @@ public:
                     maxLISEndAti = max(maxLISEndAti,dp[j]);
             }
             dp[i]+=maxLISEndAti;
-            cout<<dp[i];
         }
         
         int maxLIS = 1;
