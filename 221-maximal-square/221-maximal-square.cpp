@@ -13,12 +13,22 @@ public:
             {
                 if(i==0 or j ==0)
                     dp[i][j]=matrix[i][j]-'0';
+                else if(matrix[i][j]=='0')
+                    dp[i][j]==0;
+                else
+                    dp[i][j]=min(dp[i-1][j-1],min(dp[i][j-1],dp[i-1][j]))+1;
+            
+                
+                /*
                 else if(matrix[i][j]=='1' and dp[i][j-1]>0 and dp[i-1][j]>0 and dp[i-1][j-1]>0)
                 {
                     dp[i][j]=min(dp[i-1][j-1],min(dp[i][j-1],dp[i-1][j]))+1;
                 }
                 else
                     dp[i][j]=matrix[i][j]-'0';
+                
+                */
+                
                 maxArea=max(maxArea,dp[i][j]);
             }
         }
