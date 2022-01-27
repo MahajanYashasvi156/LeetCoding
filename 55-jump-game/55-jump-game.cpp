@@ -21,6 +21,13 @@ public:
     }
 };
 */
+
+/*
+Link - https://leetcode.com/problems/jump-game
+TC - O(N^2)
+SC - O(N)
+*/
+
 class Solution {
 public:
     bool canJump(vector<int>& nums) 
