@@ -1,11 +1,8 @@
-
-
 /*
 Link - https://leetcode.com/problems/jump-game
 TC - O(N^2)
 SC - O(N)
-*/
-/*
+
 class Solution {
 public:
     bool canJump(vector<int>& nums) 
@@ -33,8 +30,6 @@ public:
 TC - O(N)
 SC - O(1)
 */
-
-
 class Solution {
 public:
     bool canJump(vector<int>& nums) 
