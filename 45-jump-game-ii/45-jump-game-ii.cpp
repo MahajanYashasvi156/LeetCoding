@@ -24,6 +24,12 @@ public:
 };
 */
 
+/*
+Greedy Approach -
+
+TC - O(N)
+SC - O(1)
+*/
 class Solution 
 {
 public:
@@ -42,8 +48,7 @@ public:
                 currReach=maxReach ;
                 jumps++;
             }
-            
-            cout<<i<<" "<<currReach<<endl;
+          
         }
         return jumps;
     }
