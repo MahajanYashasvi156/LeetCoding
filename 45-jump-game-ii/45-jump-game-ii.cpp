@@ -1,3 +1,8 @@
+/*
+Link - https://leetcode.com/problems/jump-game-ii/
+TC - O(N^2)
+SC - O(N)
+
 class Solution 
 {
 public:
@@ -15,5 +20,31 @@ public:
             }
         }
         return dp[0];
+    }
+};
+*/
+
+class Solution 
+{
+public:
+    int jump(vector<int>& nums) 
+    {
+        int n = nums.size();
+        int currReach = 0;
+        int maxReach = 0;
+        int jumps=0;
+        
+        for(int i=0;i<n-1;i++)
+        {
+            maxReach=max(maxReach,i+nums[i]);
+            if(i==currReach)
+            {
+                currReach=maxReach ;
+                jumps++;
+            }
+            
+            cout<<i<<" "<<currReach<<endl;
+        }
+        return jumps;
     }
 };
