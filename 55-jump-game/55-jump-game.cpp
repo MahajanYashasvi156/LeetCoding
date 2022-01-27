@@ -1,3 +1,10 @@
+
+
+/*
+Link - https://leetcode.com/problems/jump-game
+TC - O(N^2)
+SC - O(N)
+*/
 /*
 class Solution {
 public:
@@ -23,10 +30,10 @@ public:
 */
 
 /*
-Link - https://leetcode.com/problems/jump-game
-TC - O(N^2)
-SC - O(N)
+TC - O(N)
+SC - O(1)
 */
+
 
 class Solution {
 public:
