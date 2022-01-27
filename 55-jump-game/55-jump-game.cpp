@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     bool canJump(vector<int>& nums) 
@@ -15,8 +16,24 @@ public:
                     break;
                 }
             }
-            
         }
         return dp[0];
+    }
+};
+*/
+class Solution {
+public:
+    bool canJump(vector<int>& nums) 
+    {
+        int n = nums.size();
+        int currentWinIndex = n-1;
+        for(int i=n-1;i>=0; i--)
+        {
+            if(i+nums[i]>=currentWinIndex)
+            {
+                currentWinIndex=i;
+            }
+        }
+        return currentWinIndex==0;
     }
 };
