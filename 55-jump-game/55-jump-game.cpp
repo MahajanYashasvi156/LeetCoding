@@ -5,7 +5,7 @@ Link - https://leetcode.com/problems/jump-game
 TC - O(N^2)
 SC - O(N)
 */
-/*
+
 class Solution {
 public:
     bool canJump(vector<int>& nums) 
@@ -15,7 +15,7 @@ public:
         dp[n-1]=true;
         for(int i=n-2;i>=0; i--)
         {
-            for(int j=i+1;j<=i+nums[i] && j<n;j++)
+            for(int j=i+1;j<=i+nums[i] ;j++)
             {
                 if(dp[j]==true)
                 {
@@ -27,12 +27,12 @@ public:
         return dp[0];
     }
 };
-*/
+
 
 /*
 TC - O(N)
 SC - O(1)
-*/
+
 
 
 class Solution {
@@ -52,3 +52,4 @@ public:
         return currentWinIndex==0;
     }
 };
+*/
