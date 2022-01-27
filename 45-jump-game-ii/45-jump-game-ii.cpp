@@ -48,7 +48,6 @@ public:
                 currReach=maxReach ;
                 jumps++;
             }
-          
         }
         return jumps;
     }
