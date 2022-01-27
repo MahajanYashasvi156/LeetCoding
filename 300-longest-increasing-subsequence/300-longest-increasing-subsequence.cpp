@@ -15,12 +15,6 @@ public:
             }
             dp[i]+=maxLISEndAti;
         }
-        
-        int maxLIS = 1;
-        for(int i=1;i<n;i++)
-        {
-            maxLIS = max(maxLIS,dp[i]);
-        }
-        return maxLIS;
+        return *max_element(dp.begin(),dp.end());
     }
 };
