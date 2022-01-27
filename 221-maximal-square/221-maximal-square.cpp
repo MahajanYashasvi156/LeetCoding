@@ -19,9 +19,9 @@ public:
                 }
                 else
                     dp[i][j]=matrix[i][j]-'0';
-                maxArea=max(maxArea,dp[i][j]*dp[i][j]);
+                maxArea=max(maxArea,dp[i][j]);
             }
         }
-        return maxArea;
+        return maxArea*maxArea;
     }
 };
