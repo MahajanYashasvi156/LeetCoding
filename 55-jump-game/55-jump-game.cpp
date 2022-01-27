@@ -36,7 +36,8 @@ public:
         int currentWinIndex = n-1;
         for(int i=n-1;i>=0; i--)
         {
-            if(i+nums[i]>=currentWinIndex)
+            int maxReachableIndex = i+nums[i];
+            if(maxReachableIndex>=currentWinIndex)
             {
                 currentWinIndex=i;
             }
