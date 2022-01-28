@@ -6,10 +6,14 @@ public:
         int n = envelopes.size();
         vector<int> heightLIS;
         
-        //sort(envelopes.begin(),envelopes.end());
-         sort(envelopes.begin(), envelopes.end(), [](vector<int> &a, vector<int> &b) {
-            return (a[0] < b[0]) || (a[0] == b[0] && a[1] >= b[1]);
-        });
+        sort(envelopes.begin(), envelopes.end(), [](const vector<int> &a, const vector<int> &b)
+             {
+                 if (a[0] < b[0])
+                     return true;
+                 if (a[0] == b[0])
+                     return a[1] > b[1];
+                 return false;
+             });
         
         heightLIS.push_back(envelopes[0][1]);
         
