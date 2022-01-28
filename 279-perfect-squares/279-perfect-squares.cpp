@@ -7,15 +7,12 @@ public:
         dp[0]=0;
       
         int count = 0;
-        
-        
         for(int i=1;i<=n;i++)
         {
             int mincount = INT_MAX;
-            for(int j=1;j*j<=n;j++)
+            for(int j=1;j*j<=i;j++)
             {
-                if(i-j*j>=0)
-                    mincount=min(mincount,dp[i-j*j]);
+                mincount=min(mincount,dp[i-j*j]);
             }
             dp[i]=mincount+1;
         }
