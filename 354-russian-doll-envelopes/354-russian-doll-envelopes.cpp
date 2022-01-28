@@ -30,10 +30,7 @@ public:
         {
             int index = lower_bound(heightLIS.begin(),heightLIS.end(),envelopes[i][1]) - heightLIS.begin();
             if(index == heightLIS.size())
-            {
                 heightLIS.push_back(envelopes[i][1]);
-            }
-            
             else
                 heightLIS[index] = envelopes[i][1];
         }
@@ -41,7 +38,6 @@ public:
         return heightLIS.size();
     }
 };
-
 
 /*
 Just a LIS application
