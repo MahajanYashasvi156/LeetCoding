@@ -8,10 +8,10 @@ class Solution{
 	int LongestBitonicSequence(vector<int>nums)
 	{
 	    int n = nums.size();
-	    vector<int> leftInc(n,0);
-	    vector<int> rightInc(n,0);
+	    vector<int> dpINC(n,0);
+	    vector<int> dpDec(n,0);
 	    
-	    leftInc[0]=1;
+	    dpINC[0]=1;
 	    
 	    for(int i=1;i<n;i++)
 	    {
@@ -20,14 +20,14 @@ class Solution{
 	        {
 	            if(nums[i]>nums[j])
 	            {
-	                leftMax=max(leftInc[j],leftMax);
+	                leftMax=max(dpINC[j],leftMax);
 	            }
 	        }
-	        leftInc[i]= leftMax +1;
+	        dpINC[i]= leftMax +1;
 	       
 	    }
 	    
-	    rightInc[n-1]=1;
+	    dpDec[n-1]=1;
 	    for(int i=n-2;i>=0;i--)
 	    {
 	        
@@ -36,20 +36,34 @@ class Solution{
 	        {
 	            if(nums[i]>nums[j])
 	            {
-	                rightMax=max(rightInc[j],rightMax);
+	                rightMax=max(dpDec[j],rightMax);
 	            }
 	        }
-	        rightInc[i]= rightMax +1;
+	        dpDec[i]= rightMax +1;
 	    }
 	    
 	    int ans = 0;
 	    for(int i = 0 ;i<n;i++)
 	    {
-	        ans = max(ans , leftInc[i]+rightInc[i]);
+	        ans = max(ans , dpINC[i]+dpDec[i]);
 	    }
 	    return ans-1;
 	}
 };
+
+/*
+Link - https://practice.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1/#
+TC - O(N^2)
+SC - O(N)
+
+In Long Incr Subsequence, we store size of LIS ending at a a particular index in dp.
+Here we will use two dps
+One to store LIS ending at a particular index
+One to store Long Dec Subseq starting at particular index = which is nothing but LIS ending at index if we start looping in reverse order
+Now at any index, we have LIS len and LDS len, just add them and -1 and return
+
+Basically, two LIS, return max of sum-1;
+*/
 
 // { Driver Code Starts.
 int main(){
