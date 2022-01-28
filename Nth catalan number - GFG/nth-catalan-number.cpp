@@ -9,7 +9,13 @@ using namespace std;
  // } Driver Code Ends
 //User function template for C++
 
+/*
+Link - https://practice.geeksforgeeks.org/problems/nth-catalan-number0817/1
+TC - O(N)
+SC - O(1)
 
+Catalan No CN(N) = (2N)C(N) / (N+1) = (2N)! / N! (N+1)!
+*/
 class Solution
 {
     public:
