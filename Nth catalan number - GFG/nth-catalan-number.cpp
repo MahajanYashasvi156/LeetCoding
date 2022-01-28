@@ -15,7 +15,7 @@ TC - O(N)
 SC - O(1)
 
 Catalan No CN(N) = (2N)C(N) / (N+1) = (2N)! / N! (N+1)!
-*/
+
 class Solution
 {
     public:
@@ -29,6 +29,27 @@ class Solution
         }
         
         return dp[2*n]/(dp[n]*dp[n+1]);
+    }
+};
+*/
+
+class Solution
+{
+    public:
+    cpp_int findCatalan(int n) 
+    {
+        vector<cpp_int> dp(n+1);
+        dp[0]=1;
+        for(int i=1;i<=n;i++)
+        {
+            cpp_int catalani=0;
+            for(int j=0;j<i;j++)
+            {
+                catalani+=dp[j]*dp[i-j-1];
+            }
+            dp[i]=catalani;
+        }
+        return dp[n];
     }
 };
 
