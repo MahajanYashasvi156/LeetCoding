@@ -14,9 +14,8 @@ public:
         vector<vector<int>> dp(N-1,vector<int>(N-1,INT_MAX));
         
         for(int i=0;i<N-1;i++)
-        {
             dp[i][i]=0;
-        }
+
         for(int w=1;w<N;w++)
         {
             int ele = N-1-w;
@@ -25,14 +24,11 @@ public:
             
             while(ele--)
             {
-                int k = i;
-                while(k<j)
-                   {
-                       dp[i][j] = min(dp[i][j],dp[i][k]+dp[k+1][j]+arr[i]*arr[k+1]*arr[j+1]);
-                        k++;
-                   }
-                   i++;
-                   j++;
+                for(int k = i;k<j;k++)
+                    dp[i][j] = min(dp[i][j],dp[i][k]+dp[k+1][j]+arr[i]*arr[k+1]*arr[j+1]);
+               
+               i++;
+               j++;
             }
         }
        
