@@ -16,7 +16,7 @@ SC - O(N^2)
 Matrix Chain Multiplication
 Calculate for chain of size 2 - diagonal one above main diagonal
 Calculate for chain of size 3 - diagonal two above main diagonal
-*/
+
 
 class Solution{
 public:
@@ -40,6 +40,35 @@ public:
         }
        
         return dp[0][N-2];
+        
+    }
+};
+*/
+
+class Solution{
+public:
+    int matrixMultiplication(int N, int arr[])
+    {
+        vector<vector<int>> dp(N,vector<int>(N,INT_MAX));
+    
+        for(int l=1;l<N;l++)
+        {
+            for(int i = 1;i <=N-l ;i++)
+            {
+                
+                int j=i+l-1;
+                if(l==1)
+                {
+                    dp[i][j]=0;
+                    continue;
+                }
+                for(int k = i;k<j;k++)
+                    dp[i][j] = min(dp[i][j],dp[i][k]+dp[k+1][j]+arr[i-1]*arr[k]*arr[j]);
+               
+            }
+        }
+       
+        return dp[1][N-1];
         
     }
 };
