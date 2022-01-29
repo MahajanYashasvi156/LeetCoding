@@ -26,12 +26,15 @@ public:
                 {
                     for(int k = i;k<=j;k++)
                     {
-                        if(k==0)
-                            dp[i][j]=max(dp[i][j],dp[k+1][j]+left*nums[k]*right);
-                        else if(k==n-1)
-                            dp[i][j]=max(dp[i][j],dp[i][k-1]+left*nums[k]*right);
-                        else
-                            dp[i][j]=max(dp[i][j],dp[i][k-1]+dp[k+1][j]+left*nums[k]*right);
+                        int leftSubProblem = 0;
+                        int rightSubProblem = 0;
+                        
+                        if(k!=0)
+                            leftSubProblem = dp[i][k-1];
+                         if(k!=n-1)
+                            rightSubProblem = dp[k+1][j];
+                        
+                        dp[i][j]=max(dp[i][j],leftSubProblem+rightSubProblem+left*nums[k]*right);
                     }    
                 }
             }
