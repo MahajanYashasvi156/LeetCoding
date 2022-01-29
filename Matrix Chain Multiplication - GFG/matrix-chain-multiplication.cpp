@@ -7,6 +7,17 @@ using namespace std;
  // } Driver Code Ends
 // User function Template for C++
 
+
+/*
+Link - https://practice.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1#
+TC - O(N^3)
+SC - O(N^2)
+
+Matrix Chain Multiplication
+Calculate for chain of size 2 - diagonal one above main diagonal
+Calculate for chain of size 3 - diagonal two above main diagonal
+*/
+
 class Solution{
 public:
     int matrixMultiplication(int N, int arr[])
