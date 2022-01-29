@@ -18,17 +18,13 @@ public:
 
         for(int w=1;w<N;w++)
         {
-            int ele = N-1-w;
-            int i=0;
-            int j=i+w;
-            
-            while(ele--)
+            for(int i= 0;i < N-1-w ;i++)
             {
+                int j=i+w;
+            
                 for(int k = i;k<j;k++)
                     dp[i][j] = min(dp[i][j],dp[i][k]+dp[k+1][j]+arr[i]*arr[k+1]*arr[j+1]);
                
-               i++;
-               j++;
             }
         }
        
