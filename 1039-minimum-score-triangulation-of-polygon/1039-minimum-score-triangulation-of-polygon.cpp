@@ -1,3 +1,15 @@
+/*
+Link - https://leetcode.com/problems/minimum-score-triangulation-of-polygon/
+TC - O(N^3)
+SC - O(N^2)
+
+Gap strategy on DP same as MCM Baloon Birst
+
+We will take base of polygon and will form all possible triangles and this will give us subproblems 
+abcde, aec as triangle will give subproblems as abc cde whose values are already calculated
+so ans for abcde = ans for abc + ans for cde + a*e*c
+*/
+
 class Solution 
 {
 public:
