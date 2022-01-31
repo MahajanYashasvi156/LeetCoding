@@ -1,4 +1,12 @@
 /*
+Link - https://leetcode.com/problems/longest-common-subsequence/
+
+Paradigm - Recursive  TLE
+
+TC - O(2^n)
+ASC - (max(m,n))
+*/
+/*
 class Solution 
 {
     int lcsRecursive(string text1,string text2,int i,int j)
@@ -16,6 +24,13 @@ public:
         return lcsRecursive(text1,text2,0,0);
     }
 };
+*/
+/*
+Paradigm - Recursive DP  
+
+TC - O(mn)
+ASC - (max(m,n))
+SC = O(mn)
 */
 /*
 class Solution 
@@ -41,6 +56,13 @@ public:
     }
 };
 
+*/
+
+/*
+Paradigm - Iterative DP  
+
+TC - O(mn)
+SC - (mn)
 */
 class Solution 
 {
