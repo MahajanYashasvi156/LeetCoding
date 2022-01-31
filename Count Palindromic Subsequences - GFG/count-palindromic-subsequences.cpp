@@ -31,15 +31,15 @@ class Solution{
                 else
                 {
                     if(str[i]==str[j])
-                        dp[i][j]=((dp[i+1][j]+dp[i][j-1])%1000000007+1)%1000000007;
+                        dp[i][j]=dp[i+1][j]+dp[i][j-1]+1;
                     else
-                        dp[i][j]=((dp[i+1][j]+dp[i][j-1])%1000000007-dp[i+1][j-1])%1000000007;
+                        dp[i][j]=dp[i+1][j]+dp[i][j-1]-dp[i+1][j-1];
                 }
-               dp[i][j]+=1000000007;
-               dp[i][j]%=1000000007;
+               dp[i][j]=dp[i][j]+1000000007;
+               dp[i][j]=dp[i][j]%1000000007;
             }
         }
-        return dp[0][n-1]%1000000007;
+        return dp[0][n-1];
     }
      
 };
