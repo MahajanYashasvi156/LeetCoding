@@ -13,6 +13,7 @@ public:
                 
                 if(l==1)
                     isPalindrome[i][j]=true;
+                
                 else if(l==2)
                         isPalindrome[i][j]=s[i]==s[j];
                 
@@ -27,9 +28,9 @@ public:
         }
         vector<int> suffixPalindrome(n,INT_MAX);
         suffixPalindrome[0]=0;
-        for(int i=1;i<n;i++)
+        for(int i=1;i<n;i++)//end of suffix
         {
-            for(int j=i;j>=0;j--)
+            for(int j=i;j>=0;j--)//start of suffix
             {
                 if(isPalindrome[j][i])
                 {
