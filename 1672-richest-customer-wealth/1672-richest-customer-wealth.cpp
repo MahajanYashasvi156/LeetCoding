@@ -7,9 +7,8 @@ public:
         int result = INT_MIN;
         
         for(int i=0;i<m;i++)
-        {
             result= max(result,accumulate(accounts[i].begin(),accounts[i].end(),0));
-        }
+        
         return result;
     }
 };
