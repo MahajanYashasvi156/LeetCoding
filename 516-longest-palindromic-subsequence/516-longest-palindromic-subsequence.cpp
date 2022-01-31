@@ -14,13 +14,14 @@ public:
                 
                 if(l==1)
                     dp[i][j]=1;
-                else if(l==2)
-                {
-                    if(s[i]==s[j])
-                        dp[i][j]= 2;
-                    else
-                        dp[i][j]=1;
-                }
+                
+                // else if(l==2)
+                // {
+                //     if(s[i]==s[j])
+                //         dp[i][j]= 2;
+                //     else
+                //         dp[i][j]=1;
+                // }
                 else
                 {
                     if(s[i]==s[j])
