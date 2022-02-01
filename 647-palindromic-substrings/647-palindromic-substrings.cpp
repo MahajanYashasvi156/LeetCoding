@@ -1,9 +1,19 @@
+/*
+Link - https://leetcode.com/problems/palindromic-substrings/
+
+Brute Force - Generate all n*(n+1)/2 substrings and check if it is palindrome or not.That will take O(N^3) time.
+
+Optimized - DP GAP strategy.
+TC - O(N^2)
+SC - O(N^2)
+*/
+
 class Solution {
 public:
     int countSubstrings(string s) 
     {
         int n = s.size();
-        vector<vector<bool>> dp(n,vector<bool>(n,0));
+        vector<vector<bool>> dp(n,vector<bool>(n));
         int palSubStrings = 0;
         for(int l =1;l<=n;l++)
         {
