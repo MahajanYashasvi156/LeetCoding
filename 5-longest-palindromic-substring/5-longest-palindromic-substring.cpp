@@ -25,9 +25,8 @@ public:
                 else
                 {
                     if(s[i]==s[j] and dp[i+1][j-1]==l-2)
-                    {
                         dp[i][j]=dp[i+1][j-1]+2;
-                    }
+                
                     else
                     {
                         dp[i][j]=max(dp[i+1][j],dp[i][j-1]);
