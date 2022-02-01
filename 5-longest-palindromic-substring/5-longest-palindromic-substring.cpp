@@ -48,7 +48,15 @@ public:
     }
 };
 */
+/*
+Link - https://leetcode.com/problems/longest-palindromic-substring/submissions/
 
+Optimized- 
+TC - O(N^2)
+SC - O(N^2)
+
+Similar as count palindromic substrings.
+*/
 class Solution 
 {
 public:
