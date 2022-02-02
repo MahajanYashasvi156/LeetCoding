@@ -12,7 +12,7 @@ public:
         int n = s.size();
         vector<vector<long long>> dp(n,vector<long long>(n));
         
-        vector<pair<int,int>> prenext(n,pair<int,int>({-1,-1}));
+        vector<pair<int,int>> prenext(n,pair<int,int>({-1,-1}));//prev,next
         
         int lasta=-1;
         int lastb=-1;
