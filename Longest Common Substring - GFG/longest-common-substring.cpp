@@ -26,6 +26,11 @@ class Solution{
         return lcs;
     }
 };
+/*
+Link - https://practice.geeksforgeeks.org/problems/longest-common-substring1452/1
+TC - O(NM)
+SC - O(NM)
+*/
 
 // { Driver Code Starts.
 
