@@ -1,3 +1,9 @@
+/*
+Link - https://leetcode.com/problems/count-different-palindromic-subsequences/submissions/
+
+TC - O(N^2)
+SC - O(N^2)
+*/
 class Solution 
 {
 public:
