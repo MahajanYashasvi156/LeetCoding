@@ -106,8 +106,8 @@ public:
         int n = s.size();
         vector<vector<long long>> dp(n,vector<long long>(n));
         
-        vector<pair<int,int>> prenext(n,pair<int,int>({-1,-1}));//prev,next
-        
+        vector<int> pre(n,-1);
+        vector<int> next(n,-1);
         int lasta=-1;
         int lastb=-1;
         int lastc=-1;
@@ -117,30 +117,30 @@ public:
         { 
             if(s[i]=='a')
             {
-                prenext[i].first=lasta;
+                pre[i]=lasta;
                 if(lasta!=-1)
-                    prenext[lasta].second= i;
+                    next[lasta]= i;
                 lasta=i;
             }
             else if(s[i]=='b')
             {
-                prenext[i].first=lastb;
+                pre[i]=lastb;
                 if(lastb!=-1)
-                    prenext[lastb].second= i;
+                    next[lastb]= i;
                 lastb=i;
             }
             else if(s[i]=='c')
             {
-                prenext[i].first=lastc;
+                pre[i]=lastc;
                 if(lastc!=-1)
-                    prenext[lastc].second= i;
+                    next[lastc]= i;
                 lastc=i;
             }
             else if(s[i]=='d')
             {
-                prenext[i].first=lastd;
+                pre[i]=lastd;
                 if(lastd!=-1)
-                    prenext[lastd].second= i;
+                    next[lastd]= i;
                 lastd=i;
             }
         }
@@ -160,20 +160,14 @@ public:
                     
                     else
                     {
-                        if(prenext[i].second == j)
-                        {
+                        if(next[i] == j)
                             dp[i][j]=2*dp[i+1][j-1]+2;
-                        }
-                        else if (prenext[i].second == prenext[j].first)
-                        {
+                    
+                        else if (next[i] == pre[j])
                              dp[i][j]=2*dp[i+1][j-1]+1;
-                        }
+                    
                         else 
-                        {
-                            int next = prenext[i].second;
-                            int prev = prenext[j].first;
-                             dp[i][j]=2*dp[i+1][j-1]-dp[next+1][prev-1];
-                        }
+                            dp[i][j]=2*dp[i+1][j-1]-dp[next[i]+1][pre[j]-1];
                     }
                     dp[i][j]=dp[i][j]+1000000007;
                     dp[i][j]=dp[i][j]%1000000007;
