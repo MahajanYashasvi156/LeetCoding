@@ -77,7 +77,9 @@ public:
                         }
                         else 
                         {
-                             dp[i][j]=2*dp[i+1][j-1]-dp[prenext[i].second+1][prenext[j].first-1];
+                            int next = prenext[i].second;
+                            int prev = prenext[j].first;
+                             dp[i][j]=2*dp[i+1][j-1]-dp[next+1][prev-1];
                         }
                     }
                     dp[i][j]=dp[i][j]+1000000007;
