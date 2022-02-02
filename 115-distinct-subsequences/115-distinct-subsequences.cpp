@@ -1,3 +1,13 @@
+/*
+Link - https://leetcode.com/problems/distinct-subsequences/submissions/
+
+TC - O(mn)
+SC - O(mn)
+
+Appraoch - Concept from LCS .
+
+*/
+
 class Solution {
 public:
     int numDistinct(string s, string t) 
@@ -19,9 +29,7 @@ public:
                     else
                         dp[i][j]= dp[i-1][j];
                 }
-              
             }
-           
         }
         return dp[m][n];
     }
