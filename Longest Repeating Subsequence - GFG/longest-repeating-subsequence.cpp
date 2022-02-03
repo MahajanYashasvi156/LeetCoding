@@ -3,7 +3,8 @@
 using namespace std;
 
  // } Driver Code Ends
-class Solution {
+class Solution
+{
 	public:
 		int LongestRepeatingSubsequence(string str)
 		{
@@ -27,15 +28,15 @@ class Solution {
 		}
 
 };
-
 /*
-Link- https://practice.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1
+Link - https://practice.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1
 
 TC - O(N^2)
 SC - O(N^2)
 
 Appraoch - Same as LCS.
-Instead of two diffrent string consider the given string as two diffrent strings and find Longest Common Subsequence such that the characters in the sequence should not be on the same indices.
+Find Longest Common Subsequence of given string with itself such that the characters in the sequence should not be on the same indices.
+
 */
 // { Driver Code Starts.
 int main(){
