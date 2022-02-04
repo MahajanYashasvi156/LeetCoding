@@ -1,4 +1,11 @@
-class Solution {
+/*
+Link - https://leetcode.com/problems/contiguous-array/
+
+TC - O(N)
+SC - O(N)
+*/
+class Solution 
+{
 public:
     int findMaxLength(vector<int>& nums) 
     {
@@ -6,6 +13,7 @@ public:
         int s = 0;
         int result =0;
         prefixSumIndex[0]=-1;
+        
         for(int i=0;i<nums.size();i++)
         {
             if(nums[i]==0)
@@ -14,9 +22,8 @@ public:
                 s = s + 1;
             
             if(prefixSumIndex.find(s)!=prefixSumIndex.end())
-            {
                 result = max(result,i-prefixSumIndex[s]);
-            }
+
             else
                 prefixSumIndex[s]=i;
                 
