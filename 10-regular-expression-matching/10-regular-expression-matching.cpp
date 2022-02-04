@@ -1,3 +1,11 @@
+/*
+Link - https://leetcode.com/problems/regular-expression-matching/
+
+TC - O(N^2)
+SC - O(N^2)
+
+*/
+
 class Solution {
 public:
     bool isMatch(string s, string p) 
@@ -26,6 +34,8 @@ public:
                     else
                         dp[i][j]= dp[i-2][j];
                 }
+                else 
+                    dp[i][j]=false;
             }
         }
         return dp[psize][ssize];
