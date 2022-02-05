@@ -18,7 +18,7 @@ public:
             if(lists[i])
                 pq.push({lists[i]->val,lists[i]});
         }
-        ListNode* prev = NULL; //curr
+        ListNode* prev = NULL; 
         ListNode* head=NULL;
         ListNode* nextNode = NULL;//next
         
