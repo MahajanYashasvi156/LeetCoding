@@ -1,13 +1,8 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+/*
+link - https://leetcode.com/problems/merge-k-sorted-lists/
+TC - O(KlogK + K*L*logK) = O(K*L*logK)
+SC - O(K)
+*/
 
 typedef pair<int,ListNode*> pi;
 
@@ -23,10 +18,9 @@ public:
             if(lists[i])
                 pq.push({lists[i]->val,lists[i]});
         }
-            
-        
         ListNode* sortedList = NULL;
         ListNode* head=NULL;
+        ListNode* nextNode = NULL;
         while(!pq.empty())
         {
             if(head==NULL)
@@ -39,7 +33,7 @@ public:
                 sortedList->next= pq.top().second;
                 sortedList= sortedList->next;
             }
-            ListNode* nextNode = pq.top().second->next;
+            nextNode = pq.top().second->next;
             pq.pop();
             if(nextNode)
                 pq.push({nextNode->val,nextNode});
