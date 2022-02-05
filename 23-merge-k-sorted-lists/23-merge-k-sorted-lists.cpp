@@ -18,20 +18,21 @@ public:
             if(lists[i])
                 pq.push({lists[i]->val,lists[i]});
         }
-        ListNode* sortedList = NULL;
+        ListNode* prev = NULL; //curr
         ListNode* head=NULL;
-        ListNode* nextNode = NULL;
+        ListNode* nextNode = NULL;//next
+        
         while(!pq.empty())
         {
             if(head==NULL)
             {
                 head = pq.top().second;
-                sortedList= head;
+                prev = head;
             }
             else
             {
-                sortedList->next= pq.top().second;
-                sortedList= sortedList->next;
+                prev->next= pq.top().second;
+                prev= prev->next;
             }
             nextNode = pq.top().second->next;
             pq.pop();
