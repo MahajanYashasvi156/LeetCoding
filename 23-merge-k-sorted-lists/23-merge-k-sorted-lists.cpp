@@ -20,7 +20,7 @@ public:
         }
         ListNode* prev = NULL; 
         ListNode* head=NULL;
-        ListNode* nextNode = NULL;//next
+        ListNode* nextNode = NULL;
         
         while(!pq.empty())
         {
