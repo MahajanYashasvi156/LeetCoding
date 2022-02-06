@@ -8,18 +8,18 @@ public:
     int removeDuplicates(vector<int>& nums)
     {
         int k = nums.size();
-        int v = INT_MAX;
+        int prev = INT_MAX;
         
         for(int i=0;i<nums.size();i++)
         {
-            if(nums[i]==v)
+            if(nums[i]==prev)
             {
                 k--;
                 nums[i]=INT_MAX;
             }
             else
             {
-                v=nums[i];
+                prev=nums[i];
             }  
         }
         sort(nums.begin(),nums.end());
