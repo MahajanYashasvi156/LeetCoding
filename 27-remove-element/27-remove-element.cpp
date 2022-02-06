@@ -1,4 +1,8 @@
-class Solution {
+/*
+Link - https://leetcode.com/problems/remove-element/submissions/
+*/
+class Solution 
+{
 public:
     int removeElement(vector<int>& nums, int val) 
     {
