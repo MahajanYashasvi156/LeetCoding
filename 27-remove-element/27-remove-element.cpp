@@ -2,17 +2,18 @@ class Solution {
 public:
     int removeElement(vector<int>& nums, int val) 
     {
-        int i = 0;
-        while(i<nums.size())
+        int low = 0;
+        int high = nums.size()-1;
+        while(low<=high)
         {
-            if(nums[i]==val)
+            if(nums[low]==val)
             {
-                nums[i]=nums[nums.size()-1];
-                nums.pop_back();
+                nums[low]=nums[high];
+                high--;
             }
             else
-                i++;
+                low++;
         }
-        return nums.size();
+        return low;
     }
 };
