@@ -14,8 +14,6 @@ public:
                 k--;
                 nums[i]=INT_MAX;
             }
-            else if(nums[i]==v)
-                c++;
             else
             {
                 v=nums[i];
