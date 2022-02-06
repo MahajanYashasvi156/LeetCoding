@@ -3,6 +3,7 @@ Link - https://leetcode.com/problems/move-zeroes/
 TC - O(N^2)
 SC - O(1)
 */
+/*
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
@@ -23,7 +24,8 @@ public:
         }
     }
 };
-/*
+*/
+
 class Solution 
 {
 public:
@@ -41,4 +43,3 @@ public:
        }
     }
 };
-*/
