@@ -1,3 +1,10 @@
+/*
+Link - https://leetcode.com/problems/find-the-difference/submissions/
+
+TC - O(nlogn)
+SC - O(1)
+
+
 class Solution 
 {
   public:
@@ -18,5 +25,25 @@ class Solution
             j++;
         }
         return t[j];
+    }
+};
+*/
+
+class Solution 
+{
+  public:
+    char findTheDifference(string s, string t) 
+    {    
+        int ssum =0;
+        int tsum =0;
+        for(int i=0;i<s.size();i++)
+        {
+          ssum +=s[i];  
+        }
+        for(int i=0;i<t.size();i++)
+        {
+          tsum +=t[i];  
+        }
+        return tsum-ssum;
     }
 };
