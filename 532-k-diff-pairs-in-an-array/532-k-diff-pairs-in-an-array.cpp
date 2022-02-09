@@ -18,7 +18,6 @@ public:
             }
             else if(k==0 and mp[nums[i]]==false)
             {
-                cout<<nums[i]<<endl;
                 mp[nums[i]]=true;
                 kDiffUniquePair++;
             }
