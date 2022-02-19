@@ -13,7 +13,7 @@ public:
         }
         int diff = INT_MAX;
         int max_Ele = INT_MIN;
-        while(!pq.empty())
+        while(pq.size()>1)
         {
             max_Ele = pq.top();
             pq.pop();
