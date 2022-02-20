@@ -1,7 +1,13 @@
+/*
+Link - https://leetcode.com/problems/remove-covered-intervals/submissions/
+
+TC - O(nlogn)
+SC - O(1)
+*/
 class Solution 
 {
-    
-    static bool comparatorSort(vector<int> i1,vector<int> i2)
+    //[[1,2],[1,4],[3,4]] for this example
+    static bool comparatorSort(vector<int> &i1,vector<int> &i2)
     {
         if(i1[0]==i2[0]) return i1[1]>i2[1];
         return i1[0]<i2[0];
@@ -27,3 +33,5 @@ public:
         return n-count;
     }
 };
+
+
