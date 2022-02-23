@@ -1,16 +1,13 @@
-/*
-Link - https://leetcode.com/problems/excel-sheet-column-number/submissions/
-
-*/
 class Solution {
 public:
-    int titleToNumber(string columnTitle) {
-        int ans=0;
-        for(char col:columnTitle)
+    int titleToNumber(string columnTitle) 
+    {
+        int result = 0;
+        int base = 1;
+        for(int i=0;i<=columnTitle[i];i++)
         {
-            ans = ans*26;
-            ans+=(col-'A'+1);
+            result = result *26 + (columnTitle[i]-'A'+1);
         }
-        return ans;
+        return result;
     }
 };
