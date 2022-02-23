@@ -36,7 +36,7 @@ Perform DFS with some modification.
 2. Same as DFS, set visited in the beginning of the call.
 3. a)If the neighbour is in the map i.e. neighbour is created and explored then just add new address of the neighbour to the neighbout list.
    b) Else Call DFS on the neighbour.
-*/
+
 class Solution 
 {
     Node* dfs(Node* node,map<Node*,Node*> &visited)
@@ -64,10 +64,10 @@ public:
     }
 };
 
-/*
+*/
 class Solution 
 {
-    Node* dfs(Node* src, map<Node*,Node*> &m)
+    void dfs(Node* src, map<Node*,Node*> &m)
     {
         Node *newSrc = new Node(src->val);
         m[src]=newSrc;
@@ -75,11 +75,9 @@ class Solution
         for( auto dst : src->neighbors)
         {
             if(m.find(dst) == m.end())
-                newSrc->neighbors.push_back(dfs(dst,m)); 
-            else 
-                newSrc->neighbors.push_back(m[dst]);
+                dfs(dst,m); 
+            newSrc->neighbors.push_back(m[dst]);
         }
-        return newSrc;
     }
 public:
     Node* cloneGraph(Node* node)
@@ -87,7 +85,7 @@ public:
         if(node == NULL)
             return node;
         map<Node*,Node*> m;
-        return dfs(node,m);
+        dfs(node,m);
+        return m[node];
     }
 };
-*/
