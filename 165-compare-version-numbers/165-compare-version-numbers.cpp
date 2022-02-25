@@ -1,3 +1,11 @@
+/*
+Link - https://leetcode.com/problems/compare-version-numbers/submissions/
+
+TC - O(m+n)
+SC - O(1)
+
+Approach - Traverse both strings till dot, create revisions and simply compare revisions and decide
+*/
 class Solution 
 {
 public:
