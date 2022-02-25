@@ -19,9 +19,9 @@ public:
                 rev2 = rev2*10 + version2[i2++]-'0';
             } 
             if(rev1>rev2)
-                    return 1;
+                return 1;
             else if(rev1<rev2)
-                    return -1;
+                return -1;
             else
             {
                 rev1 = 0;
@@ -30,6 +30,6 @@ public:
             i1++;
             i2++;
         }
-            return 0;
+        return 0;
     }
 };
