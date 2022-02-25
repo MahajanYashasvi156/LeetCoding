@@ -26,9 +26,9 @@ public:
             {
                 rev1 = 0;
                 rev2 = 0;
-                i1++;
-                i2++;
             }
+            i1++;
+            i2++;
         }
             return 0;
     }
