@@ -5,8 +5,9 @@ public:
     {
         int i1=0;
         int i2=0;
-        unsigned int rev1 = 0;
-        unsigned int rev2 = 0;
+        int rev1 = 0;
+        int rev2 = 0;
+        
         while(i1<version1.size() or i2<version2.size())
         {
             while( i1<version1.size() and version1[i1] != '.' )
