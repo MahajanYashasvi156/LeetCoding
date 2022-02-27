@@ -18,7 +18,6 @@ public:
         int maxWidth = INT_MIN;
         queue<pair<TreeNode*,int>> q;
         q.push({root,1});
-        int level = 1;
         while(!q.empty())
         {
             int maxIndex = INT_MIN;
@@ -43,7 +42,6 @@ public:
                 }
             }
             maxWidth = max(maxWidth,abs(maxIndex - minIndex +1));
-            level++;
         }
         return maxWidth;
     }
