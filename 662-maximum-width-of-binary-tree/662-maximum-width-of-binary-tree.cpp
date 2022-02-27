@@ -10,6 +10,12 @@
  * };
  */
 
+/*
+Link - https://leetcode.com/problems/maximum-width-of-binary-tree/
+TC - O(N)
+SC- O(N)
+*/
+
 class Solution 
 {
 public:
@@ -35,7 +41,6 @@ public:
                 {
                     q.push({curr->left,(long long)2*index+1});
                 }
-                
                 if(curr->right)
                 {
                     q.push({curr->right,(long long)2*index+2});
