@@ -44,7 +44,6 @@ public:
             }
             maxWidth = max(maxWidth,abs(maxIndex - minIndex +1));
             level++;
-            
         }
         return maxWidth;
     }
