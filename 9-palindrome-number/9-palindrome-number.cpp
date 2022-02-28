@@ -1,3 +1,9 @@
+/*
+Link - https://leetcode.com/problems/palindrome-number/
+
+TC - O(log10(n))
+SC - O(1)
+*/
 class Solution {
 public:
     bool isPalindrome(int x) 
