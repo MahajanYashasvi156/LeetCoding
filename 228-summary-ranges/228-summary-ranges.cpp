@@ -11,34 +11,27 @@ public:
         for(int i=1;i<nums.size();i++)
         {
             if(nums[i]==end+1)
-            {
                 end = nums[i];
-            }
+            
             else
             {
+                string temp = to_string(start);
+        
                 if(start!=end)
-                {
-                    string temp = to_string(start)+"->"+to_string(end);
-                    result.push_back(temp);
-                }
-                else
-                {
-                    result.push_back(to_string(start));
-                }
+                    temp = temp +"->"+to_string(end);
+    
+                result.push_back(temp);
+                
                 start=nums[i];
                 end=nums[i]; 
             }
         }
-        if(start!=end)
-                {
-                    string temp = to_string(start)+"->"+to_string(end);
-                    result.push_back(temp);
-                }
-                else
-                {
-                    result.push_back(to_string(start));
-                }
+        string temp = to_string(start);
         
+        if(start!=end)
+            temp = temp +"->"+to_string(end);
+    
+        result.push_back(temp);
         return result;
     }
 };
