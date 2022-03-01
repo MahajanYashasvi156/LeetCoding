@@ -13,8 +13,7 @@ public:
             }
             else
             {
-                int halfindex = i/2;
-                result[i]=result[halfindex] + i%2;
+                result[i]=result[i/2] + i%2;
             }
             i++;
         }
