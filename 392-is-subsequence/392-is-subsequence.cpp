@@ -1,3 +1,9 @@
+/*
+Link -https://leetcode.com/problems/is-subsequence/submissions/
+
+TC - O(m+n)
+SC - O(1)
+*/
 class Solution 
 {
 public:
