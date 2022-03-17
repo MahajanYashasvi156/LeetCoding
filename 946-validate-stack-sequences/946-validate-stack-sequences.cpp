@@ -21,10 +21,6 @@ public:
                 j++;
             }
         }
-        while(!s.empty() and j<popped.size() and popped[j++] == s.top() )
-        {
-            s.pop();
-        }
-        return s.empty();
+        return s.empty() and j==popped.size();
     }
 };
