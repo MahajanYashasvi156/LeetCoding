@@ -11,10 +11,11 @@ public:
         for(int a : nums)
         {
             kmin.push(a);
+             if(kmin.size()>k)
+                kmin.pop();
             
         }
-        while(kmin.size()>k)
-                kmin.pop();
+       
     }
     
     int add(int val) 
