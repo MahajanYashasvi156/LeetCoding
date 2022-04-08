@@ -5,17 +5,13 @@ class KthLargest
 public:
     KthLargest(int kth, vector<int>& nums) 
     {
-        
         k=kth;
-    
         for(int a : nums)
         {
             kmin.push(a);
              if(kmin.size()>k)
-                kmin.pop();
-            
+                kmin.pop();    
         }
-       
     }
     
     int add(int val) 
