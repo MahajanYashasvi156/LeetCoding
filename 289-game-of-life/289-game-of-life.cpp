@@ -5,6 +5,10 @@
 dead 3 live ->live
 */
 /*
+TC - O(n^2)
+SC - O(n^2)
+*/
+/*
 class Solution 
 {
     int countLive(vector<vector<int>>&temp,int i,int j)
@@ -58,6 +62,14 @@ public:
         }
     }
 };
+*/
+
+/*
+TC - O(n^2)
+SC - O(1)
+
+Discussion link - https://leetcode.com/problems/game-of-life/discuss/1938258/O(1)-Space-greater-Inplace
+
 */
 class Solution 
 {
