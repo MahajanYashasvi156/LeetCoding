@@ -9,13 +9,15 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class Solution 
+{
 public:
     TreeNode* convertBST(TreeNode* root) 
     {
         stack<TreeNode*> st;
         TreeNode* node=root;
         int value = 0;
+        
         while(node!=NULL or !st.empty())
         {
             while(node)
