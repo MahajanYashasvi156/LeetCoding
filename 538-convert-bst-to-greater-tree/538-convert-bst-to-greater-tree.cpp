@@ -9,6 +9,13 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+/*
+TC - O(n)
+SC - O(n)
+
+reverse inorder traversal - Right Node Left
+
 class Solution 
 {
 public:
@@ -31,6 +38,23 @@ public:
             st.pop();
             node=node->left; 
         }
+        return root;
+    }
+};
+*/
+
+class Solution 
+{
+    int value = 0;
+public:
+    TreeNode* convertBST(TreeNode* root) 
+    {
+        if(root == NULL)
+            return root;
+        root->right = convertBST(root->right);
+        root->val = value + root->val;
+        value = root->val;
+        root->left = convertBST(root->left);
         return root;
     }
 };
