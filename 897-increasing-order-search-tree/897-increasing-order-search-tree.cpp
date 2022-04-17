@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+/*
 class Solution 
 {
     TreeNode* prev = NULL;
@@ -26,6 +27,37 @@ public:
         prev = root; 
         root->left = NULL;
         increasingBST(root->right);
+        return newRoot;
+    }
+};
+*/
+
+class Solution 
+{
+    TreeNode* prev = NULL;
+    TreeNode* newRoot = NULL;
+public:
+    TreeNode* increasingBST(TreeNode* root) 
+    {
+        stack<TreeNode*> s;
+        TreeNode* node = root;
+        while(node!=NULL or !s.empty())
+        {
+            while(node)
+            {
+                s.push(node);
+                node = node->left;
+            }
+            node = s.top();
+            s.pop();
+            node->left = NULL;
+            if(prev == NULL)
+                newRoot = node;
+            else
+                prev->right = node;
+            prev = node;
+            node= node->right;
+        }
         return newRoot;
     }
 };
