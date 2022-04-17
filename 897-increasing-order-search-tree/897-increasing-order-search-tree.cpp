@@ -19,11 +19,10 @@ public:
         if(root == NULL) return root;
         increasingBST(root->left);
         if(prev == NULL)
-        {
             newRoot = root;
-        }
         else 
             prev->right = root;
+        
         prev = root; 
         root->left = NULL;
         increasingBST(root->right);
