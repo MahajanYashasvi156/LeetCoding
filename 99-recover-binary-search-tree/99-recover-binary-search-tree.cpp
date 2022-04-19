@@ -11,6 +11,11 @@
  */
 
 /*
+
+TC - O(2N+NLogn)
+SC - O(2N)
+
+
 class Solution 
 {
 public:
@@ -61,6 +66,11 @@ public:
     }
 };
 */
+
+/*
+TC - O(N)
+SC - O(N)
+*/
 class Solution 
 {
     
@@ -85,20 +95,13 @@ public:
             if(prev!=NULL and node->val<prev->val)
             {
                 if(first==NULL)
-                {
                     first = prev;
-                    last = node;
-                }
-                else
-                {
-                    last = node;
-                }
+               
+                last = node;
             }
             prev = node;
             node = node->right;
         }
-        
         swap(first->val,last->val);
-        
     }
 };
