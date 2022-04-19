@@ -96,7 +96,6 @@ public:
             {
                 if(first==NULL)
                     first = prev;
-               
                 last = node;
             }
             prev = node;
