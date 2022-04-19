@@ -50,15 +50,12 @@ public:
                 if(swap1==NULL)
                     swap1 = node;
                 else 
-                    swap2 = node;
+                {
+                    swap(swap1->val,node->val);
+                    return;
+                } 
             }
             node = node->right;
-        }
-        if(swap1!=NULL and swap2!=NULL)
-        {
-            int temp = swap1->val;
-            swap1->val = swap2->val;
-            swap2->val = temp;
         }
         
         
