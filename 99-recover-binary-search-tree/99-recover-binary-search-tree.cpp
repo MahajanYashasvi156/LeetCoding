@@ -35,7 +35,6 @@ public:
         node = root;
         int i=0;
         TreeNode* swap1 = NULL;
-        TreeNode* swap2 = NULL;
         while(!s.empty() or node!=NULL)
         {
             while(node)
