@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+/*
 class Solution 
 {
 public:
@@ -55,8 +57,48 @@ public:
                 } 
             }
             node = node->right;
+        } 
+    }
+};
+*/
+class Solution 
+{
+    
+public:
+    void recoverTree(TreeNode* root) 
+    {
+        TreeNode* first = NULL;
+        TreeNode* prev = NULL;
+        TreeNode* last = NULL;
+        
+        stack<TreeNode*> s;
+        TreeNode* node = root;
+        while(!s.empty() or node!=NULL)
+        {
+            while(node)
+            {
+                s.push(node);
+                node = node->left;
+            }
+            node = s.top();
+            s.pop();
+            if(prev!=NULL and node->val<prev->val)
+            {
+                if(first==NULL)
+                {
+                    first = prev;
+                    last = node;
+                }
+                else
+                {
+                    last = node;
+                }
+            }
+            prev = node;
+            node = node->right;
         }
         
+        swap(first->val,last->val);
         
     }
 };
