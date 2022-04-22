@@ -1,25 +1,29 @@
-class MyHashMap {
+class MyHashMap 
+{
+    int hmap[1000001];
 public:
-    int mymap[1000001];
-    MyHashMap()
+    MyHashMap() 
     {
-      memset(mymap,-1,sizeof(mymap)); 
-    } 
+        for(int i=0;i<=1000000;i++)
+        {
+            hmap[i]=-1;
+        }
+    }
+    
     void put(int key, int value) 
     {
-        mymap[key]=value;
+        hmap[key]=value;
     }
-    int get(int key) 
-    {
-        return mymap[key];  
+    
+    int get(int key) {
+        return hmap[key];
     }
-    void remove(int key) 
-    {
-        mymap[key]=-1;
+    
+    void remove(int key) {
+        hmap[key]=-1;
     }
 };
 
-//Have to do with chaining.
 /**
  * Your MyHashMap object will be instantiated and called as such:
  * MyHashMap* obj = new MyHashMap();
