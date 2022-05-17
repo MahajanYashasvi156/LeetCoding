@@ -10,9 +10,10 @@
 
 class Solution {
 public:
-    TreeNode* result=NULL;
+    
     TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) 
     {
+        TreeNode* result=NULL;
         if(original == NULL or cloned == NULL)
             return cloned;
         if(original == target)
