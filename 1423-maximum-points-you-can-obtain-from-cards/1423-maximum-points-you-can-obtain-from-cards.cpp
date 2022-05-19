@@ -1,3 +1,9 @@
+/*
+TC - O(N)
+SC - O(1)
+
+Concept - Sliding Window of Size B
+*/
 class Solution {
 public:
     int maxScore(vector<int>& A, int B) 
