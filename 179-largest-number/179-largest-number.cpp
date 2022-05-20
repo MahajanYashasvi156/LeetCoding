@@ -1,23 +1,22 @@
 class Solution {
-   static bool compare(string i1, string i2)
+    static bool cmp(int a, int b)
     {
-        return (i1+i2>i2+i1);
+        string num1 = to_string(a) + to_string(b);
+        string num2 = to_string(b) + to_string(a);
+        return stol(num1) > stol(num2);
     }
 public:
     //comparator - descending order
-    string largestNumber(vector<int>& A)
+    string largestNumber(vector<int>& v)
     {
-        vector<string> s;
-        for(auto a : A)
-            s.push_back(to_string(a));
-        sort(s.begin(),s.end(),compare);
-        string result = "";
-        for(int i =0;i<s.size();i++)
+        sort(v.begin(), v.end(),cmp);
+        string result="";
+        if(v[0]==0)
+            return "0";
+        for(int i=0;i<v.size();i++)
         {
-            result +=s[i];
+            result+=to_string(v[i]);
         }
-        if(result[0]=='0') 
-        return "0";
         return result;
     }
 };
