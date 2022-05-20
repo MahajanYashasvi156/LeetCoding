@@ -8,7 +8,7 @@ public:
             totalSum += a;
         if(totalSum%3!=0)
             return 0;
-
+        
     int oneThird = totalSum/3 ;
     map<int,int> freq; 
     int currSum = 0;
@@ -17,7 +17,7 @@ public:
     {
         currSum = currSum+B[i];
 
-        if(currSum == 2*oneThird and freq[oneThird]!=0) // means we get the middle partition
+        if(currSum == 2*oneThird and freq[oneThird]>0) // means we get the middle partition
         {
             return 1; //ways of getting first partition
         }
