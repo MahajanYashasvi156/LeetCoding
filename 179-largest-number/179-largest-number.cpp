@@ -1,4 +1,5 @@
-class Solution {
+class Solution 
+{
     static bool cmp(int a, int b)
     {
         string num1 = to_string(a) + to_string(b);
@@ -14,9 +15,8 @@ public:
         if(v[0]==0)
             return "0";
         for(int i=0;i<v.size();i++)
-        {
             result+=to_string(v[i]);
-        }
+    
         return result;
     }
 };
