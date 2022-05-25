@@ -33,7 +33,6 @@ public:
             candidate = mid; 
             high = mid-1;
         }
-        cout<<candidate;
     }
     return candidate;
     }
