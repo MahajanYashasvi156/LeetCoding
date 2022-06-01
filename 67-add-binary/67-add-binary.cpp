@@ -2,6 +2,20 @@ class Solution {
 public:
     string addBinary(string M, string N) 
     {
+        string res="";
+        int i=M.size()-1,j=N.size()-1,c=0;
+       
+        while(i>=0 || j>=0 || c==1){
+            int x = (i>=0)?(M[i--]-'0'):0;
+            int y = (j>=0)?(N[j--]-'0'):0;
+            int sum = x+y+c;
+            res+=(sum%2)+'0';
+            c=sum/2;
+        }
+        
+        reverse(res.begin(),res.end());
+        return res;
+        /*
         string result="";
         vector<int>A;
         vector<int>B;
@@ -37,6 +51,6 @@ public:
             result+="1";
         reverse(result.begin(),result.end());
         return result;
-        
+        */
     }
 };
