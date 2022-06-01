@@ -3,7 +3,6 @@ class Solution
 public:
     bool isPowerOfTwo(int num) 
     {
-        
         if(num==1)
             return 1;
         if(num%2 or num<1)
