@@ -31,7 +31,6 @@ public:
         int addingChar = s.size() - lps[text.size()-1];
         string addedString = s.substr(s.size()-addingChar,addingChar);
         reverse(addedString.begin(),addedString.end());
-        return   addedString+ s;
-        
+        return  addedString+ s;
     }
 };
