@@ -3,6 +3,21 @@ class Solution
     public:
     int minSwaps(string s) 
     {
+        int incorrect = 0;
+        int open = 0;
+        for(int i = 0;i<s.size();i++)
+        {
+            if(s[i]==']' and open==0)
+                incorrect++;
+            else if(s[i]=='[') open++;
+            else 
+            {
+                open--   ;
+            }  
+                
+        }
+        return (incorrect+1)>>1;
+        /*
         int low = 0;
         int high = s.size()-1;
         int countleft = 0;
@@ -40,5 +55,6 @@ class Solution
             }
         }
         return result;
+        */
     }
 };
