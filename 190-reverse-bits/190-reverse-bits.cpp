@@ -7,7 +7,7 @@ public:
         for(int i =0;i<32;i++)
         {
             if(A & 1) 
-                reverseA = reverseA | 1<<(31-i);
+                reverseA = reverseA + (1<<(31-i));
             A = A>>1;
         }
         return reverseA;
