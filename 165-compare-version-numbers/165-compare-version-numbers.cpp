@@ -13,8 +13,7 @@ public:
     {
         int i1=0;
         int i2=0;
-        
-        
+         
         while(i1<version1.size() or i2<version2.size())
         {
             unsigned long rev1 = 0;
