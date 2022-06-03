@@ -25,9 +25,7 @@ public:
                 }
                 else
                     dp[i][j] = matrix[i][j];
-                cout<<dp[i][j]<< " ";
             }
-            cout<<endl;
         }
     }
     
