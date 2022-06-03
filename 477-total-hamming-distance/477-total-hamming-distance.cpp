@@ -18,6 +18,6 @@ public:
             }
             ans += ones*long(zeroes);
         }
-        return ans%1000000007;
+        return ans;
     }
 };
