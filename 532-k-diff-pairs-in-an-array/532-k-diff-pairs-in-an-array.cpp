@@ -4,7 +4,6 @@ Link - https://leetcode.com/problems/k-diff-pairs-in-an-array/submissions/
 TC - O(N)
 SC - O(N)
 */
-
 class Solution 
 {
 public:
@@ -31,3 +30,4 @@ public:
         return kDiffUniquePair;
     }
 };
+
