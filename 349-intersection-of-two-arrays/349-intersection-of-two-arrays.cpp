@@ -11,6 +11,7 @@ public:
         {
             if(A[i]==B[j])
             {
+                //Because duplicates not allowed
                 if(result.size()==0 or result[result.size()-1]<A[i])
                     result.push_back(A[i]);
                 i++;
