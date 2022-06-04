@@ -1,10 +1,12 @@
-class Solution {
+class Solution 
+{
 public:
     int threeSumClosest(vector<int>& A, int B) 
     {
         sort(A.begin(),A.end());
         int closestSum = INT_MAX;
         int diff = INT_MAX;
+        
         for(int i = 0;i<A.size()-2;i++)
         { 
             int low = i+1;
@@ -24,7 +26,6 @@ public:
                     high--;
                 else
                     low++;
-
             }
         }
         return closestSum;
