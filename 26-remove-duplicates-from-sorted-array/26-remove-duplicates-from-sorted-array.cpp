@@ -3,24 +3,11 @@ class Solution
 public:
     int removeDuplicates(vector<int>& nums) 
     {
-        int prev = nums[0];
-        for(int i = 1;i<nums.size();i++)
-        {
-            if(nums[i]==prev)
-            {
-                nums[i]=INT_MAX;
-            }
-            else
-            {
-                prev = nums[i];
-            }
-        }
-
-        int i = 0;
-        int j = 0;
+        int i = 1; //next index of perfect array
+        int j = 1;
         while(j<nums.size())
         {
-            if(nums[j]!=INT_MAX)
+            if(nums[j]!=nums[i-1])
             {
                 swap(nums[i],nums[j]);
                 i++;
