@@ -34,7 +34,6 @@ public:
         while(i>=0 and j>=0 and list1[i]==list2[j])
         {
             intersectNode = list1[i];
-            cout<<list1[i];
             i--;
             j--;
         }
