@@ -6,6 +6,8 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+//https://leetcode.com/problems/intersection-of-two-linked-lists/discuss/2116312/C%2B%2B-oror-Easiest-way-oror-O(1)-space
+
 class Solution 
 {
 public:
