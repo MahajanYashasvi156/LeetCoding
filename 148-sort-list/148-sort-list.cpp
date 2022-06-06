@@ -9,8 +9,7 @@ MS(head)
     Now we have two lists
     2. sortedFirstList = MS(head) -- fist list
     3. sortedSecondList = MS(mid) -- second list
-    4. merger2SortedLists(sortedFir
-stList,sortedSecondList);
+    4. merger2SortedLists(sortedFirstList,sortedSecondList);
 
 */
 
@@ -68,10 +67,8 @@ class Solution
     {
         ListNode* fast=head;
         ListNode* prev=NULL;
-        while(fast)
+        while(fast && fast->next)
         {
-            if(fast->next==NULL)
-                break;
             fast=fast->next->next;
             if(prev==NULL)
                 prev=head;
@@ -94,5 +91,4 @@ class Solution
         ListNode* right=sortList(mid);
         return mergeTwoLists(left,right);
     }
-    
 };
