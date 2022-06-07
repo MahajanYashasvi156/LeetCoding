@@ -31,11 +31,9 @@ public:
             }
             if(i<B)
                 break;
-
             ListNode* nextListTail = curr;
             ListNode* prev = NULL;
             node = 0;
-
             while(curr and node<B)
             {
                 nextNode =  curr->next;
@@ -44,7 +42,6 @@ public:
                 curr = nextNode;
                 node++;     
             }
-          
             if(prevTail)
                 prevTail->next = prev;
             if(head==NULL)
