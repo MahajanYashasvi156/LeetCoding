@@ -23,7 +23,7 @@ public:
 /*
 TC - O(m+n)
 SC - O(1)
-*/
+
 class Solution 
 {
 public:
@@ -52,5 +52,32 @@ public:
             nums1[k--]=nums2[j--];
         }
         
+    }
+};
+*/
+class Solution 
+{
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) 
+    {
+        int k = m+n-1;
+        int i = m-1;
+        int j = n-1;
+        while(i>=0 or j>=0)
+        {
+            int x = i>=0 ? nums1[i]:INT_MIN;
+            int y = j>=0 ? nums2[j]:INT_MIN;
+            
+            if(x<=y)
+            {
+                nums1[k--] = y;
+                j--;
+            }
+            else
+            {
+                nums1[k--] = x;
+                i--;
+            }
+        }
     }
 };
