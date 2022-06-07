@@ -19,8 +19,7 @@ public:
                 first = first->next;
                 i++;
             }
-            if(i<B)
-                break;
+            if(i<B) break;
             ListNode* nextListTail = curr;
             ListNode* prev = NULL;
             node = 0;
