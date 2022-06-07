@@ -20,6 +20,7 @@ public:
     }
 };
 */
+/*
 class Solution 
 {
 public:
@@ -44,6 +45,48 @@ public:
             curr = nextNode;
         }
         prev->next = curr;
+        return head;
+    }
+};
+*/
+class Solution 
+{
+public:
+    ListNode* swapPairs(ListNode* A) 
+    {
+        if(A==NULL or A->next==NULL)
+        return A;
+
+        ListNode* prevTail = NULL;
+        ListNode* nextListTail = NULL;
+        ListNode* prev = NULL;
+        ListNode* curr = A;
+        ListNode* nextNode = NULL;
+        ListNode* head = NULL;
+
+        while(curr and curr->next)
+        {
+            nextListTail = curr;
+            prev = NULL;
+            int i = 2;
+            while(i--)
+            {
+                nextNode = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = nextNode;
+            }
+            if(prevTail)
+            {
+                prevTail->next = prev;
+            }
+            else
+            {
+                head = prev;
+            }
+            prevTail = nextListTail;
+        }
+        prevTail->next = curr;
         return head;
     }
 };
