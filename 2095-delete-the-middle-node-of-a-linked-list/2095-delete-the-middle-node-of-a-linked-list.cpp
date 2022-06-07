@@ -29,31 +29,3 @@ public:
         return head;
     }
 };
-
-/*
-class Solution 
-{
-public:
-    ListNode* deleteMiddle(ListNode* head) 
-    {
-        int size=0;
-        ListNode *temp=head;
-        while(temp!=NULL)
-        {
-            size++;
-            temp=temp->next;
-        }
-        if(size==1)
-            return temp;
-        temp=head;
-        size=size/2-1;
-        while(temp->next and size)
-        {
-            temp=temp->next;
-            size--;
-        }
-        temp->next=temp->next->next;
-        return head;
-    }
-};
-*/
