@@ -16,18 +16,17 @@ public:
             
             if(num1)
             {
-                num1->val = sum;
                 if(tail)
                     tail->next = num1;
                 tail = num1;
             }
             else
             {
-                num2->val = sum;
                 if(tail)
                     tail->next = num2;
                 tail = num2;
             }
+            tail->val = sum;
             if(num1)
                 num1 = num1->next;
             if(num2)
