@@ -5,7 +5,6 @@ public:
     {
         ListNode* num1 = A;
         ListNode* num2 = B;
-        ListNode* head = NULL;
         ListNode* tail = NULL;
         int carry = 0;
         while(num1 or num2)
@@ -14,12 +13,22 @@ public:
             int y = num2 ? num2->val:0;
             int sum = (x+y+carry)%10;
             carry = (x+y+carry)/10;
-            ListNode* sumNode = new ListNode(sum);
-            if(head==NULL)
-                head = sumNode;
+            
+            if(num1)
+            {
+                num1->val = sum;
+                if(tail)
+                    tail->next = num1;
+                tail = num1;
+            }
             else
-                tail->next = sumNode;
-            tail = sumNode;
+            {
+                num2->val = sum;
+                if(tail)
+                    tail->next = num2;
+                tail = num2;
+            }
+            cout<<tail->val;
             if(num1)
                 num1 = num1->next;
             if(num2)
@@ -30,6 +39,6 @@ public:
              ListNode* lastNode = new ListNode(carry);
              tail->next = lastNode;
         }
-        return head;
+        return A;
     }
 };
