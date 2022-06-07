@@ -24,6 +24,8 @@ public:
 
         ListNode* lastNode = curr;
         B = B%nodes;
+        if(B==0)
+            return A;
         curr = A;
         int nodeNo = nodes-B-1;
         while(nodeNo>0)
@@ -31,8 +33,6 @@ public:
             curr = curr->next;
             nodeNo--;
         }
-        if(curr->next==NULL)
-            return A;
         ListNode* head = curr->next;
         curr->next = NULL;
         lastNode->next = A;
