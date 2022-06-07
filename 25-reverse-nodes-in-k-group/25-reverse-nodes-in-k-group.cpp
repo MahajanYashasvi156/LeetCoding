@@ -33,7 +33,7 @@ public:
             }
             if(prevTail)
                 prevTail->next = prev;
-            if(head==NULL)
+            else
                 head = prev;
             prevTail = nextListTail;
         }
