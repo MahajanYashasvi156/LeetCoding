@@ -28,7 +28,6 @@ public:
                     tail->next = num2;
                 tail = num2;
             }
-            cout<<tail->val;
             if(num1)
                 num1 = num1->next;
             if(num2)
