@@ -1,6 +1,9 @@
-class Solution {
+/*
+class Solution 
+{
 public:
-    ListNode* swapPairs(ListNode* head) {
+    ListNode* swapPairs(ListNode* head) 
+    {
         // if head is NULL OR just having a single node, then no need to change anything 
         if(head == NULL || head -> next == NULL) 
         {
@@ -14,5 +17,33 @@ public:
         temp->next = head; // put temp -> next to head
         
         return temp; // now after changing links, temp act as our head
+    }
+};
+*/
+class Solution 
+{
+public:
+    ListNode* swapPairs(ListNode* A) 
+    {
+        if(A==NULL or A->next==NULL)
+        return A;
+    
+        ListNode* curr = A;
+        ListNode* prev = NULL;
+        ListNode* head = NULL;
+        while(curr and curr->next)
+        {
+            ListNode* nextNode = curr->next->next;
+            curr->next->next = curr;
+            if(prev)
+                prev->next = curr->next;
+            else
+                head = curr->next;
+            curr->next = NULL;
+            prev = curr;
+            curr = nextNode;
+        }
+        prev->next = curr;
+        return head;
     }
 };
