@@ -10,9 +10,7 @@ public:
         for(int i = 0;i<A.size();i++)
         {
             while(!s.empty() and A[s.top()]>=A[i])
-            {
-                s.pop();
-            } 
+                s.pop(); 
             if(!s.empty())
                 leftSmaller[i] = s.top();
             s.push(i);
