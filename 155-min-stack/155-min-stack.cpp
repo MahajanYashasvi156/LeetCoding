@@ -5,10 +5,6 @@ class MinStack
 public:
     MinStack() 
     {
-        while(!q.empty())
-        q.pop();
-        while(!decStack.empty())
-            decStack.pop(); 
     }
     
     void push(int x) 
