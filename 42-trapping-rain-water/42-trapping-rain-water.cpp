@@ -23,7 +23,7 @@ public:
         
         for(int i=0;i<height.size();i++)
         {
-        //if the minimum of rightmax and left max is greater than current height then only it can trap water.Subtract that height from thr trapped water.
+        //if the minimum of rightmax and left max is greater than current height then only it can trap water.Subtract that height from the current height to get the trapped water.
             if(min(rightMax[i],leftMax[i])>height[i])
                 trappedWater=trappedWater+min(rightMax[i],leftMax[i])-height[i];
         }
