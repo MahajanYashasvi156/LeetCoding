@@ -1,19 +1,22 @@
 class MinStack 
 {
     stack<int> q;
-    stack<int> minq;
+    stack<int> decStack;
 public:
     MinStack() 
     {
-        
+        while(!q.empty())
+        q.pop();
+        while(!decStack.empty())
+            decStack.pop(); 
     }
     
     void push(int x) 
     {
         q.push(x);
-        if(minq.empty() or minq.top()>=x)
+        if(decStack.empty() or decStack.top()>=x)
         {
-            minq.push(x);
+            decStack.push(x);
         }
     }
     
@@ -21,27 +24,24 @@ public:
     {
         if(!q.empty()) 
         {
-            if(minq.top()==q.top())
-                minq.pop();
+            if(decStack.top()==q.top())
+                decStack.pop();
             q.pop();
         } 
-        
     }
     
     int top() 
     {
         if(!q.empty()) 
             return q.top();
-        return -1;
-        
+         return -1;
     }
     
     int getMin() 
     {
-        if(!minq.empty()) 
-            return minq.top();
+        if(!decStack.empty()) 
+            return decStack.top();
         return -1;
-        
     }
 };
 
