@@ -1,5 +1,28 @@
 class Solution {
 public:
+    int trap(vector<int>& A) 
+    {
+        vector<int> leftMax(A.size(),INT_MIN);
+        for(int i = 1;i<A.size();i++)
+            leftMax[i] = max(leftMax[i-1],A[i-1]);
+
+        int rightMax = A[A.size()-1];
+        int trappedWater = 0;
+        for(int i = A.size()-2;i>=0;i--)
+        {
+            int height = min(leftMax[i],rightMax);
+            if(height>A[i])
+                trappedWater+=(height-A[i]);
+            rightMax = max(rightMax,A[i]);
+        }
+        return trappedWater;
+    }
+};
+
+/*
+class Solution 
+{
+public:
     int trap(vector<int>& height)
     {
         int size=height.size();
@@ -30,3 +53,4 @@ public:
         return trappedWater;
     }
 };
+*/
