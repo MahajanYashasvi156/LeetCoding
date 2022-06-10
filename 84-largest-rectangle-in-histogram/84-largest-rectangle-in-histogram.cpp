@@ -1,3 +1,8 @@
+/*
+Intuition - 
+
+For every bar ‘x’, we calculate the area with ‘x’ as the smallest bar in the rectangle. If we calculate such area for every bar ‘x’ and find the maximum of all areas, our task is done. How to calculate area with ‘x’ as smallest bar? We need to know index of the first smaller (smaller than ‘x’) bar on left of ‘x’ and index of first smaller bar on right of ‘x’. Let us call these indexes as ‘left index’ and ‘right index’ respectively. 
+*/
 class Solution 
 {
 public:
@@ -15,7 +20,6 @@ public:
                 leftSmaller[i] = s.top();
             s.push(i);
         }
-
         while(!s.empty()) s.pop();
 
         for(int i = A.size()-1;i>=0;i--)
@@ -28,7 +32,6 @@ public:
                 rightSmaller[i] = s.top();
             s.push(i);
         }
-
         int result = 0;
         for(int i = 0;i<A.size();i++)
         {
@@ -37,10 +40,6 @@ public:
         return result;
     }
 };
-
-
-
-
 
 
 /*
