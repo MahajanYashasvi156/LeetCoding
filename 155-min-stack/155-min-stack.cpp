@@ -18,26 +18,20 @@ public:
     
     void pop() 
     {
-        if(!q.empty()) 
-        {
-            if(decStack.top()==q.top())
+       if(decStack.top()==q.top())
                 decStack.pop();
-            q.pop();
-        } 
+        q.pop();
+
     }
     
     int top() 
     {
-        if(!q.empty()) 
-            return q.top();
-         return -1;
+        return q.top();
     }
     
     int getMin() 
     {
-        if(!decStack.empty()) 
-            return decStack.top();
-        return -1;
+        return decStack.top();
     }
 };
 
