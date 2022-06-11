@@ -1,6 +1,4 @@
 //Link - https://leetcode.com/problems/combination-sum/
-
-
 /* 
  0ms
 
@@ -15,8 +13,6 @@ Reason: Assume if you were not allowed to pick a single element multiple times, 
 Why not (2^n) but (2^t) (where n is the size of an array)?
 
 Assume that there is 1 and the target you want to reach is 10 so 10 times you can “pick or not pick” an element.
-
-
 
 Here No need to handle the case of duplicates as all candidates are unique and there is no chance of duplicate subset.
 
@@ -98,7 +94,6 @@ public:
     {
         vector<vector<int>>result;
         vector<int>comb;
-        sort(candidates.begin(),candidates.end());
         combinationSumUtility(candidates,0,target,result,comb);
         return result;
     }
