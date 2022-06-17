@@ -9,9 +9,7 @@ public:
         {
             if(m.find(target-A[i])!=m.end())
                 return {m[target-A[i]],i};
-
-            if(m.find(A[i])==m.end())
-                m[A[i]]=i;
+            m[A[i]]=i;
         }
         return {};
     }
