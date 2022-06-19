@@ -10,7 +10,8 @@ public:
 
         for(int i = 0;i<A.size()-maxPoints-1;i++)
         {
-            unordered_map<double,int> m; 
+            unordered_map<double,int> m;
+            //Since there are no duplicacy so we can start from i+1
             for(int j = i+1;j<A.size();j++)
             {
                 double slope =INT_MAX;
