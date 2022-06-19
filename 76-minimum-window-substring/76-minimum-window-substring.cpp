@@ -28,7 +28,7 @@ public:
                 high++;
             }
             //high will point to the next of desired substring.
-            while(low<high and count==0)
+            while(count==0)
             {
                 if(end==-1 or (end-start)>high-low)
                 {
