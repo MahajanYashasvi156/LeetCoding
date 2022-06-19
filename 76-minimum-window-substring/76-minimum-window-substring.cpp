@@ -3,9 +3,6 @@ public:
     
     string minWindow(string A, string B) 
     {
-        if(B.size()==0)
-        return "";
-
         unordered_map<char,int> Bmap;
 
         for(int i = 0;i<B.size();i++)
