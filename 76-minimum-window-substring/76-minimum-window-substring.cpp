@@ -1,6 +1,58 @@
 class Solution 
 {
 public:
+    string minWindow(string A, string B) 
+    {
+        unordered_map<char,int> Bmap;
+        for(int i = 0;i<B.size();i++)
+            Bmap[B[i]]++;
+
+        unordered_map<char,int> m;
+        int start = -1;
+        int end = -1;
+
+        int low = 0;
+        int high = 0;
+
+        int count = B.size();
+
+        while(high<A.size())
+        {
+            while(high<A.size() and count>0)
+            {  
+                m[A[high]]++;
+                if(m[A[high]]<=Bmap[A[high]])
+                {
+                    count--;
+                }
+                high++;
+            }
+            //high will point to the next of desired substring.
+            while(low<high and count==0)
+            {
+                if(end==-1 or (end-start)>high-low)
+                {
+                    start = low;
+                    end = high;
+                }  
+                m[A[low]]--;
+                if(m[A[low]]<Bmap[A[low]])
+                    count++;
+                low++;
+            }
+        }
+        if(end==-1)
+            return "";
+        return A.substr(start,end-start);
+    }
+};
+
+
+
+/*
+class Solution 
+{
+public:
     
     string minWindow(string A, string B) 
     {
@@ -54,3 +106,4 @@ public:
         return A.substr(low,high-low+1);
     }
 };
+*/
