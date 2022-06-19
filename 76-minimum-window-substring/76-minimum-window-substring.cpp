@@ -1,10 +1,10 @@
-class Solution {
+class Solution 
+{
 public:
     
     string minWindow(string A, string B) 
     {
         unordered_map<char,int> Bmap;
-
         for(int i = 0;i<B.size();i++)
             Bmap[B[i]]++;
 
@@ -13,7 +13,8 @@ public:
         string result = "";
         int low = -1;
         int high = -1;
-        for(int i = 0;i<A.size();i++)
+        int i = 0;
+        while(i<A.size())
         {
             if(Bmap.find(A[i])!=Bmap.end())
             {
@@ -49,10 +50,12 @@ public:
                     }
                     start++;
                     m[A[i]]--;
-                    i--;
                 }
-
+                else
+                    i++;
             }
+            else
+                i++;
         }
         if(high==-1)
             return "";
