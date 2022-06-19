@@ -10,49 +10,41 @@ public:
 
         unordered_map<char,int> m;
         int start = 0;
-        string result = "";
         int low = -1;
         int high = -1;
         int i = 0;
         while(i<A.size())
         {
-            if(Bmap.find(A[i])!=Bmap.end())
+            m[A[i]]++;
+    
+            bool notfound = false;
+            for(auto it = Bmap.begin();it!=Bmap.end();it++)
             {
-                m[A[i]]++;
+                char c = it->first;
+                int freq = it->second;
+                if(m[c]<freq)
+                {
+                    notfound = true;
+                    break;
+                }  
             }
-            if(Bmap.size()==m.size())
+            if(notfound==false)
             {
-                bool notfound = false;
-                for(auto it = Bmap.begin();it!=Bmap.end();it++)
+                if(high==-1 or (high-low+1)>i-start+1)
                 {
-                    char c = it->first;
-                    int freq = it->second;
-                    if(m[c]<freq)
-                    {
-                        notfound = true;
-                        break;
-                    }  
+                    low = start;
+                    high = i;
                 }
-                if(notfound==false)
+                if(m.find(A[start])!=m.end())
                 {
-                    if(high==-1 or (high-low+1)>i-start+1)
+                    m[A[start]]--;
+                    if(m[A[start]]==0)
                     {
-                        low = start;
-                        high = i;
-                    }
-                    if(m.find(A[start])!=m.end())
-                    {
-                        m[A[start]]--;
-                        if(m[A[start]]==0)
-                        {
-                            m.erase(A[start]);
-                        }                 
-                    }
-                    start++;
-                    m[A[i]]--;
+                        m.erase(A[start]);
+                    }                 
                 }
-                else
-                    i++;
+                start++;
+                m[A[i]]--;
             }
             else
                 i++;
