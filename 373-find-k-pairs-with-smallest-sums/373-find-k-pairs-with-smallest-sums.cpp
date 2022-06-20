@@ -12,7 +12,7 @@ public:
             for(int j = 0; j<nums2.size();j++)
             {
                 int sum = nums1[i]+nums2[j];
-                if(maxheap.size()!=k)
+                if(maxheap.size()<k)
                 {
                     maxheap.push({sum,{nums1[i],nums2[j]}});
                 }
