@@ -13,7 +13,6 @@ class Solution
             pairswithdiffsmallerthanDiff+=(j-i-1);
         }
         return pairswithdiffsmallerthanDiff>=k;
-        
     }
 public:
     int smallestDistancePair(vector<int>& nums, int k) 
