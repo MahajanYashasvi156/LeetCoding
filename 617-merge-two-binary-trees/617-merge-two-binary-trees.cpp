@@ -19,9 +19,9 @@ public:
         if(B==NULL)
             return A;
 
-        TreeNode* newNode = new TreeNode(A->val+B->val);
-        newNode->left = mergeTrees(A->left,B->left);
-        newNode->right = mergeTrees(A->right,B->right);
-        return newNode;
+        A->val = A->val+B->val;
+        A->left = mergeTrees(A->left,B->left);
+        A->right = mergeTrees(A->right,B->right);
+        return A;
     }
 };
