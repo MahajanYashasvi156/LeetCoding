@@ -18,9 +18,7 @@ class Solution
             return;
         path.push_back(root->val);
         if(root->left==NULL and root->right == NULL and root->val==targetSum)
-        {
             result.push_back(path);
-        }
         solve(root->left,targetSum-root->val,path,result);
         solve(root->right,targetSum-root->val,path,result);
     }
