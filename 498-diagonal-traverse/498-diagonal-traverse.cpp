@@ -17,8 +17,7 @@ public:
         {
             if(it.first%2==0)
                 reverse(it.second.begin(),it.second.end());
-            for(int e:it.second)
-                result.push_back(e);
+            result.insert(result.end(),it.second.begin(),it.second.end());
         }
         return result;
     }
