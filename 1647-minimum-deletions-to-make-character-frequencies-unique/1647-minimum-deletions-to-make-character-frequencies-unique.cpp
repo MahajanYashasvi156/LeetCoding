@@ -9,20 +9,19 @@ public:
         unordered_map<int,char> freq;
         for(int i = 0;i<s.size();i++)
         {
-            int curr = 1;
+            int currfreq = 1;
             while(s[i]==s[i+1])
             {
                 i++;
-                curr++;
+                currfreq++;
             }
             int currDeletions = 0;
-            while(curr>0 and freq.find(curr)!=freq.end())
+            while(currfreq>0 and freq.find(currfreq)!=freq.end())
             {
-                curr--;
+                currfreq--;
                 currDeletions++;
             }
-            //cout<<currDeletions<<" "<<s[i]<<" "<<curr<<endl;
-            freq[curr] = s[i];
+            freq[currfreq] = s[i];
             deletions = deletions+currDeletions;
             
         }
