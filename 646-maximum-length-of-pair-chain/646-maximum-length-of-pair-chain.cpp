@@ -13,7 +13,6 @@ public:
         int end = INT_MIN;
         for(int i=0;i<A.size();i++)
         {
-            cout<<A[i][0]<<" "<<A[i][1]<<endl;
             if(A[i][0]>end)
             {
                 count++;
