@@ -1,8 +1,39 @@
+class Solution 
+{
+public:
+    int numDecodings(string A) 
+    {
+        vector<int> dp(A.size()+1);
+
+        dp[0] = 1;
+        int num;
+        
+        for(int i = 1;i<=A.size();i++)
+        {
+            if(i>1)
+                num = (A[i-2]-'0')*10+A[i-1]-'0';
+            else 
+                num =  (A[i-1]-'0');
+            
+            if(A[i-1]=='0' and (num>27 or num==0))
+                 return 0;
+            else if(A[i-1]=='0')
+                dp[i] = dp[i-2];
+            else if(num<27 and num>9)
+                dp[i] = dp[i-1]+dp[i-2];
+            else 
+                dp[i] = dp[i-1];
+        }
+       return dp[dp.size()-1];
+    }
+};
+
+
 /*
 Link - https://leetcode.com/problems/decode-ways/
 TC - O(N)
 SC - O(N)
-*/
+
 class Solution
 {
 public:
@@ -56,3 +87,4 @@ public:
         return numOfEncodings[s.size()-1];
     }
 };
+*/
