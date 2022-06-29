@@ -38,6 +38,6 @@ public:
                         dp[i] = (dp[i] + dp[i-1])%1000000007;
             }
         }
-        return dp[A.size()]%1000000007;
+        return dp[A.size()];
     }
 };
