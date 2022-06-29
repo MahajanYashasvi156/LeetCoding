@@ -24,7 +24,7 @@ public:
             else 
                 dp[i] = dp[i-1];
         }
-       return dp[dp.size()-1];
+       return dp[A.size()];
     }
 };
 
