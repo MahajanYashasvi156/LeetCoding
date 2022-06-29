@@ -14,7 +14,6 @@ public:
         for(int i = 1;i<n;i++)
         {
             dp[i] = min(2*dp[i1],min(3*dp[i2],5*dp[i3]));
-
             if(dp[i]==2*dp[i1])
                 i1++;
             if(dp[i]==3*dp[i2])
@@ -22,7 +21,6 @@ public:
             if(dp[i]==5*dp[i3])
                 i3++;
         }
-        
         return dp[n-1];
     }
 };
