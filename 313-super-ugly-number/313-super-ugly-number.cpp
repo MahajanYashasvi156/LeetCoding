@@ -10,10 +10,8 @@ public:
         for(int i = 1;i<n;i++)
         {
             for(int j = 0;j<primes.size();j++)
-            {
                 dp[i] = min(primes[j]*dp[index[j]],dp[i]);
-            }
-            
+          
             for(int j = 0;j<primes.size();j++)
             {
                 if(dp[i]==primes[j]*dp[index[j]])
