@@ -1,3 +1,23 @@
+class Solution
+{
+public:
+    int numDecodings(string A)
+    {
+        vector<int> dp(A.size()+1);
+        dp[0] = 1;
+        for(int i = 1;i<=A.size();i++)
+        {
+            if(i>1 and (A[i-2]=='1' or A[i-2]=='2'&& A[i-1]<='6'))
+                dp[i] = dp[i]+dp[i-2];
+            if(A[i-1]>='1' and A[i-1]<='9')
+                dp[i] = dp[i] + dp[i-1];
+        }
+        return dp[A.size()];
+    }
+};
+
+
+/*
 class Solution 
 {
 public:
@@ -28,7 +48,7 @@ public:
     }
 };
 
-
+*/
 /*
 Link - https://leetcode.com/problems/decode-ways/
 TC - O(N)
