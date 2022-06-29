@@ -20,7 +20,6 @@ public:
             }
             else if(i>1 and A[i-2]=='*')
             {
-                
                 if(A[i-1]<='6')
                     dp[i] = (dp[i]+dp[i-2]*2)%1000000007;
                 else
@@ -30,7 +29,6 @@ public:
                         dp[i] = (dp[i] + dp[i-1])%1000000007; 
                 
             }
-            
             else
             {
                 if(i>1 and (A[i-2]=='1' or A[i-2]=='2'&& A[i-1]<='6'))
