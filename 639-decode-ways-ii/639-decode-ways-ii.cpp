@@ -9,12 +9,13 @@ public:
         {
             if(A[i-1]=='*')
             {
-               if(i>1 and A[i-2]=='2')
+                if(i>1 and A[i-2]=='2')
                     dp[i] = (dp[i-2]*6)%1000000007;
-                if(i>1 and A[i-2]=='1')
+                else if(i>1 and A[i-2]=='1')
                     dp[i] = (dp[i-2]*9)%1000000007;
-                if(i>1 and A[i-2]=='*')
+                else if(i>1 and A[i-2]=='*')
                     dp[i] = (dp[i-2]*15)%1000000007;
+                
                 dp[i]= (dp[i]+ dp[i-1]*9)%1000000007;
             }
             else if(i>1 and A[i-2]=='*')
@@ -24,6 +25,7 @@ public:
                     dp[i] = (dp[i]+dp[i-2]*2)%1000000007;
                 else
                      dp[i] = (dp[i]+dp[i-2])%1000000007;
+                
                 if(A[i-1]>='1' and A[i-1]<='9')
                         dp[i] = (dp[i] + dp[i-1])%1000000007; 
                 
