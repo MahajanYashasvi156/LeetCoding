@@ -1,3 +1,10 @@
+
+/*
+Link - https://leetcode.com/problems/maximal-square/
+TC - O(mn)
+SC - O(mn)
+*/
+
 class Solution 
 {
 public:
@@ -18,10 +25,11 @@ public:
                 else
                     dp[i][j]=min(dp[i-1][j-1],min(dp[i][j-1],dp[i-1][j]))+1;
             
-                
                 maxArea=max(maxArea,dp[i][j]);
             }
         }
         return maxArea*maxArea;
     }
 };
+
+
