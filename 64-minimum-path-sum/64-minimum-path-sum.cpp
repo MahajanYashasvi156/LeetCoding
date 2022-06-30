@@ -1,7 +1,33 @@
+class Solution
+{
+public:
+    int minPathSum(vector<vector<int>>& A) 
+    {
+        int m = A.size();
+        int n = A[0].size();
+        for(int i = m-1;i>=0;i--)
+        {
+            for(int j = n-1;j>=0;j--)
+            {
+                if(i==m-1 and j==n-1)
+                    continue;
+                if(i==m-1)
+                    A[i][j]+=A[i][j+1];
+                else if(j==n-1)
+                    A[i][j]+=A[i+1][j]; 
+                else 
+                    A[i][j]+=min(A[i][j+1],A[i+1][j]);
+            }
+        }
+        return A[0][0];
+    }
+};
+
+/* 
 class Solution 
 {
 public:
-    /* 
+    
     Link - https://leetcode.com/problems/minimum-path-sum/
 
     Recursion - TLE
@@ -65,7 +91,6 @@ public:
     Smaller problem is min distance of last cell (n-1,m-1) to target (n-1,m-1)
     Bigger problem is min distance of last cell (0,0) to target (n-1,m-1)
     Traversal - Hence, bottom to up, right to left.
-    */
     
     int minPathSumIterativeDP(vector<vector<int>>& grid,int row,int col,vector<vector<int>>& dp)
     {
@@ -99,3 +124,5 @@ public:
     }
     
 };
+*/
+    
