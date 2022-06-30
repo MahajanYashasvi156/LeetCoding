@@ -23,7 +23,6 @@ public:
                     dp[i][j] = dp[i-1][j];
             }
         }
-        cout<<dp[m][n]<<endl;
         return dp[m][n];
     }
 };
