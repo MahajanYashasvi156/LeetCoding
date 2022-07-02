@@ -1,3 +1,4 @@
+/*
 class Solution 
 {
 public:
@@ -23,8 +24,8 @@ public:
         return (dp[s.size()]-1+1000000007)%1000000007;
     }
 };
+*/
 
-/*
 class Solution 
 {
 public:
@@ -50,4 +51,3 @@ public:
         return (dp[s.size()-1]+1000000007)%1000000007;
     }
 };
-*/
