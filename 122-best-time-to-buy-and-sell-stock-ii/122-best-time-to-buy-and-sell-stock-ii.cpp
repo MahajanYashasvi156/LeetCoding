@@ -5,7 +5,7 @@ SC - O(1)
 
 Sum of all profits achievable following sequence : BSBSBSBS...
 */
-/*
+
 class Solution 
 {
 public:
@@ -31,8 +31,8 @@ public:
         return maxProfit;
     }
 };
-*/
 
+/*
 class Solution 
 {
 public:
@@ -60,3 +60,4 @@ public:
         return profit;
     }
 };
+*/
