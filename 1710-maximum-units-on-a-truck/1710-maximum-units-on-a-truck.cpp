@@ -6,9 +6,7 @@ public:
         priority_queue<pair<int,int>> maxheap;
         
         for(auto a:boxTypes)
-        {
             maxheap.push({a[1],a[0]});
-        }
         int maxi = 0;
         while(truckSize>0 and !maxheap.empty())
         {
