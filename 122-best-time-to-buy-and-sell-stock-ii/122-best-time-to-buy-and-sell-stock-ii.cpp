@@ -5,7 +5,7 @@ SC - O(1)
 
 Sum of all profits achievable following sequence : BSBSBSBS...
 */
-
+/*
 class Solution 
 {
 public:
@@ -29,5 +29,34 @@ public:
         }
         maxProfit+=(prices[sell]-prices[buy]);
         return maxProfit;
+    }
+};
+*/
+
+class Solution 
+{
+public:
+    int maxProfit(vector<int>& A) 
+    {
+        if(A.size()==1)
+            return 0;
+        int buy =-1;
+        int sell = -1;
+        int profit = 0;
+        for(int i = 0;i<A.size()-1;i++)
+        {
+            if(A[i]>A[i+1] and buy!=-1)
+            {
+                sell = A[i];
+                profit+=(sell-buy);
+                buy=-1;
+            }
+            else if(buy==-1 and A[i]<A[i+1])
+                buy = A[i];
+        }
+        if(buy!=-1)
+            profit+=A[A.size()-1]-buy;
+
+        return profit;
     }
 };
