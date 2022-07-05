@@ -3,9 +3,9 @@ class Solution
 public:
     int longestConsecutive(vector<int>& nums) 
     {
-        unordered_map<int,int> m;
+        unordered_map<int,bool> m;
         for(int a:nums)
-            m[a]=1;
+            m[a]=true;
         int count = 0;
         int maxSequence = 0;
         for(auto v: m)
