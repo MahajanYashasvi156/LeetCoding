@@ -9,6 +9,9 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+/*
 class Solution 
 {
         vector<TreeNode*> solve(int low,int high,vector<vector<vector<TreeNode*>>>&dp)
@@ -46,5 +49,40 @@ public:
         vector<vector<vector<TreeNode*>>>dp(A+1,vector<vector<TreeNode*>>(A+1));
         return solve(1,A,dp);
         
+    }
+};
+*/
+class Solution 
+{
+public:
+    vector<TreeNode*> solve(int low,int high)
+    {
+        vector<TreeNode*> ans;
+
+        if(low>high)
+            return {NULL};
+
+        for(int i = low;i<=high;i++)
+        {
+
+            auto lft = solve(low,i-1);
+            auto rgt = solve(i+1,high);
+
+            for(auto leftRootNode :lft)
+            {
+                for(auto rightRootNode:rgt)
+                {
+                    TreeNode* root = new TreeNode(i);
+                    root->left = leftRootNode;
+                    root->right = rightRootNode;
+                    ans.push_back(root);
+                }
+            }
+        }
+        return ans;
+    }
+    vector<TreeNode*> generateTrees(int n) 
+    {
+        return solve(1,n);
     }
 };
