@@ -1,3 +1,4 @@
+/*
 class Solution 
 {
     int countCells(vector<vector<int> > &A,int i,int j,bool &blue,bool &red,vector<vector<bool>> &visited)
@@ -51,10 +52,9 @@ public:
         return result;
     }
 };
+*/
 
-
-/*
-    class Solution 
+class Solution 
 {
         void countCells(vector<vector<int> > &A,vector<vector<bool>>&visited,int i,int j)
     {
@@ -107,4 +107,3 @@ public:
         return result;
     }
 };
-*/
