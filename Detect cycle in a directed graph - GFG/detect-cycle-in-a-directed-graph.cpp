@@ -5,128 +5,65 @@ using namespace std;
  // } Driver Code Ends
 class Solution 
 {
-    /*
-    Approach 2 - Using Topological sort(Modified BFS) with Indegree 0. 
-    TC - O(V+E) //For finding indegree also we require V+E + BFS Traversal.
-    SC - O(V)   //queue,visited,indegree.
-    
-    Intuition - If graph have cycle, then while performing topo sort, we will have 
-    some vertices unvisited because there indegree never became 0.
-    
-    */
-    void TopoIndegree(vector<int> adj[],vector<bool> &visited,queue<int>&q,vector<int>&indegree)
-	{
-    	  while(!q.empty())
-    	  {
-    	     int source = q.front();
-    	     q.pop();
-    	     
-            //Performing BFS traversal with a modification, 
-            //while traversing adjacent nodes, decrementing their indegrees(as if we removing the edge)
-            //if indegree became 0, then marking it visited and pushing it to our queue
-            //So modified BFS where node is called visited when the node have 0 indegree 
-    	     
-    	     for(int dest:adj[source])
-    	     {
-    	         indegree[dest]--;
-    	         if(indegree[dest]==0)
-    	           {
-    	              visited[dest]=true;
-    	              q.push(dest); 
-    	           } 
-    	     }
-    	  }
-	}
-  public:
-   
-    // Function to detect cycle in a directed graph.
-    bool isCyclic(int V, vector<int> adj[]) 
-    {
-       queue<int> q;
-	   vector<bool> visited(V+1);
-	   vector<int>indegree(V+1,0);
-	   
-	   //Find Indegree of all the nodes. 
-	   //Indegree of nodes is the number of incoming edges.
-	   for(int start=0;start<V;start++)
-	   {
-	       for(int end:adj[start])
-	       {
-	           indegree[end]++;
-	       }
-	   }
-	   
-	   //Push all the nodes to the queue whose indegree is zero.
-	   for(int i=0;i<V;i++)
-	   {
-	       if(indegree[i]==0)
-           {
-               visited[i]=true;
-               q.push(i); 
-           } 
-	   }
-	   
-	   //All nodes whose indegree 0 are already pushes into the queue so all components will be traversed.
-	    TopoIndegree(adj,visited,q,indegree);
-	    
-	    //After Topological Sort if any of the node is not visited.
-	    //That means its indegree not became 0 and were not added into the queue thus graph has cycle.
-	    for(int i=0;i<V;i++)
-	    {
-	        if(visited[i]==false)
-	            return true;
-	    }
-       return false;
-    }
-};
-/*
-Link - https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1/#
-
-TC - O(V + E)
-Aux SC - O(V)
-SC - O(2V)
-
-Approach - As it is directed graph, it will be having cycle if we get a node again  on the current DFS traversal
-
-bool checkCycleDFS(int src,vector<int> adj[],vector<bool>&visited,vector<bool>&dfsVisited)
-{
-   visited[src]=1;
-   dfsVisited[src]=1;
-   for(int start:adj[src])
-   {
-       if(visited[start]==false)
-       {
-            if(checkCycleDFS(start,adj,visited,dfsVisited))
-                return true;
-       }
-       //If start is visited & that too in the current DFS call, then cycle exists
-       else if(dfsVisited[start]==true)
-            return true;
-   }
-   //Unvisiting node as we are returning DFS call from that node.
-   dfsVisited[src]=0;
-   return false;
-}
-
-bool isCyclic(int V, vector<int> adj[]) 
-{
-    vector<bool> visited(V);
-    vector<bool> dfsVisited(V);
-    
-    for(int src=0;src<V;src++)
-    {
-        if(visited[src]==false)
+  private:
+    bool bfsTopoSort(vector<int> adj[], vector<int> &visited, queue<int> &nodes, vector<int> &indegree){
+        
+        
+        
+        //Performing BFS traversal with a modification, 
+		//while traversing adjacent nodes,decrementing their indegrees(as if we removing the edge)
+        //if indegree became 0, then marking it visited and pushing it to our queue
+        //So modified BFS where node is called visited when the node have 0 indegree 
+        int source;
+        while(!nodes.empty()){
+            source = nodes.front();
+            nodes.pop();
+            
+            for(int dest: adj[source]){
+                
+                if(visited[dest]==0){
+                    indegree[dest]--;
+                    if(indegree[dest]==0){
+                        visited[dest]=1;
+                        nodes.push(dest);
+                    }    
+                }
+            }
+        }
+        for(int node: visited)
         {
-            //Check cycle for component with src as source vertex.
-            if(checkCycleDFS(src,adj,visited,dfsVisited))
+            if(node==0)
                 return true;
         }
-        
+	    return false;
     }
-    return false;
-}
-*/
-
+public:
+    bool isCyclic(int V, vector<int> adj[]) {
+        
+	    vector<int> indegree(V,0);
+	    queue<int> nodes;
+	    vector<int> visited(V,0);
+	    
+	    //Calculating indegrees(no of incoming edges) of all vertices
+	    for(int source = 0; source<V; source++){
+	        for(int dest: adj[source])
+	            indegree[dest]++;
+	    }
+	    
+	    //If indegree of a vertex is 0 then pushing it to queue
+	    for(int i=0;i<V;i++)
+        {
+            if(indegree[i]==0){
+                nodes.push(i);
+                visited[i] = 1;
+            }
+        }
+        //All nodes whose indegree 0 are already pushed into the queue 
+        //so all components will be traversed, so just do BFS on queue
+        
+        return bfsTopoSort(adj, visited, nodes, indegree);
+	}
+};
 
 // { Driver Code Starts.
 
