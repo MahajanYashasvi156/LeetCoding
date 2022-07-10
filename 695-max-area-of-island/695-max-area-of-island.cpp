@@ -1,6 +1,5 @@
 class Solution 
 {
-    
     int bfs(vector<vector<int>>&A,int i,int j)
     {
         int m = A.size();
