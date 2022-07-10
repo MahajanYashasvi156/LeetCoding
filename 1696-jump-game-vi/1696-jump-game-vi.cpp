@@ -3,18 +3,20 @@ class Solution
 public:
     int maxResult(vector<int>& nums, int k) 
     {
-        int maxi = INT_MIN;
+        int n = nums.size();
         priority_queue<pair<int,int>> maxHeap;
-        maxHeap.push({nums[nums.size()-1],nums.size()-1});
-        int scoreTillNow = 0;
+        maxHeap.push({nums[n-1],n-1});
+        int scoreTillNow = nums[n-1];
         
-        for(int i = nums.size()-2;i>=0;i--)
+        for(int i = n-2;i>=0;i--)
         {
+            scoreTillNow = nums[i];
             while(maxHeap.top().second>i+k)
                 maxHeap.pop();
-            scoreTillNow = maxHeap.top().first;
-            maxHeap.push({nums[i]+scoreTillNow,i});
+            scoreTillNow += maxHeap.top().first;
+            maxHeap.push({scoreTillNow,i});
         }
-        return nums[0]+scoreTillNow;
+        
+        return scoreTillNow;
     }
 };
