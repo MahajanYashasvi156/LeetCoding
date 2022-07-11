@@ -13,7 +13,6 @@ class Solution
                 {
                     if(grid[i][j]==0 and visited[i][j]==0)
                         return;
-                    
                 }
             }
             result++;
