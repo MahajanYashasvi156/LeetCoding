@@ -22,13 +22,11 @@ public:
             TreeNode* child = NULL;
             
             if(m.find(a[0])==m.end())
-            {
                 m[a[0]] = new TreeNode(a[0]);
-            }
+
             if(m.find(a[1])==m.end())
-            {
                 m[a[1]] = new TreeNode(a[1]);
-            }
+        
             parent = m[a[0]];
             child = m[a[1]];
             
