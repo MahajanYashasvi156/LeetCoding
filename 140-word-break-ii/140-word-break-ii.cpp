@@ -1,6 +1,6 @@
 class Solution 
 {
-    vector<string> findsol(int start,string s,unordered_map<string,bool>&dict,unordered_map<int,vector<string>>&dp)
+    vector<string> findsol(int start,string s,unordered_map<string,bool>&dict,vector<vector<string>>&dp)
     {
         vector<string> result;
         string word ;
@@ -15,7 +15,7 @@ class Solution
                 else
                 {
                     vector<string> remaining;
-                    if(dp.find(start+i+1)!=dp.end())
+                    if(dp[start+i+1].size())
                          remaining = dp[start+i+1];
                     else
                     {
@@ -39,7 +39,7 @@ public:
         for(auto w:wordDict)
             dict[w] = true;
         
-        unordered_map<int,vector<string>>dp;
+        vector<vector<string>>dp(s.size());
         return findsol(0,s,dict,dp);
     }
 };
