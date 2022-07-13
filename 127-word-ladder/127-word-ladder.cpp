@@ -1,76 +1,58 @@
-// for speeding up our code
-static int speedUp=[](){
-    std::ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    return 0;
-}();
-class Solution {
+class Solution
+{
 public:
-    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        unordered_set<string> wordSet; // declare an unordered set
-        
-        bool isPresent = false; // to find whether end word is present in word list or not
-        
-        // Inserting all words from wordList to wordSet
-        for(string word: wordList)
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) 
+    {
+        wordList.push_back(beginWord);
+   
+        unordered_map<string,vector<string>> graph;
+
+        for(int i = 1;i<wordList.size();i++)
         {
-            if(endWord.compare(word) == 0) // if end word is present in wordList
+            for(int j = i-1;j>=0;j--)
             {
-                isPresent = true;
-            }
-            
-            wordSet.insert(word); // Inserting each word in wordSet
-        }
-        
-        if(isPresent == false) // if end word is not present in worrd List
-            return 0;
-        
-        queue<string> q; // declare an queue, for BFS traversal
-        q.push(beginWord); // push begi word into our queue
-        
-        int depth = 0; // for telling depth of the queue we are exploring
-        
-        // Implementing BFS
-        while(q.empty() == false)
-        {
-            depth = depth + 1; // if one level is over increment depth
-            
-            int levelSize = q.size(); // number of words present at a level
-            
-            // travelling in each level
-            while(levelSize--)
-            {
-                string curr = q.front();
-                q.pop();
-                
-                // checking for all possible depth word
-                for(int i = 0; i < curr.length(); i++) // for each index
+                int diffrent = 0;
+                for(int k = 0;k<wordList[i].size();k++)
                 {
-                    string temp = curr; 
-                    
-                    //checking out each possibility of alphabet
-                    for(char c = 'a'; c <= 'z'; c++)
-                    {
-                        temp[i] = c;
-                        
-                        if(curr.compare(temp) == 0) // skipping the same word
-                            continue;
-                        
-                        if(temp.compare(endWord) == 0) // if matches with end word
-                            return depth + 1;
-                        
-                        // if present in word set
-                        if(wordSet.find(temp) != wordSet.end())
-                        {
-                            q.push(temp);
-                            wordSet.erase(temp);
-                        }
-                    }
+                    if(wordList[i][k]!=wordList[j][k])
+                        diffrent++;
+                }
+                if(diffrent == 1)
+                {
+                    graph[wordList[i]].push_back(wordList[j]);
+                    graph[wordList[j]].push_back(wordList[i]);
                 }
             }
         }
-        
-        return 0; // and at last, we still not able to find our end word.
+
+        queue<string> q;
+        unordered_map<string,bool>visited;
+
+        q.push(beginWord);
+        visited[beginWord]=true;
+        int steps = 1;
+
+        while(!q.empty())
+        {
+            int s = q.size();
+            while(s--)
+            {
+                string currstr = q.front();
+                q.pop();
+                if(currstr == endWord)
+                    return steps;
+
+                for(auto next : graph[currstr])
+                {
+                    if(visited.find(next)==visited.end())
+                    {
+                        visited[next]=true;
+                        q.push(next);
+                    }
+                }
+            }
+            steps++;
+        }
+        return 0;
     }
 };
