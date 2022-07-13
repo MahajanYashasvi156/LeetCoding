@@ -9,13 +9,11 @@ public:
         vector<vector<int>> possibleHeight(101);
         
         for(auto r:rectangles)
-        {
             possibleHeight[r[1]].push_back(r[0]);
-        }
+
         for(int i = 0;i<possibleHeight.size();i++)
-        {
             sort(possibleHeight[i].begin(),possibleHeight[i].end());
-        }
+    
         for(int i = 0;i<n;i++)
         {
             int x = points[i][0];
