@@ -16,6 +16,8 @@ public:
                 {
                     if(wordList[i][k]!=wordList[j][k])
                         diffrent++;
+                    if(diffrent>1)
+                        break;
                 }
                 if(diffrent == 1)
                 {
