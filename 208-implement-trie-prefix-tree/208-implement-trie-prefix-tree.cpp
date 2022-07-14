@@ -1,32 +1,32 @@
-struct Node
+class Node
 {
     Node* links[26];
     bool flag = false;
-    
-    bool containsKey(char c)
-    {
-        return links[c-'a']!=NULL;
-    }
-    
-    void putKey(char c,Node* node)
-    {
-        links[c-'a'] = node;
-    }
-    
-    Node* getKey(char c)
-    {
-        return links[c-'a'];
-    }
-    
-    void setEnd()
-    {
-        flag = true;
-    }
-    
-    bool isEnd()
-    {
-        return flag;
-    }
+    public:
+        bool containsKey(char c)
+        {
+            return links[c-'a']!=NULL;
+        }
+
+        void putKey(char c,Node* node)
+        {
+            links[c-'a'] = node;
+        }
+
+        Node* getKey(char c)
+        {
+            return links[c-'a'];
+        }
+
+        void setEnd()
+        {
+            flag = true;
+        }
+
+        bool isEnd()
+        {
+            return flag;
+        }
 };
 class Trie 
 {
