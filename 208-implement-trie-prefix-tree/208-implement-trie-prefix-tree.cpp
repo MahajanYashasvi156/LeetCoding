@@ -1,3 +1,17 @@
+/*
+Code Link -https://leetcode.com/problems/implement-trie-prefix-tree/
+
+TC - 
+void insert(String word) - O(len(word))
+boolean search(String word) - O(len(word))
+boolean startsWith(String prefix) - O(len(word))
+
+Link - https://www.youtube.com/watch?v=K5pcpkEMCN0&list=PLgUwDviBIf0pcIDCZnxhv0LkHf5KzG9zp&index=2
+
+SC - 
+
+*/
+
 class Node
 {
     Node* links[26];
