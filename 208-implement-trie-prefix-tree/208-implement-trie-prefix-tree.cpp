@@ -1,92 +1,89 @@
-/*
-Code Link -https://leetcode.com/problems/implement-trie-prefix-tree/
-
-TC - 
-void insert(String word) - O(len(word))
-boolean search(String word) - O(len(word))
-boolean startsWith(String prefix) - O(len(word))
-
-Link - https://www.youtube.com/watch?v=K5pcpkEMCN0&list=PLgUwDviBIf0pcIDCZnxhv0LkHf5KzG9zp&index=2
-
-SC - 
-
-*/
-
 struct Node
 {
-    Node *links[26];
+    Node* links[26];
     bool flag = false;
     
     bool containsKey(char c)
     {
-        if(links[c-'a']!=NULL)
-            return true;
-        return false;
+        return links[c-'a']!=NULL;
     }
     
-    void put(char c, Node *node)
+    void putKey(char c,Node* node)
     {
         links[c-'a'] = node;
     }
     
-    Node* set(char c)
+    Node* getKey(char c)
     {
         return links[c-'a'];
+    }
+    
+    void setEnd()
+    {
+        flag = true;
+    }
+    
+    bool isEnd()
+    {
+        return flag;
     }
 };
 class Trie 
 {
-    Node *root;
+    Node* root = NULL;
 public:
     Trie() 
     {
-        root = new Node();   
+        root = new Node();
     }
     
     void insert(string word) 
     {
-        Node * node = root;
-        for(int i=0;i<word.length();i++)
+        Node* node = root;
+        
+        for(int i = 0;i<word.size();i++)
         {
-            if(node->containsKey(word[i])==false)
+            if(!node->containsKey(word[i]))
             {
-                node->put(word[i],new Node());
+                node->putKey(word[i],new Node());
             }
-            node = node->set(word[i]);
+            
+            node = node->getKey(word[i]);
         }
         
-        node->flag = true;
+        node->setEnd();
     }
     
     bool search(string word) 
     {
-        Node * node = root;
-        for(int i=0;i<word.length();i++)
+        Node* node = root;
+        
+        for(int i = 0;i<word.size();i++)
         {
-            if(node->containsKey(word[i])==false)
+            if(!node->containsKey(word[i]))
             {
-               return false;
+                return false;
             }
-            node = node->set(word[i]);
+            node = node->getKey(word[i]);
         }
         
-        return node->flag;
-        
+        return node->isEnd();
     }
     
     bool startsWith(string prefix) 
     {
-        Node * node = root;
-        for(int i=0;i<prefix.length();i++)
+        Node* node = root;
+        
+        for(int i = 0;i<prefix.size();i++)
         {
-            if(node->containsKey(prefix[i])==false)
+            if(!node->containsKey(prefix[i]))
             {
-               return false;
+                return false;
             }
-            node = node->set(prefix[i]);
+            node = node->getKey(prefix[i]);
         }
         
-        return true;    
+        return true;
     }
 };
 
