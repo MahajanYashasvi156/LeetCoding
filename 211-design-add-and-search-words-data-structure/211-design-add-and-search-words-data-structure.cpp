@@ -24,8 +24,7 @@ public:
             {
                 return false;
             }
-            node = node->links[word[i]-'a'];
-            return searchWord(node,word,i+1);
+            return searchWord(node->links[word[i]-'a'],word,i+1);
         }
         else
         {
@@ -39,8 +38,7 @@ public:
                 
             }
             return false;
-        }
-        return false; 
+        } 
     }
     
     void addWord(string word) 
