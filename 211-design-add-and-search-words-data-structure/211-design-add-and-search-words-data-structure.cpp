@@ -1,35 +1,9 @@
-struct Node
+class Node
 {
-    Node *links[26];
-    bool flag = false;
-    
-    bool containsKey(char c)
-    {
-        if(links[c-'a']==NULL)
-            return false;
-        return true;
-    }
-    
-    void put(char c, Node* node)
-    {
-        links[c-'a']=node;
-    }
-    
-    Node* get(char c)
-    {
-        return links[c-'a'];
-    }
-    void setEnd()
-    {
-        flag = true;
-    }
-    
-   bool isEnd()
-   {
-       return flag;
-   }
+    public:
+        Node *links[26];
+        bool flag = false;
 };
-
 
 class WordDictionary 
 {
@@ -42,24 +16,24 @@ public:
     bool searchWord(Node* node,string word,int i) 
     {
         if(i==word.size())
-            return node->isEnd();
+            return node->flag;
         
         if(word[i]!='.')
         {
-            if(node->containsKey(word[i])==false)
+            if(node->links[word[i]-'a']==NULL)
             {
                 return false;
             }
-            node = node->get(word[i]);
+            node = node->links[word[i]-'a'];
             return searchWord(node,word,i+1);
         }
         else
         {
             for(char ch = 'a';ch<='z';ch++)
             {
-                if(node->containsKey(ch))
+                if(node->links[ch-'a'])
                 {
-                    if(searchWord(node->get(ch),word,i+1))
+                    if(searchWord(node->links[ch-'a'],word,i+1))
                         return true;
                 }
                 
@@ -74,13 +48,13 @@ public:
         Node *node = root;
         for(char c : word)
         {
-            if(node->containsKey(c)==false)
+            if(node->links[c-'a']==NULL)
             {
-                node->put(c,new Node());
+                node->links[c-'a']=new Node();;
             }
-            node = node->get(c);
+            node = node->links[c-'a'];
         }
-        node->setEnd();
+        node->flag = true;
     }
     
     bool search(string word) 
