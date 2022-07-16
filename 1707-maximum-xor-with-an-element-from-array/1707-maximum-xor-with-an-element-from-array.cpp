@@ -80,7 +80,7 @@ public:
         sort(queryIndex.begin(),queryIndex.end());
         
         vector<int> result(queries.size());
-        Trie* root = new Trie();
+        Trie root;
         int i = 0;
         for(auto q: queryIndex)
         {
@@ -90,10 +90,10 @@ public:
             
             while(i<nums.size() and nums[i]<=maxBound)
             {
-                root->insert(nums[i]);
+                root.insert(nums[i]);
                 i++;
             }
-            result[index] = root->getMaxXor(x);
+            result[index] = root.getMaxXor(x);
             
         }
         return result;
