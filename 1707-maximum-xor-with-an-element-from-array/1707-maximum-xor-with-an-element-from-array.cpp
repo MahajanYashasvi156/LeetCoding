@@ -25,7 +25,7 @@ class Trie
         {
             root = new Node();
         }
-    
+
         void insert(int n)
         {
             Node* node = root;
