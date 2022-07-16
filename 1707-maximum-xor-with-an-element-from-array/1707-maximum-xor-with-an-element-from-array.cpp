@@ -43,6 +43,7 @@ class Trie
     
         int getMaxXor(int n)
         {
+            //If there exist no element smaller than bound then trie will be emepty so return -1.
             if(root->containsKey(1)==false and root->containsKey(0)==false)
                 return -1;
             int ans = 0;
