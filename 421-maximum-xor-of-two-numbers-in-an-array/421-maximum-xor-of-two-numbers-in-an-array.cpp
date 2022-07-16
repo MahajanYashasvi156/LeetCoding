@@ -53,9 +53,7 @@ class Solution
                 maxXor = 1<<i | maxXor;
             }
             else
-            {
                 node = node->get(bit);
-            }
         }
         return maxXor;
     }
