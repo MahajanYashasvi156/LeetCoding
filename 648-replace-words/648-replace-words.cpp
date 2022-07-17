@@ -40,7 +40,7 @@ class Trie
                 if(root->flag==true)
                     return rootWord;
             }
-            return succ;
+            return rootWord;
         }
 };
 class Solution 
