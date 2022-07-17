@@ -11,7 +11,7 @@ public:
        
         for(int i = 0;i<s.size();i++)
         {
-            for(int j = i;j>=0;j--)
+            for(int j = i;j>=0 and j>i-20;j--)
             {
                 if(dict[s.substr(0,i+1)] or (dp[j] and dict[s.substr(j+1,i-j)]))
                 {
