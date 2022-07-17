@@ -12,7 +12,7 @@ public:
     vector<int> lexicalOrder(int n)
     {
         vector<int> ans;
-        for(int i = 1;i<=9;i++)
+        for(int i = 1;i<=9;i++) //first digit
             dfs(i,n,ans);
         return ans;
     }
