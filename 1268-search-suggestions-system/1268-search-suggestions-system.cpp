@@ -29,20 +29,13 @@ class Trie
     
         void completeSuggestion(Node* curr,string s,vector<string>&ans)
         {
-            if(ans.size()==3)
-                return;
-            
             if(curr->flag==true)
-            {
                 ans.push_back(s);
-            }
             
             for(char c = 'a';c<='z';c++)
             {
-                if(curr->links[c-'a']!=NULL)
-                {
+                if(curr->links[c-'a']!=NULL and ans.size()<3)
                     completeSuggestion(curr->links[c-'a'],s+c,ans);
-                }
             }
         }
         vector<string> search(string s)
