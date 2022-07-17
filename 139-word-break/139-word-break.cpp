@@ -11,9 +11,9 @@ public:
        
         dp[0] = 1;
         
-        for(int i = 1;i<=s.size();i++) 
+        for(int i = 1;i<=s.size();i++) // at i-1 last word ends.
         {
-            for(int j = i-1;j>=0;j--)//end of last word
+            for(int j = i-1;j>=0 and j>=i-20;j--)//start of the last word.
             {
                 if(dp[j] and dict[s.substr(j,i-j)])
                 {
