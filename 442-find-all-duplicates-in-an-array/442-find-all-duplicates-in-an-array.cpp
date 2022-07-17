@@ -1,4 +1,5 @@
-class Solution {
+class Solution 
+{
 public:
     vector<int> findDuplicates(vector<int>& nums) 
     {
@@ -10,16 +11,11 @@ public:
                 i--;
             }
         }
-        
         vector<int> result;
-        
         for(int i = 0;i<nums.size();i++)
         {
-            
             if(nums[i]!=i+1)
-            {
                 result.push_back(nums[i]);
-            }
         }
         return result;
     }
