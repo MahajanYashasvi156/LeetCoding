@@ -5,11 +5,8 @@ class Solution
         if(num>n)
             return ;
         ans.push_back(num);
-        
         for(int i = 0;i<=9;i++)
-        {
              dfs(num*10+i,n,ans);
-        }
     }
 public:
     vector<int> lexicalOrder(int n)
