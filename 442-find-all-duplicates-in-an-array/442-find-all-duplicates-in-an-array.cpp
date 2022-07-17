@@ -5,12 +5,10 @@ public:
     {
         for(int i = 0;i<nums.size();i++)
         {
-            if(nums[i]!=nums[nums[i]-1])
-            {
+            while(nums[i]!=nums[nums[i]-1])
                 swap(nums[i],nums[nums[i]-1]);
-                i--;
-            }
         }
+        
         vector<int> result;
         for(int i = 0;i<nums.size();i++)
         {
