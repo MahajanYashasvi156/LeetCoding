@@ -57,11 +57,13 @@ public:
         
         for(string s:words)
         {
-            if(s.size()>result.size() and trie.search(s))
+            int ssize =s.size();
+            int rsize = result.size();
+            if(ssize > rsize and trie.search(s))
             {
                 result = s;
             }
-            if(s.size()==result.size() and result>s and trie.search(s))
+            if(ssize ==rsize and result>s and trie.search(s))
             {
                 result = s;
             }
