@@ -34,7 +34,7 @@ class Trie
             
             for(char c = 'a';c<='z';c++)
             {
-                if(curr->links[c-'a']!=NULL and ans.size()<3)
+                if(ans.size()<3 && curr->links[c-'a']!=NULL)
                     completeSuggestion(curr->links[c-'a'],s+c,ans);
             }
         }
@@ -52,7 +52,6 @@ class Trie
             }
             completeSuggestion(curr,s,ans);
             return ans;
-            
         }
         
 };
