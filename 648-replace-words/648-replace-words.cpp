@@ -64,9 +64,7 @@ public:
                 ans+=" ";
             }
             else
-            {
                 succ+=s;
-            }
         }
         
         ans+=root.searchRoot(succ);
