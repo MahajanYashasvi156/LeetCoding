@@ -7,19 +7,21 @@ public:
         for(auto s:wordDict)
             dict[s] = true;
     
-        vector<bool> dp(s.size(),false);
+        vector<bool> dp(s.size()+1,false);
        
-        for(int i = 0;i<s.size();i++)
+        dp[0] = 1;
+        
+        for(int i = 1;i<=s.size();i++) 
         {
-            for(int j = i;j>=0 and j>i-20;j--)
+            for(int j = i-1;j>=0;j--)//end of last word
             {
-                if(dict[s.substr(0,i+1)] or (dp[j] and dict[s.substr(j+1,i-j)]))
+                if(dp[j] and dict[s.substr(j,i-j)])
                 {
                     dp[i] = true;
                     break;
                 }   
             }
         }
-        return dp[s.size()-1];
+        return dp[s.size()];
     }
 };
