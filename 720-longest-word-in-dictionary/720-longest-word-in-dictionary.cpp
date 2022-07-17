@@ -32,8 +32,6 @@ class Trie
         Node* curr = node;
         for(int i = 0;i<s.size();i++)
         {
-            if(curr->links[s[i]-'a']==NULL)
-                return false;
             curr = curr->links[s[i]-'a'];
             if(curr->flag==false)
                 return false;
