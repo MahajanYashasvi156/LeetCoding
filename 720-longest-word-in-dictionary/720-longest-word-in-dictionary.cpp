@@ -61,7 +61,7 @@ public:
             {
                 result = s;
             }
-            if(s.size()==result.size() and result.compare(s)>0 and trie.search(s))
+            if(s.size()==result.size() and result>s and trie.search(s))
             {
                 result = s;
             }
