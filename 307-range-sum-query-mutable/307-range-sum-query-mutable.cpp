@@ -4,7 +4,7 @@ class SegmentTree
     public: 
         SegmentTree(int n) 
         {
-            int totalNodes = 2*n ;
+            int totalNodes = 2*n - 1 ;
             int height = ceil(log2(totalNodes));
             int s = pow(2,height);
             st.resize(s);
