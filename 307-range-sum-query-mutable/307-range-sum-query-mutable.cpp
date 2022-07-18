@@ -6,9 +6,8 @@ class SegmentTree
         {
             int totalNodes = 2*n - 1 ;
             int height = ceil(log2(totalNodes));
-            int s = pow(2,height);
-            st.resize(s);
-            
+            int size = pow(2,height);
+            st.resize(size);
         }
         void BuildTree(int i,vector<int>&nums,int l, int r)
         {
@@ -17,12 +16,9 @@ class SegmentTree
                 st[i] = nums[l];
                 return;
             }
-            
             int mid = (l+r)/2;
-            
             BuildTree(2*i+1,nums,l,mid);
             BuildTree(2*i+2,nums,mid+1,r);
-            
             st[i] = st[2*i+1]+st[2*i+2];
         }
     
@@ -30,27 +26,22 @@ class SegmentTree
         {
             if(sr<l || sl>r)
                 return 0;
-            
             if(sl>=l and sr<=r)
                 return st[i];
-            
             int mid = (sl+sr)/2;
-            
             return calculateSum(2*i+1,sl,mid,l,r) + calculateSum(2*i+2,mid+1,sr,l,r);
         }
     
-        void updateVal(int i,int index,int val,int sl,int sr)
+        void updateVal(int i,int index,int change,int sl,int sr)
         {
             if(sr<index || sl>index)
                 return ;
-            
-            st[i] = st[i]+val;
-
+            st[i] = st[i]+change;
             if(sl!=sr)
             {
                 int mid = (sl+sr)/2;
-                updateVal(2*i+1,index,val,sl,mid);
-                updateVal(2*i+2,index,val,mid+1,sr);
+                updateVal(2*i+1,index,change,sl,mid);
+                updateVal(2*i+2,index,change,mid+1,sr);
             }
         }
 };
@@ -59,20 +50,18 @@ class NumArray
     SegmentTree* st;
     vector<int> nums;
 public:
-    NumArray(vector<int>& n) 
+    NumArray(vector<int>& arr) 
     {
-        for(int e:n)
-            nums.push_back(e);
+        nums.insert(nums.end(),arr.begin(),arr.end());
         st = new SegmentTree(nums.size());
         st->BuildTree(0,nums, 0, nums.size()-1);
     }
     
     void update(int index, int val) 
     {
-        int diff = val-nums[index];
-        
-        st->updateVal(0,index,diff,0,nums.size()-1);
-        nums[index] = val;
+        int change = val-nums[index];
+        st->updateVal(0,index,change,0,nums.size()-1);
+        nums[index] = val; //update original array as well.
     }
     
     int sumRange(int left, int right) 
