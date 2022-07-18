@@ -18,10 +18,13 @@ public:
             auto it = booking.begin();
             std::advance(it,mid);
         
-            if(it->second<=start and start<it->first or it->second<end and end<it->first or start<=it->second and end>=it->first)
+            int prevend = it->first;
+            int prevstart = it->second;
+            
+            if(prevstart<=start and start<prevend or prevstart<end and end<prevend or start<=prevstart and end>=prevend)
                 return false;
             
-            if(start>=it->first)
+            if(start>=prevend)
                 low = mid+1;
             else
                 high = mid-1;
