@@ -21,7 +21,7 @@ public:
             int prevend = it->first;
             int prevstart = it->second;
             
-            if(prevstart<=start and start<prevend or prevstart<end and end<prevend or start<=prevstart and end>=prevend)
+            if(prevstart<=start and start<prevend or prevstart<end and end<prevend or start<prevstart and end>=prevend)
                 return false;
             
             if(start>=prevend)
