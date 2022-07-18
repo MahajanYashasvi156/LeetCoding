@@ -11,7 +11,7 @@ class Solution
 public:
     vector<vector<int>> reconstructQueue(vector<vector<int>>& people) 
     {
-         vector<vector<int>> ans(people.size(),vector<int>(2,-1));
+         vector<vector<int>> ans(people.size());
         
         sort(people.begin(),people.end(),comp);
         
@@ -22,7 +22,7 @@ public:
             int count = 0;
             for(int i = 0;i<people.size();i++)
             {
-                if(ans[i][0]==-1)
+                if(ans[i].size()==0)
                     count++;
                 if(count == k+1)
                 {
