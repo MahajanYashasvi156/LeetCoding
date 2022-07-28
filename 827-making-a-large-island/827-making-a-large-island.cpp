@@ -1,3 +1,19 @@
+/*
+Link - https://leetcode.com/problems/making-a-large-island/submissions/
+
+Brute Force - Replace each of the 0 with 1 one by one then find the size of the compoennt including that cell using dfs. 
+
+Optimized Approach - Assign an unique ID to all the cells of the component. Store the size of the component corresponding to its ID in a map to access later.
+
+Note :- After this all 1 will get replaced by its corresponding component id in the grid. Only 0 will remain as it is. 
+
+Traverse the grid if there is 0 then correponding size of component = 1(currentCell) + size of unique components of 4 directions.
+
+If there is no Zero then the complete grid is a single component.
+
+TC - O(N^2)
+SC - O(N^2) 
+*/
 class Solution 
 {
     void dfs(vector<vector<int>>& grid,int &id,int &count,int i, int j)
