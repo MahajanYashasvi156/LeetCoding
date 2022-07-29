@@ -1,3 +1,16 @@
+/*
+BFS + DP
+
+Time Complexity - O(M*N*K)
+Space Complexity- O(M*N)
+
+here visited works as DP which stores the maximum obstacles that can be removable from a cell.
+
+So if  a cell is not visited earlier then we have to visit it.
+But if the cell is visited earlier but this time we can eliminate more number of obstacles then also we need to visit that cell again. Because it might possible in earlier we might not able to visit destination cell because of shortage of k value.
+
+
+*/
 class Solution 
 {
 public:
