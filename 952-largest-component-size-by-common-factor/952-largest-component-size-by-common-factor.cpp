@@ -16,17 +16,18 @@ class Solution
         {
             parent[absoluteParentX] = absoluteParentY;
         }
-            
     }
 public:
     int largestComponentSize(vector<int>& nums) 
     {
+        //create a parent array of maximum element size.
         int n = *max_element(nums.begin(),nums.end());
-        
         vector<int> parent(n+1,-1);
+        //Initially all elements are individual components.
         for(int i = 0;i<=n;i++)
             parent[i] = i;
         
+        //For each number find the factors and connect them as a single compoent.
         for(int num : nums)
         {
             for(int j = 2;j*j<=num;j++)
