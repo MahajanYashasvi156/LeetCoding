@@ -32,7 +32,7 @@ public:
         {
             for(int j = 2;j*j<=num;j++)
             {
-                if(num%j==0)
+                if(num%j==0) 
                 {
                     unionFind(num,j,parent);
                     unionFind(num,num/j,parent);
@@ -44,6 +44,7 @@ public:
         unordered_map<int,int> freq;
         for(int i = 0;i<nums.size();i++)
         {
+            //Two elements will be in same component if their absolute parents are same.
             freq[findParent(nums[i],parent)]++;
             ans = max(ans,freq[findParent(nums[i],parent)]);
         }
