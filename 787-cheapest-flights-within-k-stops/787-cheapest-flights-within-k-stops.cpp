@@ -1,3 +1,11 @@
+/*
+Dijisktra Algorithm - 
+
+Here there are two factors to decide the shortest path 
+1. Cost should be minimum
+2. If at any node we are reaching with lesser level then the chances of reaching to the destination increases because it may possible that cost to reach at current cell is high but it may be lead to us ans. 
+
+*/
 typedef pair<int,pair<int,int>> p;//cost, dest,level
 class Solution 
 {
@@ -6,6 +14,7 @@ public:
     {
         vector<vector<pair<int,int>>> adj(n);
         priority_queue<p,vector<p>,greater<p>> minHeap;
+        //distance + level
         vector<pair<int,int>> distance(n,{INT_MAX,INT_MAX});
         for(auto a: flights)
         {
