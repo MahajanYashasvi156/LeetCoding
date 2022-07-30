@@ -1,3 +1,7 @@
+/*
+TC - O(words1.size() + words2.size())
+SC - O(1)
+*/
 class Solution {
 public:
     vector<string> wordSubsets(vector<string>& words1, vector<string>& words2) 
