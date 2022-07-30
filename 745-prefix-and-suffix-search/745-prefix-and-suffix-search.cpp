@@ -54,7 +54,6 @@ public:
             {
                 s = words[i][j]+s;
                 trie.insert(s+"{"+words[i],i);
-                //cout<<s+"{"+words[i]<<endl;
             }
         }
     }
