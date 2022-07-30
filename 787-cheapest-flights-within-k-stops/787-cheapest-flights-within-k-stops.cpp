@@ -14,8 +14,8 @@ public:
     {
         vector<vector<pair<int,int>>> adj(n);
         priority_queue<p,vector<p>,greater<p>> minHeap;
-        //distance + level
-        vector<pair<int,int>> distance(n,{INT_MAX,INT_MAX});
+        
+        vector<int> stops(n,INT_MAX);
         for(auto a: flights)
         {
             int start = a[0];
@@ -25,32 +25,30 @@ public:
         }
         
         minHeap.push({0,{src,0}});
-        distance[src]={0,0};
-        
+      
         while(!minHeap.empty())
         {
             int weight = minHeap.top().first;
             int start = minHeap.top().second.first;
             int level = minHeap.top().second.second;
             minHeap.pop();
-                  
+             
+            
             if(start==dst)
                 return weight;
+            if(level>k)
+                continue;
+            if(stops[start]<level)
+                continue;
+            stops[start]= level;
+                
             for(auto a:adj[start])
             {
                 int dest = a.first;
                 int price = a.second;
                 
                 //If we have atleast one more stop left then we can directly move to next stop without knowing whther it is destination or not. But if we have no more stops left the next move must be at destination only.
-                if(level==k and dest==dst or level<k)
-                {
-                    if(distance[dest].first>weight+price or distance[dest].second>level+1)
-                    {
-                        distance[dest].first=weight+price;
-                        distance[dest].second = level+1;
-                        minHeap.push({distance[dest].first,{dest,level+1}});
-                    }     
-                }
+                minHeap.push({weight+price,{dest,level+1}}); 
             }
         }
         return -1;
