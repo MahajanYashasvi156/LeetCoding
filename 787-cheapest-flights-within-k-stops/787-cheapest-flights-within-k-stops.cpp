@@ -41,6 +41,7 @@ public:
                 int dest = a.first;
                 int price = a.second;
                 
+                //If we have atleast one more stop left then we can directly move to next stop without knowing whther it is destination or not. But if we have no more stops left the next move must be at destination only.
                 if(level==k and dest==dst or level<k)
                 {
                     if(distance[dest].first>weight+price or distance[dest].second>level+1)
