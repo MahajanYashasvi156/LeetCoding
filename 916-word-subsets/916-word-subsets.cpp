@@ -11,7 +11,7 @@ public:
                 freq[i][c]++;
             }
         }
-        
+        //Store the maximum frequency of each character in each word of B. So that we just need to find whether a word in words1 has that much frequency in it. If no then that cant be universal list.
         unordered_map<char,int> word2Freq;
         for(int i = 0;i<words2.size();i++)
         {
