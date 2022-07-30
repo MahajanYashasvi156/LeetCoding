@@ -1,8 +1,26 @@
+/*
+We need to find a string which has both pref and suff in it. 
+
+So we need to store strings in a trie such that both prefixes and suffices can be checked optimally. 
+
+We store string "apple" as - 
+
+apple{apple
+pple{apple
+ple{apple
+le{apple
+e{apple
+
+"{" asciee value of this character is just after z. Before { , suffix and after { prefix is checked.
+
+we can store all suffixes and prefixes separately but to identify whether both suffic and prefix matched with same string would be cumbersome. So completerstring(for prefix) followed by suffix is maintained.
+
+*/
 class Node
 {
     public:
     Node* links[27];
-    int i = -1;
+    int index = -1;
 };
 class Trie
 {
@@ -23,7 +41,7 @@ class Trie
             if(curr->links[s[i]-'a']==NULL)
                 curr->links[s[i]-'a'] = new Node();
             curr = curr->links[s[i]-'a'];
-            curr->i = max(index,curr->i);
+            curr->index = max(index,curr->index);
         }
     }
     
@@ -38,7 +56,7 @@ class Trie
             curr = curr->links[s[i]-'a'];
             
         }
-        return curr->i;
+        return curr->index;
     }
 };
 class WordFilter 
