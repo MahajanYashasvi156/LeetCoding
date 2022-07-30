@@ -18,12 +18,13 @@ class Solution
         for(int i = 0;i<row.size();i++)
         {
             sum = sum + row[i];
+            \
+           auto it = prefixSum.lower_bound(sum-k);
+          
+           if(it!=prefixSum.end())
+                    maxi = max(maxi,sum-*it);
         
-            auto it = prefixSum.lower_bound(sum-k);
-                
-            if(it!=prefixSum.end())
-                maxi = max(maxi,sum-*it);
-        
+          
             prefixSum.insert(sum);
         }
       
