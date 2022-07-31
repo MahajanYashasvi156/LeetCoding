@@ -7,13 +7,13 @@ class Solution
 {
     void dfs(vector<vector<int>>&adj,int par, int src,vector<int>&ans,vector<int>&count)
     {
-        for(int n : adj[src])
+        for(int neigbour : adj[src])
         {
-            if(n==par) continue;
-            dfs(adj,src,n,ans,count);
+            if(neigbour==par) continue;
+            dfs(adj,src,neigbour,ans,count);
             
-            ans[src]+=(ans[n]+count[n]);
-            count[src] += count[n];
+            ans[src]+=(ans[neigbour]+count[neigbour]);
+            count[src] += count[neigbour];
         }
         count[src]+=1;
     }
