@@ -9,8 +9,8 @@ class Solution
 public:
     int nthMagicalNumber(int n, int a, int b) 
     {
-        long long int low = min(a,b);
-        long long int high = (long long int)n*min(a,b);
+        long low = min(a,b);
+        long high = (long long int)n*min(a,b);
         
         int gcd;
         
@@ -19,13 +19,13 @@ public:
         else
             gcd = getGCD(b,a);
         
-        long long int lcm = a*b/gcd;
+        long lcm = a*b/gcd;
         int ans = -1;
         while(low<=high)
         {
-            long long int mid = low+(high-low)/2;
+            long mid = low+(high-low)/2;
        
-            long long int count = mid/a + mid/b -mid/lcm;
+            int count = mid/a + mid/b -mid/lcm;
             if(count<n)
                 low = mid+1;
             else
