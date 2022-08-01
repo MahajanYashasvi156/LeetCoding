@@ -3,82 +3,25 @@ class Solution
 public:
     int uniquePaths(int m, int n) 
     {
-        vector<vector<int>> dp(m,vector<int>(n,0));
-        dp[m-1][n-1] = 1;
-
+        vector<vector<int>> dp(m , vector<int>(n,0));
+        
         for(int i = m-1;i>=0;i--)
         {
             for(int j = n-1;j>=0;j--)
             {
-                if(i<m-1)
-                     dp[i][j] = dp[i][j] + dp[i+1][j];
-                if(j<n-1)
-                    dp[i][j] = dp[i][j]+ dp[i][j+1]; 
+                if(i==m-1 and j==n-1)
+                {
+                    dp[i][j] = 1;
+                }
+                else
+                {
+                    if(j<n-1)
+                        dp[i][j] += dp[i][j+1];
+                    if(i<m-1)
+                        dp[i][j] += dp[i+1][j];
+                }
             }
         }
         return dp[0][0];
     }
 };
-
-
-
-/*
-//https://www.geeksforgeeks.org/binomial-coefficient-dp-9/
-
-   C(n, k) = C(n-1, k-1) + C(n-1, k)
-   C(n, 0) = C(n, n) = 1
-
-class Solution 
-{
-    int binomialCoeff(int n, int k)
-    {
-        int C[n + 1][k + 1];
-        int i, j;
-
-        // Calculate value of Binomial Coefficient
-        // in bottom up manner
-        for (i = 0; i <= n; i++) {
-            for (j = 0; j <= min(i, k); j++) {
-                // Base Cases
-                if (j == 0 || j == i)
-                    C[i][j] = 1;
-
-                // Calculate value using previously
-                // stored values
-                else
-                    C[i][j] = C[i - 1][j - 1] + C[i - 1][j];
-            }
-        }
-
-        return C[n][k];
-    }
-public:
-    int uniquePaths(int m, int n) 
-    {
-        int totalsteps = m+n-2;
-        int mini = min(m,n)-1;
-        
-        return binomialCoeff(totalsteps,mini);
-        
-    }
-};
-*/
-/*
-class Solution 
-{
-public:
-    int uniquePaths(int m, int n)
-    {
-        double totalsteps = m+n-2;
-        double mini = min(m,n)-1;
-        
-        double ans = 1.0;
-        //Calculating totalstepsCmini
-        for(int i = 0;i<mini;i++)
-        {
-            ans = ans* (totalsteps-i)/(i+1);
-        }
-        return ans;
-    }
-};
-*/
