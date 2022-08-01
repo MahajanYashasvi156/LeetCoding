@@ -1,5 +1,9 @@
 /*
- we can treat the string as a binary number, and take its decimal form as the hash value. In this case, each binary number has a unique hash value.
+We need only to check all sub-strings of length k.
+
+we can treat the string as a binary number, and take its decimal form as the hash value. In this case, each binary number has a unique hash value.
+ 
+Efficiently Rolling hash  
 */
 class Solution 
 {
