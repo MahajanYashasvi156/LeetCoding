@@ -1,16 +1,16 @@
 class Solution 
 {
-    bool search(string &s, int &start,int &len)
+    bool search(string &s, string &ans,int &len)
     {
         if(len==0)
             return false;
-        vector<long long> multiplier(len,1);
+        vector<long long> roll(len,1);
         
         int p = 10000000007;
         
         for(int i = len-2;i>=0;i--)
         {
-            multiplier[i] = (multiplier[i+1]*26) %p;
+            roll[i] = (roll[i+1]*26) %p;
         }
         unordered_map<int,vector<int>> m;
         
@@ -24,21 +24,18 @@ class Solution
             {
                 if(m.find(hashValue)!=m.end())
                 {
+                    string curr = s.substr(i-len+1,len);
                     for(int j : m[hashValue])
                     {
-                        if(s.substr(j,len)==s.substr(i-len+1,len))
+                        if(s.substr(j,len)==curr)
                         {
-                            start = i-len+1;
+                            ans = curr;
                             return true;
                         }
-                            
                     }
                 }
                 m[hashValue].push_back(i-len+1);
-                hashValue = 
-((hashValue - (s[i-len+1]-'a')*multiplier[0])%p + p)%p;
-                
-               
+                hashValue = ((hashValue - (s[i-len+1]-'a')*roll[0])%p+p)%p;
             }
         }
         return false;
@@ -48,22 +45,19 @@ public:
     {
         int low = 0;
         int high = s.size();
-        
+        int len;
         string ans = "";
-        int start = -1;
+        
         while(low<=high)
         {
-            int len = (low+high)/2;
+            len = (low+high)>>1;
             
-            if(search(s,start,len))
-            {
-                ans = s.substr(start,len);
+            if(search(s,ans,len))
                 low = len+1;
-            }
+
             else
-            {
                 high = len-1;
-            }
+
         }
         return ans;
     }
