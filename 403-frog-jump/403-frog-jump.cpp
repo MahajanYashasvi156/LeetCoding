@@ -1,4 +1,8 @@
 /*
+TC - O(stones.size())
+SC - O(stones.size())
+
+for each stones , store the last jump needed to reach at that stone.
 
 */
 class Solution 
