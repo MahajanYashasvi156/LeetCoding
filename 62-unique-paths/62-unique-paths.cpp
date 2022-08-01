@@ -1,3 +1,22 @@
+class Solution
+{
+public:
+    int uniquePaths(int m, int n) 
+    {
+        double totalSteps = m+n-2;
+        
+        int mini = min(m,n)-1;
+        
+        double ans = 1.0;
+        for(int i = 0;i<mini;i++)
+        {
+            ans = ans*(totalSteps-i)/(i+1);
+        }
+        return ans;
+    }
+};
+
+/*
 class Solution 
 {
 public:
@@ -25,3 +44,4 @@ public:
         return dp[0][0];
     }
 };
+*/
