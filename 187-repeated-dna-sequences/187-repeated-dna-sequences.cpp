@@ -23,7 +23,7 @@ public:
             
         }
         hashMatch[hashValue].push_back(i-1);
-        cout<<hashValue<<endl;
+        
         set<string> result;
         while(i<s.size())
         {
