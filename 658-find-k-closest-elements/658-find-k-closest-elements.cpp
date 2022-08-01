@@ -8,13 +8,10 @@ public:
         while(high-low+1>k)
         {
             if(abs(arr[high]-x)>=abs(arr[low]-x))
-            {
                 high--;
-            }
             else
                 low++;
         }
-        
         return {arr.begin()+low,arr.begin()+high+1};
     }
 };
