@@ -3,6 +3,33 @@ class Solution
 public:
     vector<string> findRepeatedDnaSequences(string s) 
     {
+        string curr = "";
+        
+        unordered_map<string,int>m;
+        
+        set<string> result;
+        for(int i = 0;i<s.size();i++)
+        {
+            curr+=s[i];
+            if(i>=9)
+            {
+                if(m.find(curr)!=m.end())
+                    result.insert(curr);
+                m[curr] = 1;
+                curr.erase(curr.begin());
+            }
+        }
+        return {result.begin(),result.end()};
+    }
+};
+
+
+/*
+class Solution 
+{
+public:
+    vector<string> findRepeatedDnaSequences(string s) 
+    {
         if(s.size()<10)
             return {};
         
@@ -49,3 +76,5 @@ public:
         return {result.begin(),result.end()};
     }
 };
+*/
+
