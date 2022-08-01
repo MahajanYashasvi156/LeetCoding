@@ -1,6 +1,3 @@
-/*
-TLE With Rolling Hash
-*/
 class Solution 
 {
     bool search(string &s, int &start,int &len)
@@ -9,9 +6,11 @@ class Solution
             return false;
         vector<long long> multiplier(len,1);
         
+        int p = 10000000007;
+        
         for(int i = len-2;i>=0;i--)
         {
-            multiplier[i] = (multiplier[i+1]*26) %10000000007;
+            multiplier[i] = (multiplier[i+1]*26) %p;
         }
         unordered_map<int,vector<int>> m;
         
@@ -19,7 +18,7 @@ class Solution
         for(int i = 0;i<s.size();i++)
         {
            
-            hashValue = (hashValue*26%10000000007 + s[i]-'a')%10000000007;
+            hashValue = (hashValue*26%p + s[i]-'a')%p;
            
             if(i>=len-1)
             {
@@ -37,7 +36,7 @@ class Solution
                 }
                 m[hashValue].push_back(i-len+1);
                 hashValue = 
-((hashValue - ((s[i-len+1]-'a')*multiplier[0])%10000000007)%10000000007 + 10000000007)%10000000007;
+((hashValue - (s[i-len+1]-'a')*multiplier[0])%p + p)%p;
                 
                
             }
