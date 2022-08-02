@@ -1,3 +1,4 @@
+/*
 class Solution 
 {
 public:
@@ -15,31 +16,32 @@ public:
         return A[0][0];
     }
 };
+*/
 
-/*
 class Solution 
 {
 public:
     int minimumTotal(vector<vector<int>>& triangle) 
     {
-        vector<int> dp(triangle.size(),INT_MAX);
+        int n = triangle.size();
+        vector<int> dp(n);
         
-        dp[0] =  triangle[0][0];
+        for(int i = 0;i<n;i++)
+            dp[i] = triangle[n-1][i];
         
-        for(int i = 1;i<triangle.size();i++)
+        for(int i = n-2;i>=0;i--)
         {
-            for(int j = i;j>=0;j--)
+            for(int j = 0;j<=i;j++)
             {
                 int prev = dp[j];
                 
-                if(j>0)
-                    prev = min(prev,dp[j-1]);
+                if(j<n-1)
+                    prev = min(prev,dp[j+1]);
                
                 dp[j] = triangle[i][j]+ prev;
             }
         }
         
-        return *min_element(dp.begin(),dp.end());
+        return dp[0];
     }
 };
-*/
