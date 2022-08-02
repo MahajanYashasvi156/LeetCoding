@@ -12,28 +12,19 @@ public:
     {
         unordered_map<int,set<int>> reachedWithJumps;
         
-        for(int s : stones)
-        {
-            reachedWithJumps[s] = {};
-        }
-        
         reachedWithJumps[0].insert(0);
     
         for(int s : stones)
         {
-            for(int j : reachedWithJumps[s])
+            if(reachedWithJumps.find(s)!=reachedWithJumps.end())
             {
-                if(reachedWithJumps.find(s+j+1)!=reachedWithJumps.end())
+                for(int jumps : reachedWithJumps[s])
                 {
-                    reachedWithJumps[s+j+1].insert(j+1);
-                }
-                if(reachedWithJumps.find(s+j)!=reachedWithJumps.end())
-                {
-                    reachedWithJumps[s+j].insert(j);
-                }
-                if(j-1>0 and reachedWithJumps.find(s+j-1)!=reachedWithJumps.end())
-                {
-                    reachedWithJumps[s+j-1].insert(j-1);
+                    for(int var=-1;var<=1;var++)
+                    {
+                        if(jumps+var>0)
+                            reachedWithJumps[s+jumps+var].insert(jumps+var);
+                    }
                 }
             }
         }
