@@ -29,10 +29,7 @@ public:
             }
         }
     
-        if(reachedWithJumps[stones[stones.size()-1]].size())
-            return true;
-        
-        return false;
+        return reachedWithJumps[stones[stones.size()-1]].size();
         
     }
 };
