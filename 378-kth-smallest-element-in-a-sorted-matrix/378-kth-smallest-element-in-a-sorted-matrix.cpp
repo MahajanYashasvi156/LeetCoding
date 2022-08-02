@@ -22,16 +22,17 @@ public:
             int count = 0;
             for(int i = 0;i<m;i++)
             {
-                count= count+ upper_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin();
+                count= count+ lower_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin();
             }
             
             if(count<k)
             {
+                ans = mid;
                 low = mid+1;
             }
             else
             {
-                ans = mid;
+               
                 high = mid-1;
             }
             
