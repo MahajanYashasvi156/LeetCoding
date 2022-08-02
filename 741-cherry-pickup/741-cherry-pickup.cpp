@@ -78,7 +78,6 @@ public:
                 }
                 
             }
-           
         }
         if(dp[0][0][0]==INT_MIN)
             return 0;
