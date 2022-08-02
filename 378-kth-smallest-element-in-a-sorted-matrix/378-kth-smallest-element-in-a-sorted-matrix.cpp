@@ -24,7 +24,7 @@ public:
             {
                 count= count+ lower_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin();
             }
-            
+            //1 5 5 5 9  -> lower bound returns 1 but upper bound return 4. Still there is a chance that 5 is median
             if(count<k)
             {
                 ans = mid;
