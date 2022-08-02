@@ -1,3 +1,9 @@
+/*
+TC - O(MNN*9)
+SC - O(MNN)
+ASC - O(M);
+*/
+
 class Solution {
 public:
     int cherryPickup(vector<vector<int>>& grid) 
@@ -6,6 +12,8 @@ public:
         int n = grid[0].size();
      
         vector<vector<vector<int>>>dp(m,vector<vector<int>>(n,vector<int>(n)));
+        
+        //Bottom - Up approach . Start solving from m-1.
         
         for(int j1 = 0;j1<n;j1++)
         {
@@ -39,8 +47,7 @@ public:
                                 maxi = max(maxi,dp[i+1][j1+dj1][j2+dj2]);
                         }
                     }
-                    
-                     dp[i][j1][j2] +=  maxi;
+                    dp[i][j1][j2] +=  maxi;
                 }
             }
         }
