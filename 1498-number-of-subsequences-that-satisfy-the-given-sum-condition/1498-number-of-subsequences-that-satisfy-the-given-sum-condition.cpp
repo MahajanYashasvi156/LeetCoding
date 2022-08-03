@@ -1,14 +1,5 @@
 class Solution 
 {
-    
-    int pow(int base, int exp)
-    {
-        int ans = 1;
-        
-        for(int i = 1;i<=exp;i++)
-            ans = (ans*base)%1000000007;
-        return ans;
-    }
 public:
     int numSubseq(vector<int>& nums, int target) 
     {
