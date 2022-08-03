@@ -1,3 +1,18 @@
+/*
+We need to have two subsets such that the diffrence between those two subset == target.
+
+Let there will be two subsets with sum s1 and s2.
+We want this subsets such that s1 = s2+D
+-> s1+s2 = totalSum 
+
+-> s1-s2 = diff
+-> s1 = diff+s2
+
+s2+diff+s2 = totalsum 
+s2 = (totalsum - diff)/2
+
+Here elements of s1 set will have +symbol and elemnts of s2 will have - symbol.
+*/
 class Solution 
 {
 public:
