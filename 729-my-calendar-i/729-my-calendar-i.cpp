@@ -1,6 +1,6 @@
 class MyCalendar 
 {
-    set<pair<int,int>>booking;
+    vector<pair<int,int>>booking;
 public:
     MyCalendar() 
     {
@@ -9,28 +9,14 @@ public:
     
     bool book(int start, int end) 
     {
-        int low = 0;
-        int high = booking.size()-1;
-        while(low<=high)
+        for(auto b:booking)
         {
-            int mid = (low+high)/2;
-            
-            auto it = booking.begin();
-            std::advance(it,mid);
-        
-            int prevend = it->first;
-            int prevstart = it->second;
-            
-            if(prevstart<=start and start<prevend or prevstart<end and end<prevend or start<prevstart and end>=prevend)
+            int prevStart = b.first;
+            int prevEnd =  b.second;
+            if(prevStart<end and start<prevEnd)
                 return false;
-            
-            if(start>=prevend)
-                low = mid+1;
-            else
-                high = mid-1;
-            
-        }   
-        booking.insert({end,start});
+        }       
+        booking.push_back({start,end});
         return true;
     }
 };
