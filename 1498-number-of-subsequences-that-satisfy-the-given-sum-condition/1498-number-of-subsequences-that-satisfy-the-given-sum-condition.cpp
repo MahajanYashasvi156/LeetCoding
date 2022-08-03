@@ -1,3 +1,8 @@
+/*
+1. Sort the array nums.
+2. Use two pointers approach: Given an index i (choose it as the minimum in a subsequence) find the maximum j where j ≥ i and nums[i] +nums[j] ≤ target.
+3. Count the number of subsequences.
+*/
 class Solution 
 {
 public:
