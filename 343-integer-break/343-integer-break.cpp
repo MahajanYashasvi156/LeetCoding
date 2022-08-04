@@ -16,10 +16,7 @@ public:
             {
                 if(j>=i)
                 {
-                    if(dp[j-i])
-                    {
-                        dp[j] = max(dp[j],i*dp[j-i]);
-                    }
+                    dp[j] = max(dp[j],i*dp[j-i]);
                 }
             }
         }
