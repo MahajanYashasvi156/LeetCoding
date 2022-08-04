@@ -1,3 +1,6 @@
+/*
+https://leetcode.com/problems/mirror-reflection/discuss/2376191/C%2B%2B-Java-Python-or-Faster-then-100-or-Full-explanations-or
+*/
 class Solution {
 public:
     int mirrorReflection(int p, int q) 
