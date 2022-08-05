@@ -8,16 +8,14 @@ class Solution
 public:
     int numSquares(int n) 
     {
-        vector<int> dp(n+1);
-        int count = 0;
+        vector<int> dp(n+1,INT_MAX);
+        dp[0] = 0;
         for(int i=1;i<=n;i++)
         {
-            int mincount = INT_MAX;
-            for(int j=sqrt(i);j>0;j--)
+            for(int j=1;j*j<=i;j++)
             {
-                mincount=min(mincount,dp[i-j*j]);
+                dp[i]=min(dp[i],dp[i-j*j]+1);
             }
-            dp[i]=mincount+1;
         }
         return dp[n];
     }
