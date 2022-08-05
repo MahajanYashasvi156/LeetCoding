@@ -17,7 +17,7 @@ class Solution
             return getSCS(m-1,n-1,s1,s2,dp)+ s1[m-1] ;
         }
         
-        if(dp[m-1][n]>dp[m][n-1])
+        if(dp[m-1][n]>dp[m][n-1]) //jaha se value jyada aa rahi h us direction m LCS milne ki possibility jyada h so go in that direction
             return  getSCS(m-1,n,s1,s2,dp)+s1[m-1];
         return  getSCS(m,n-1,s1,s2,dp)+s2[n-1];
     }
