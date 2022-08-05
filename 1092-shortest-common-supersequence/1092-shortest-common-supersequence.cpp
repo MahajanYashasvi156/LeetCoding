@@ -1,3 +1,6 @@
+/*
+    Application of LCS
+*/
 class Solution 
 {
     string getSCS(int m,int n,string s1,string s2,vector<vector<int>>&dp)
