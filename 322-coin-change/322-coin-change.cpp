@@ -15,11 +15,12 @@ Approach - slight variation of coin change combination problem(Here no need of c
 3. Travel and solve - Consider one coin at each time. Traverse from 0 to amount. After each iteration dp state represents the minimum number of coins required considering all coins till now.
 
 Conclusion Points - 
-1. For Combination - cycle.
-2. For permutation - explore each possiblities at each cell.
+1. For Combination - take one coin throughout, then other(cycle).
+2. For permutation - explore each possiblities at each amount/cell.
 3. If Duplicates allowed - one dimension DP (Combination and Permuation Coin change).
 4. If Duplicates not allowes - two dimension DP required (Target Subset Sum).
 */
+
 
 class Solution {
 public:
