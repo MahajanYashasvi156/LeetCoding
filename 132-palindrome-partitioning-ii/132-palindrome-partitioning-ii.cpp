@@ -1,9 +1,61 @@
+class Solution 
+{
+    bool isPalindrome(string &s,int l,int h)
+    {
+        while(l<h)
+        {
+            if(s[l]!=s[h])
+                return false;
+            l++;
+            h--;
+        }
+        return true;
+    }
+    int MCM(string &s,vector<vector<int>> &dp,int i,int j)
+    {
+        if(i>=j)
+            return 0;
+        
+        if(dp[i][j]!=-1)
+            return dp[i][j];
+        
+        int ans = INT_MAX;
+        
+        for(int k = i;k<=j;k++)
+        {
+            if(isPalindrome(s,i,k))
+            {
+                if(k==j)
+                    ans = min(ans,MCM(s,dp,k+1,j));
+                else
+                    ans = min(ans, 1 +  MCM(s,dp,k+1,j));
+            }
+        }
+        dp[i][j]=ans;
+        return ans;
+    }
+public:
+    int minCut(string s) 
+    {
+        int n = s.size();
+        vector<vector<int>> dp(n,vector<int>(n,-1));
+        
+        return MCM(s,dp,0,n-1);
+        
+    }
+};
+
+
+
 /*
 Link - https://leetcode.com/problems/palindrome-partitioning-ii/
+
+Gap strategy variation
+
 TC - O(N^2)
 SC - O(N^2)
 */
-
+/*
 
 class Solution {
 public:
@@ -51,3 +103,4 @@ public:
         return suffixPalindrome[n-1];
     }
 };
+*/
