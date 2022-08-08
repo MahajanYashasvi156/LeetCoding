@@ -1,3 +1,15 @@
+/*
+    Example of 1 D DP MCM
+    
+    Bottom Up DP.
+    
+    Start Solving from n-1 to n-1. 
+    
+    i is the start of subproblem substring and j is end of the subproblem substring.
+    
+    
+*/
+
 class Solution 
 {
     bool isPalindrome(string &s,int l,int h)
