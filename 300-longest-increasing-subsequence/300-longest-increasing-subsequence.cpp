@@ -1,5 +1,5 @@
 /*
-
+    O(Nlogn)
     Binary Search - 
     
     5 4 3 6 7 4
