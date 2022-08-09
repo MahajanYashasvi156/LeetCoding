@@ -3,7 +3,7 @@ class Solution
 public:
     int longestArithSeqLength(vector<int>& nums) 
     {
-        vector<vector<int>> dp(nums.size(),vector<int>(1002,0));
+        vector<vector<int>> dp(nums.size(),vector<int>(1001,0));
         
         int ans = 0;
         
