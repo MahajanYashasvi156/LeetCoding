@@ -1,3 +1,25 @@
+/*
+
+    Binary Search - 
+    
+    5 4 3 6 7 4
+    
+    Always try to take smaller elements in the subsequence.
+    
+    5 
+    
+    replace 5 with 4
+    
+    4 
+    
+    replace 4 with 3
+    
+    3 6 7 
+    
+    replace 6 with 4
+    
+    3 4 7  ->LIS
+*/
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) 
