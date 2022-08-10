@@ -12,7 +12,7 @@ class Solution
         
         int ans = 0;
         
-        //If the number is not started till index , we have option to delay the formation of number by putting leading 0.
+        //If the number is not started till index , we can delay the formation of number by putting leading 0.
         if(hasStarted==0)
             ans +=solve(s,index+1,0,tight and ub== 0, digits,dp);
         
