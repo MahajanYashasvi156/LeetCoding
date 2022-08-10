@@ -23,7 +23,7 @@ class Solution
             else if(mask & (1<<digit))
                 continue;
             
-            //If the no is neither leading 0 nor digit is repeated we can move onwards to count no of non repeating no with curr prefix.
+            //If the no is neither leading 0 nor digit is repeated we can move onwards by updating mask to count no of non repeating no with curr prefix.
             else
                  ans+=noRepeatation(s,index+1,tight and (digit==ub),mask | (1<<digit),dp);
            
