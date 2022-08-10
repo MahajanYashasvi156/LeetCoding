@@ -12,16 +12,11 @@ class Solution
         
         int ans = 0;
         
-        for(int bit = 0;bit<=ub;bit++)
-        {
-            if(bit==0)
-                ans = ans + solve(s,index+1,0,tight and bit==ub,dp);
+        ans = ans + solve(s,index+1,0,tight and ub==0,dp);
             
-            if(prevbit==0 and bit==1)
-            {
-                ans = ans + solve(s,index+1,1,tight and (bit==ub),dp);
-            }
-        }
+        if(prevbit==0 and ub==1)
+            ans = ans + solve(s,index+1,1,tight and ub==1,dp);
+    
         return dp[index][prevbit][tight] = ans;
     }
 public:
