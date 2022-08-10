@@ -32,7 +32,7 @@ public:
     {
         string s = to_string(n);
         
-        vector<vector<vector<int>>> dp(11,vector<vector<int>>(2,vector<int>(1024,-1)));
+        vector<vector<vector<int>>> dp(s.size(),vector<vector<int>>(2,vector<int>(1024,-1)));
         
         return n - noRepeatation(s,0,true,0,dp);
     }
