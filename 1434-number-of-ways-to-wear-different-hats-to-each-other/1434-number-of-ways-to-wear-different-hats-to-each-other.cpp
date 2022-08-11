@@ -2,9 +2,9 @@ class Solution
 {
     
     int M = 1000000007;
-    int solve(int hat,int mask,vector<vector<int>>&hati,vector<vector<int>>&dp,int done,int n)
+    int solve(int hat,int mask,vector<vector<int>>&hati,vector<vector<int>>&dp,int n)
     {
-        if(mask==done)
+        if(mask==(1<<n)-1)
             return 1;
         
         if(hat>40)
@@ -14,7 +14,7 @@ class Solution
             return dp[hat][mask];
        
         int ans = 0;
-        ans =solve(hat+1,mask,hati,dp,done,n)%M;
+        ans =solve(hat+1,mask,hati,dp,n)%M;
         
         for(int h : hati[hat])
         {
@@ -22,7 +22,7 @@ class Solution
             if(mask & 1<<h)
                 continue;
             
-            ans = (ans + solve(hat+1,mask | 1<<h,hati,dp,done,n))%M;
+            ans = (ans + solve(hat+1,mask | 1<<h,hati,dp,n))%M;
         }
         
         return dp[hat][mask] = ans ;
@@ -43,8 +43,6 @@ public:
                 hati[h].push_back(i);
         }
         
-        int done = (1<<n)-1;
-        
-        return solve(1,0,hati,dp,done,n);
+        return solve(1,0,hati,dp,n);
     }
 };
