@@ -18,6 +18,7 @@ class Solution
         
         for(int h : hati[hat])
         {
+            //if the person who can take h hat has already taken any other hat so he can't take this hat so conitnue.
             if(mask & 1<<h)
                 continue;
             
@@ -33,6 +34,7 @@ public:
         
         vector<vector<int>>dp(41,vector<int>(1<<n,-1));
         
+        //ith hat can be taken by which person.
         vector<vector<int>> hati(41);
         
         for(int i = 0;i<n;i++)
