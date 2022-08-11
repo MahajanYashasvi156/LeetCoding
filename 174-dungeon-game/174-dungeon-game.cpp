@@ -18,9 +18,8 @@ class Solution
         if(need>0)
             dp[i][j] = 0;
         else
-        {
             dp[i][j] = need;
-        }
+    
         return dp[i][j];
     }
 public:
