@@ -41,7 +41,6 @@ public:
         int n = dungeon[0].size();
         
         vector<vector<int>>dp(m,vector<int>(n,INT_MIN));
-        
         int need ;
         for(int i = m-1;i>=0;i--)
         {
