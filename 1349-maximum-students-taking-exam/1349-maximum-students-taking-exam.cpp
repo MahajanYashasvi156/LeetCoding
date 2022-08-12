@@ -42,7 +42,7 @@ public:
         int row = seats.size();
         int col = seats[0].size();
         
-        vector<vector<int>> dp(8,vector<int>(1<<8,-1));
+        vector<vector<int>> dp(row,vector<int>(1<<col,-1));
         
         return solve(seats,0,0,dp);
     }
