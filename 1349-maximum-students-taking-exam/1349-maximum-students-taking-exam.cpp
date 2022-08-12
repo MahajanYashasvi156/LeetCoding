@@ -9,7 +9,6 @@ class Solution
             return 0;
         if(dp[r][prevRowMask]!=-1)
             return dp[r][prevRowMask];
-        
         int ans = 0;
         
         for(int mask = 0;mask<(1<<col);mask++)
@@ -41,9 +40,7 @@ public:
     {
         int row = seats.size();
         int col = seats[0].size();
-        
         vector<vector<int>> dp(row,vector<int>(1<<col,-1));
-        
         return solve(seats,0,0,dp);
     }
 };
