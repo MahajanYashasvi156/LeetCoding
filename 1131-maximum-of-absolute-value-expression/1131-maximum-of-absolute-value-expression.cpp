@@ -1,3 +1,5 @@
+//https://leetcode.com/problems/maximum-of-absolute-value-expression/discuss/339968/JavaC%2B%2BPython-Maximum-Manhattan-Distance
+
 class Solution {
 public:
    int maxAbsValExpr(vector<int>& x, vector<int>& y) {
