@@ -16,7 +16,7 @@ class Solution
         {
             int count = 0;
             int currRowMask = 0;
-            
+          
             for(int c = 0;c<col;c++)
             {
                 if(seats[r][c]=='.' and (mask & 1<<c))
