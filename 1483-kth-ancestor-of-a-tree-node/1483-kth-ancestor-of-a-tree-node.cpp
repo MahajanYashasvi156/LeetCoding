@@ -1,3 +1,10 @@
+/*
+    Time Complexity - 
+    Preprocessing - O(N*log(N))
+    Querying - O(log(N))
+
+    Space Complexity - O(N*log(N))
+*/
 class TreeAncestor 
 { 
 public:
