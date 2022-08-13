@@ -12,6 +12,7 @@ public:
         vector<int> result;
         if(s.size()<totalSize)
             return {};
+        //From each index check whether the window strtimg from ith index could be our answer.
         for(int i = 0;i<=s.size()-totalSize;i++)
         {
             bool found = true;
