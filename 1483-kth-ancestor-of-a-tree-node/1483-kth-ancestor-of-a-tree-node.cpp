@@ -42,7 +42,7 @@ public:
             return node;
         for(int i = 16;i>=0;i--)
         {
-            if(k >=(1<<i))
+            if(k & (1<<i))
                 return getKthAncestor(up[node][i],k-(1<<i));
         }
         return -1;
