@@ -22,7 +22,7 @@ class Solution
            auto it = prefixSum.lower_bound(sum-k);
           
            if(it!=prefixSum.end())
-                    maxi = max(maxi,sum-*it);
+                 maxi = max(maxi,sum-*it);
         
           
             prefixSum.insert(sum);
