@@ -33,7 +33,7 @@ class Solution
 public:
     int maxSumSubmatrix(vector<vector<int>>& matrix, int k) 
     {
-        int left = 0;
+        int left;
         int right;
         int maxi = INT_MIN;
         
