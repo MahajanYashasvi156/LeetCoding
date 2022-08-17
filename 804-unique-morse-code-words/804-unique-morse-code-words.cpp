@@ -9,10 +9,7 @@ public:
         {
             string transformation = "";
             for(char c: s)
-            {
                 transformation = transformation + table[c-'a'];
-            }
-            
             m[transformation]++;
         }
         return m.size();
