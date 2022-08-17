@@ -11,6 +11,8 @@
         if the target lies within the range of right sorted array then go to right else left subarray.
         
         For handling duplicates, increase the low pointer whenever low element and middle element is equal
+        
+        TC - O(N) //to handle duplicates
             
 
 */
