@@ -9,8 +9,6 @@ public:
         vector<vector<int>> overlap(n,vector<int>(n,0));
         vector<vector<string>> dp(1<<n,vector<string>(n));
         
-        
-        
         //Step 1 :- find the overlap string from i to j. 
         //Maximum size of prefix of j which is suffix of i
         
