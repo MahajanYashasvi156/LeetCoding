@@ -1,3 +1,29 @@
+class Solution {
+public:
+    int shortestSubarray(vector<int>& nums, int k) 
+    {
+        priority_queue<pair<long,int>,vector<pair<long,int>>,greater<pair<long,int>>> minheap;
+        
+        int shortest = INT_MAX;
+        long sum = 0;
+        for(int i = 0;i<nums.size();i++)
+        {
+            sum = sum + nums[i];
+            if(sum>=k)
+                 shortest = min(shortest,i+1);
+            while(!minheap.empty() and (sum - minheap.top().first)>=k)
+            {
+                shortest = min(shortest,i-minheap.top().second);
+                minheap.pop();
+            }
+            
+            minheap.push({sum,i});
+        }
+        return shortest==INT_MAX?-1:shortest;
+    }
+};
+
+
 /*
     Two Pointer Algorithm If not have positive values.
     
@@ -17,6 +43,7 @@
     4. For maintaining montonically sum , we pop elements of deque from last till we get the first value<currsum.
     5. Then we can safely add the curr sum to the deque maintaining the monotonic nature.
 */
+/*
 class Solution 
 {
 public:
@@ -53,3 +80,4 @@ public:
         return shortest==INT_MAX?-1:shortest;
     }
 };
+*/
