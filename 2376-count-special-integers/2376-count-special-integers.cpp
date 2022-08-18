@@ -12,7 +12,7 @@ class Solution
         
         int ans = 0;
         
-        
+        //new Mask handling is tricky.we want if the number formation is not started that we means we have not took any element till now and curretn element is also 0 so our no formation will be delayed and we can't pick 0.
         for(int i = 0;i<=ub;i++)
         {
             if(mask & 1<<i)
