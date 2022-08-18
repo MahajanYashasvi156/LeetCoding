@@ -46,7 +46,7 @@ public:
         int ans = INT_MAX;
         for(int i = 1;i<n-1;i++)
         {
-            if(lis[i] and lds[i])
+            if(lis[i] and lds[i]) //In mountain there must exist some left and right element
             ans = min(ans , n-(lis[i]+lds[i]+1));
         }
         return ans;
