@@ -2,8 +2,8 @@ class Solution
 {
     vector<int> LIS(vector<int>& nums)
     {
-        vector<int> result ;
         vector<int> ans(nums.size(),0);
+        vector<int> result ;
         for(int i = 0;i<nums.size()-1;i++)
         {
             int index = lower_bound(result.begin(),result.end(),nums[i]) - result.begin();
@@ -14,7 +14,6 @@ class Solution
                 result[index] = nums[i];
             ans[i] = index;
         }
-   
         return ans;
     }
     
@@ -33,22 +32,19 @@ class Solution
                 result[index] = nums[i];
             ans[i] = index;
         }
-         
         return ans;
     }
 public:
     int minimumMountainRemovals(vector<int>& nums) 
     {
-        
-        vector<int> lis;
-        vector<int>lds;
+        vector<int> lis,lds;
+
         lis = LIS(nums);
         lds=LDS(nums);
         
-       
         int n = nums.size();
         int ans = INT_MAX;
-        for(int i = 1;i<n;i++)
+        for(int i = 0;i<n;i++)
         {
             if(lis[i] and lds[i])
             ans = min(ans , n-(lis[i]+lds[i]+1));
