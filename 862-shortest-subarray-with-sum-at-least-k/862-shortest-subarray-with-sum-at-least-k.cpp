@@ -13,7 +13,7 @@ public:
                  shortest = min(shortest,i+1);
             while(!minheap.empty() and (sum - minheap.top().first)>=k)
             {
-                shortest = min(shortest,i-minheap.top().second);
+                shortest = min(shortest,i-minheap.top().second); //not include the mimheap.top element
                 minheap.pop();
             }
             
