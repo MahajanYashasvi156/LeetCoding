@@ -44,7 +44,7 @@ public:
         
         int n = nums.size();
         int ans = INT_MAX;
-        for(int i = 0;i<n;i++)
+        for(int i = 1;i<n-1;i++)
         {
             if(lis[i] and lds[i])
             ans = min(ans , n-(lis[i]+lds[i]+1));
