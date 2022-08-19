@@ -24,28 +24,21 @@ public:
                     }
                     c++;
                 }
-                //cout<<i<<": "<<previndex<<" ,";
+               
                 index[nums[i]-1].erase(index[nums[i]-1].begin()+m);
                 if(index[nums[i]-1].size()==0)
-                {
                     index.erase(nums[i]-1);
-                    //cout<<"done"<<endl;
-                }
-               
-                    
+                
                 count[i] = count[previndex]+1;
                 count[previndex] = -1;
-                
             }
             else
-            {
                 count[i] = 1;
-            }
+        
             index[nums[i]].push_back(i);
         }
         for(int c : count)
         {
-            //cout<<c<<endl;
             if(c<3 and c!=-1)
                 return false;
         }
