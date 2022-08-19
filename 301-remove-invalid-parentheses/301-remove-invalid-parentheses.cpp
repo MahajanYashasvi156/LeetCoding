@@ -14,25 +14,21 @@ class Solution
             return;
         }
         
-        if(s[index]!='(' and s[index]!=')')
-        {
-            solve(s,index+1,path+s[index],result,maxi,count);
-        }
-        else
+        if(s[index]=='(')
         {
              //picking
-            solve(s,index+1,path+s[index],result,maxi,s[index]=='('?count+1:count-1);
-            
-            //Discarding
-            if(s[index]=='(')
-            {
-                solve(s,index+1,path,result,maxi,count);
-            }
-            else if(s[index]==')')
-            {
-                solve(s,index+1,path,result,maxi,count);
-            }
-           
+            solve(s,index+1,path+s[index],result,maxi,count+1);
+            solve(s,index+1,path,result,maxi,count);
+        }
+        else if(s[index]==')')
+        {
+             //picking
+            solve(s,index+1,path+s[index],result,maxi,count-1);
+            solve(s,index+1,path,result,maxi,count);
+        }
+        else 
+        {
+            solve(s,index+1,path+s[index],result,maxi,count);  
         }
         
     }
