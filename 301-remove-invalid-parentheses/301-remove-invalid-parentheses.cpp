@@ -1,60 +1,49 @@
 class Solution 
 {
-    void solve(string &s, int index ,string path,set<string>&result,int left,int right,int count)
+    void solve(string &s, int index ,string path,set<string>&result,int &maxi,int count)
     {
-        if(left<0 or right<0 or count<0)
+        if(count<0)
             return ;
         if(index==s.size())
         {
-            if(left==0 and right==0)
+            if(count ==0 and (maxi==-1 || maxi==path.size()))
+            {
                 result.insert(path);
+                maxi = path.size();
+            }
             return;
         }
+        
         if(s[index]!='(' and s[index]!=')')
         {
-            solve(s,index+1,path+s[index],result,left,right,count);
+            solve(s,index+1,path+s[index],result,maxi,count);
         }
         else
         {
+             //picking
+            solve(s,index+1,path+s[index],result,maxi,s[index]=='('?count+1:count-1);
+            
             //Discarding
             if(s[index]=='(')
             {
-                solve(s,index+1,path,result,left-1,right,count);
+                solve(s,index+1,path,result,maxi,count);
             }
             else if(s[index]==')')
             {
-                solve(s,index+1,path,result,left,right-1,count);
+                solve(s,index+1,path,result,maxi,count);
             }
-            //picking
-            solve(s,index+1,path+s[index],result,left,right,s[index]=='('?count+1:count-1);
+           
         }
         
     }
 public:
     vector<string> removeInvalidParentheses(string s) 
     {
-        int left = 0;
-        int right = 0;
-        
-        for(char c:s)
-        {
-            if(c=='(')
-            {
-                left++;
-            }
-            else if(c==')')
-            {
-                if(left)
-                    left--;
-                else
-                    right++;
-            }
-        }
         set<string> result;
         string path = "";
         int count = 0;
-        
-        solve(s,0,path,result,left,right,count);
+        int maxi = -1;
+        solve(s,0,path,result,maxi,count);
         return {result.begin(),result.end()};
     }
 };
