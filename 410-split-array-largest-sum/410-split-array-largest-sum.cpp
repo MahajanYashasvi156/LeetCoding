@@ -3,23 +3,19 @@ class Solution
     bool check(vector<int>&nums,int m,int maxSum)
     {
         int sum = 0;
-        int i = 0;
-        while(i<nums.size())
+        for(int i = 0;i<nums.size();i++)
         {
             if(nums[i]>maxSum)
                 return false;
             if(sum+nums[i]<=maxSum)
-            {
                 sum = sum + nums[i];
-            }
             else
             {
-                if(m==1)
-                    return false;
                 sum = nums[i];
                 m = m-1;
             }
-            i++;
+            if(m==0)
+                return false;
         }
         
         return true;
@@ -29,7 +25,6 @@ public:
     {
         int low = 0;
         int high = INT_MAX;
-        
         int ans = INT_MAX;
         
         while(low<=high)
