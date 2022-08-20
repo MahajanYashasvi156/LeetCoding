@@ -15,7 +15,7 @@ public:
         sort(cp.begin(),cp.end());
         int i = 0;
         
-        while(k>0)
+        while(k-->0)
         {
             while(i<n and cp[i].first<=w)
             {
@@ -28,7 +28,9 @@ public:
                 w = w + maxHeap.top();
                 maxHeap.pop();
             }
-            k--;
+            else
+                return w;
+            
         }
         return w;
     }
