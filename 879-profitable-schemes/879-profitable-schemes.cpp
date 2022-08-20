@@ -11,6 +11,7 @@ class Solution
         
         if(n>=group[index])
             ans = (ans + solve(group,profit,index+1,n-group[index],max(0,minProfit-profit[index]),dp))%1000000007;
+        
         ans=  (ans +solve(group,profit,index+1,n,minProfit,dp))%1000000007;
        
         return dp[index][minProfit][n]=ans;
