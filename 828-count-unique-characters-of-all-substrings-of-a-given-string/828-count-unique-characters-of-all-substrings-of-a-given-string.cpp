@@ -1,3 +1,14 @@
+/*
+    Three possible cases - 
+    
+    1. Current character is not present till now - just add + 1 to the no of distinct character till previous index. Q
+    
+    2. Current character is present exactly once till now - just add - 1 to the no of distinct character till previous index becuase the distinct character s[i] is added for previous index for current index it is not distinct. R
+    
+    3. Current charactet is present more than one time till now - do nothing.
+    
+    p = p + q+ r +1
+*/
 class Solution 
 {
 public:
