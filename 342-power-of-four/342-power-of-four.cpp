@@ -1,5 +1,21 @@
 class Solution {
 public:
+    bool isPowerOfFour(int n) 
+    {
+        for(int i = 0;i<32;i=i+2)
+        {
+            if(n==(1<<i))
+                return true;
+        }
+        return false;
+    }
+};
+
+/*
+
+class Solution 
+{
+public:
     bool isPowerOfFour(int n)
     {
         if(n==0)
@@ -14,3 +30,4 @@ public:
         return true;
     }
 };
+*/
