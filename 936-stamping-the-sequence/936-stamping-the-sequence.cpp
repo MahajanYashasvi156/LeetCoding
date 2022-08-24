@@ -1,43 +1,32 @@
 class Solution {
 public:
-   int can_replace(string &s, string &t , int pos)
-   {
-        for(int i=0;i<s.size();i++)
-        {
-            if(t[i+pos]!='?' && t[i+pos]!=s[i])
-                return 0;
-        }
-        return 1;
-    }
-    int replace(string &s, string &t , int pos){
-        int replace=0;
-        for(int i=0;i<s.size();i++)
-        {
-            if(t[i+pos]!='?')
-                t[i+pos]='?',replace++;
-        }
-        return replace;
-    }
-    vector<int> movesToStamp(string s, string t) {
-        vector<int>res,vis(t.size(),0);
-        int cnt=0;
-        while(cnt!=t.size())
-        {
-            int change=0;
-            for(int i=0;i<=t.size()-s.size();i++)
-            {
-                if(vis[i]==0 && can_replace(s,t,i))
-                {
-                    cnt+=replace(s,t,i);
-                    vis[i]=1;
-                    change=1;
-                    res.push_back(i);
-                }
-            }
-            if(change==0)
-                return {};
-        }
-        reverse(res.begin(),res.end());
-        return res;
+   
+    vector<int> movesToStamp(string stamp, string target) {
+       int NS = stamp.size(), NT = target.size();
+	vector<int> ans;
+	bool has_match;
+	do {
+		has_match = false;
+		for(int i=0;i<=NT-NS;i++) {
+			bool ok = true;
+			int num_dot = 0;
+			for(int j=0;j<NS;j++) { 
+				if(target[i+j]=='.')num_dot++; // take care we don't match only matched ones
+				if(target[i+j]!='.' && stamp[j]!=target[i+j]) { // simple wildcard matching 
+					ok=false;
+					break;
+				}
+			}
+			if(ok && num_dot<NS) {
+				has_match = true;
+				ans.push_back(i);
+				for(int j=0;j<NS;j++) target[i+j]='.';
+			}
+		}
+
+	} while(has_match);
+	for(char a:target)if(a!='.')return {};
+	reverse(ans.begin(),ans.end());
+	return ans;
     }
 };
