@@ -4,7 +4,7 @@ public:
     {
         for(int i = 0;i<32;i=i+2)
         {
-            if((n ^ (1<<i)) ==0)
+            if(n ==1<<i)
                 return true;
         }
         return false;
