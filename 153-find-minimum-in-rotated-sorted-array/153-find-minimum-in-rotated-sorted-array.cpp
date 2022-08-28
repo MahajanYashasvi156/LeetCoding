@@ -21,7 +21,7 @@ public:
             else 
                 high = mid-1;
         }
-        return nums[low];
+        return nums[low]; //when first number is minimum
     }
 };
 
