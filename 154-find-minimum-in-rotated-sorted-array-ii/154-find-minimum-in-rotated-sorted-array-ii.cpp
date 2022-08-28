@@ -16,7 +16,7 @@ public:
                 high = mid-1;
             else if(nums[mid]>nums[high])
                 low = mid+1;
-            else
+            else // when both are equal we are not sure so just decrease high point so that we can make decision
                 high--;
         }
         return nums[low];
