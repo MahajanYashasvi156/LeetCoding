@@ -6,22 +6,22 @@ public:
         int low = 0;
         int high = nums.size()-1;
         
-        int ans = INT_MAX;
         while(low<=high)
         {
             int mid = low + (high-low)/2;
             
+            if(mid>0 and nums[mid-1]>nums[mid])
+                return nums[mid];
+            
+            //means right part has decreasing subarray array
             if(nums[mid]>nums[high])
             {
                low = mid+1;
             }
             else 
-            {
-                ans = min(ans,nums[mid]);
                 high = mid-1;
-            }
         }
-        return ans;
+        return nums[low];
     }
 };
 
