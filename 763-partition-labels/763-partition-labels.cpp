@@ -13,13 +13,10 @@ public:
         for(int i = 0;i<s.size();i++)
         {
             largest = max(largest,m[s[i]]);
-            
             length++;
             if(i==largest)
                 result.push_back(length),length=0;
-           
         }
-        
         return result;
     }
 };
