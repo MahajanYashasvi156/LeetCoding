@@ -3,6 +3,8 @@ class Solution
     bool check(vector<int>&nums,int m,int maxSum)
     {
         int sum = 0;
+        int subarrays = 1;
+        
         for(int i = 0;i<nums.size();i++)
         {
             if(nums[i]>maxSum)
@@ -12,12 +14,12 @@ class Solution
             else
             {
                 sum = nums[i];
-                m = m-1;
+                subarrays++;
             }
-            if(m==0)
-                return false;
         }
         
+        if(subarrays>m)
+            return false;
         return true;
     }
 public:
