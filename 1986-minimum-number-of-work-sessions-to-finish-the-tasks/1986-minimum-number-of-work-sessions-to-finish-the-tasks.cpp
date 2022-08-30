@@ -34,8 +34,6 @@ public:
     {
         int n = tasks.size();
         vector<vector<int>> dp(sessionTime+1,vector<int>(1<<n,-1));
-        
         return solve(tasks,0,0,dp,sessionTime);
-        
     }
 };
