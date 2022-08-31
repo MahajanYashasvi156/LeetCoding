@@ -1,3 +1,9 @@
+//upper_bound in case of reverse sorted works diffrent. It will find the first smaller number in the array.
+
+//Here we want the number which greater than equal to so we use upper bound which will return iterator of first smaller number, just the previous number is our farthest greater or equal number
+
+//TC = O(nlogm)
+
 class Solution {
 public:
     int maxDistance(vector<int>& nums1, vector<int>& nums2) 
