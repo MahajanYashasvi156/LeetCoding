@@ -1,4 +1,13 @@
-class Solution {
+/*
+
+    Since arrays are decreasing order. 
+    
+    if a number in nums2 is greater for ith index of nums1 and then it will be greater for all number after ith index in nums1 as those numbers are smaller than ith element. So we don't need to start our traversal in second array from start. We can just start where the previous element ended.
+    
+    TC = O(m+n)
+*/
+class Solution 
+{
 public:
     int maxDistance(vector<int>& nums1, vector<int>& nums2) 
     {
