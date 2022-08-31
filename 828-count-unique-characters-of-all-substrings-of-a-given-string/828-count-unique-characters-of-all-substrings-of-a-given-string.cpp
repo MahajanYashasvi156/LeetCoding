@@ -1,4 +1,8 @@
 /*
+
+https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/discuss/1505263/Single-pass-O(n)-time-and-O(1)-space-solution-with-detailed-explanation
+
+
     Three possible cases - 
     
     1. Current character is not present till now - just add + 1 to the no of distinct character till previous index. Q
@@ -7,7 +11,12 @@
     
     3. Current charactet is present more than one time till now - do nothing.
     
-    p = p + q+ r +1
+    p = p + q (Single repeatation kitne m aa substring m aayegi)+ r(no repeatation) +1
+    
+    
+    for example - 
+    
+    
 */
 class Solution 
 {
