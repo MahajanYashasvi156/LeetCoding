@@ -1,7 +1,10 @@
 /*
 Here we are maintaining montonically increasing order of characters with some trick.
 
-For lexicographically smallest string , we can remove the last character if it greater than current character and we can include that last character after the current small character. 
+For lexicographically smallest string , we can remove the last character if it greater than current character and we can include that last character after the current small character.
+
+TC - O(n)
+SC - O(1)
 */
 class Solution 
 {
