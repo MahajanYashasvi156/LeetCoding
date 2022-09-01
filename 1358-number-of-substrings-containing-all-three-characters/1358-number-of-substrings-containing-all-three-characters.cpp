@@ -13,12 +13,12 @@ public:
         {
             m[s[high]]++;
             
-
             while(m.size()==3)
             {
                 m[s[low]]--;
                 if(m[s[low]]==0)
-                    m.erase(s[low]);
+                    m.erase(s[low]); 
+                //if we get three characters then after that we can make substrings by including all characters after current as well
                 ans = ans + s.size()-high;
                 low++;
 
