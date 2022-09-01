@@ -8,7 +8,7 @@ public:
         for(char c : tasks)
             freq[c]++,maxCount = max(maxCount,freq[c]);
         
-        int ans = (maxCount-1)*(n+1) ;
+        int ans = (maxCount-1)*n + maxCount-1;
         
         for(auto it : freq)
         {
