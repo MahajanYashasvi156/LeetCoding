@@ -1,3 +1,8 @@
+/*
+Here we are maintaining montonically increasing order of characters with some trick.
+
+For lexicographically smallest string , we can remove the last character if it greater than current character and we can include that last character after the current small character. 
+*/
 class Solution 
 {
 public:
@@ -10,9 +15,7 @@ public:
         vector<int> used(26,0);
         
         for(int i = 0;i<s.size();i++)
-        {
             count[s[i]-'a']++;
-        }
         
         for(int i = 0;i<s.size();i++)
         {
