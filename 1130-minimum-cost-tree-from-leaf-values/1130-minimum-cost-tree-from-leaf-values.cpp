@@ -1,4 +1,5 @@
-class Solution {
+class Solution 
+{
 public:
      int MCM(vector<int>&arr,vector<vector<int>>&dp,int l,int r,vector<vector<int>>&maxVal)
      {
@@ -30,10 +31,7 @@ public:
             {
                 maxi = max(maxi,arr[j]);
                 maxVal[i][j] = maxi;
-               // cout<<i<<" "<<j<<" "<<maxVal[i][j]<<endl;
             }
-            
-            
         }
         
         return MCM(arr,dp,0,arr.size()-1,maxVal);
