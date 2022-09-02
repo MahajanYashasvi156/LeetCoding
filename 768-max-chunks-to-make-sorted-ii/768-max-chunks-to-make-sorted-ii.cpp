@@ -1,3 +1,10 @@
+/*
+    Find the max from left including itself and minimum from right.
+    
+    if the maxi from left is smaller or equal to mini from right that means there is no element after current which is greater than current element. So there is no need to expand the chunk. We can end the current chunk at current position and start new chunk from the next position.
+    
+    
+*/
 class Solution 
 {
 public:
