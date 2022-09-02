@@ -1,3 +1,26 @@
+class Solution {
+public:
+    int maxChunksToSorted(vector<int>& arr)
+    {
+        int maxi = INT_MIN;
+        int ans = 0;
+        for(int i = 0;i<arr.size();i++)
+        {
+            if(maxi == INT_MIN)
+                ans++;
+            
+            maxi = max(maxi,arr[i]);
+            if(maxi==i)
+            {
+                maxi = INT_MIN;
+            }
+        }
+        return ans;
+    }
+};
+
+
+/*
 class Solution 
 {
     //https://leetcode.com/problems/max-chunks-to-make-sorted/discuss/595709/Monotonic-stack-solution-with-detailed-explanation
@@ -20,3 +43,4 @@ public:
         return s.size();
     }
 };
+*/
