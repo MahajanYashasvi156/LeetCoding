@@ -8,10 +8,8 @@ public:
         {
             if(m.find(tasks[i])!=m.end())
             {
-                if(day-m[tasks[i]]<space)
-                {
+                if(day-m[tasks[i]]<space) //add blank days if needed
                     day = day + space-(day-m[tasks[i]]);
-                }
             }
             day++;
             m[tasks[i]] = day;
