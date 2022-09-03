@@ -9,7 +9,7 @@ class Node
 class Trie
 { 
     public:
-    Node* root  = new Node();
+        Node* root  = new Node();
         void insert(string s)
         {
             Node* curr = root;
@@ -32,6 +32,8 @@ class Trie
             
             for(int i = 0;i<26;i++)
             {
+                //If ith charcter is our next character. Check if we can take that charater means the index of that next character should be greater than previous index of the character of words[i] then only it can form subsequence.
+                
                 if(root->childrens[i])
                 {
                     int newIndex = upper_bound(pos[i].begin(),pos[i].end(),index) - pos[i].begin();
@@ -51,9 +53,11 @@ public:
     {
         Trie trie;
         
+        //Insert all words in the trie.
         for(string str:words)
             trie.insert(str);
         
+        //pos will store the indices of all characters in string s.
         vector<vector<int>> pos(26);
         
         for(int i = 0;i<s.size();i++)
