@@ -1,5 +1,42 @@
 class Solution 
 {
+public:
+    bool canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity)
+    {
+        int steps[] = {jug1Capacity,jug2Capacity,-1*jug1Capacity,-1*jug2Capacity};
+        
+        int totalCapacity = jug1Capacity+jug2Capacity;
+        queue<int> q;
+        q.push(0);
+        vector<int>visited(totalCapacity+1,false);
+        visited[0] = true;
+        
+        while(q.empty()==false)
+        {
+            int possibleCapacity = q.front();
+            q.pop();
+            if(possibleCapacity==targetCapacity)
+                return true;
+            
+            
+            for(int i :steps)
+            {
+                if(possibleCapacity+i>=0 and possibleCapacity+i<=totalCapacity and visited[possibleCapacity+i]==false)
+                {
+                    visited[possibleCapacity+i]=true;
+                    q.push(possibleCapacity+i);
+                }
+            }
+            
+        }
+        return false;
+    }
+};
+
+
+/*
+class Solution 
+{
     int findGCD(int a,int b)
     {
         if(b==0)
@@ -19,3 +56,4 @@ public:
         return targetCapacity%gcd==0 and targetCapacity<=jug1Capacity+jug2Capacity;
     }
 };
+*/
