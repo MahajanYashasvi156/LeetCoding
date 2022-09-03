@@ -1,5 +1,16 @@
 class Solution 
 {
+    /*
+        Approach - Instead of considering two jugs. Consider it as a single jug. 
+        
+        Total water in both jugs will be operated by +jug1Capacity,-jug1Capacity,+jug2Capacity or -jug2Capacity.
+        
+        If it possible to have target value by making this operations then we can measure targetCapacity.
+        
+        
+        TC - O(jug1Capacity+jug2Capacity)
+    
+    */
 public:
     bool canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity)
     {
