@@ -26,7 +26,7 @@ class Trie
             curr->end++;
         }
     
-        int dfs(Node* root,string &s,vector<vector<int>>&pos,int index)
+        int dfs(Node* root,vector<vector<int>>&pos,int index)
         {
             int result = 0;
             
@@ -38,7 +38,7 @@ class Trie
                     
                     if(newIndex==pos[i].size())
                         continue;
-                    result = result + dfs(root->childrens[i],s,pos,pos[i][newIndex]);
+                    result = result + dfs(root->childrens[i],pos,pos[i][newIndex]);
                 }
             }
             return result + root->end;
@@ -61,7 +61,7 @@ public:
             pos[s[i]-'a'].push_back(i);
         }
         
-        return trie.dfs(trie.root,s,pos,-1);
+        return trie.dfs(trie.root,pos,-1);
     }
 };
 
