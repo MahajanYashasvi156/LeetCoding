@@ -1,6 +1,39 @@
 class Solution 
 {
+public:
+    string reverseWords(string s) 
+    {
+        reverse(s.begin(),s.end());
+        int start = 0;
+        while(s[start]==' ')
+        {
+            s.erase(s.begin());
+        }
 
+        int end = 0;
+        while(end<s.size())
+        {
+            if(s[end]==' ')
+            {
+                reverse(s.begin()+start,s.begin()+end);
+                end++;
+                while(s[end]==' ')
+                   s.erase(s.begin()+end);
+                start = end;
+            }
+            else
+                end++;
+        }
+        if(s[end-1]==' ')
+            return {s.begin(),s.end()-1};
+        reverse(s.begin()+start,s.begin()+end);
+        return s;
+    }
+};
+
+/*
+class Solution 
+{
     public:
     string reverseWords(string s)
     {
@@ -21,3 +54,4 @@ class Solution
         return result.substr(0,result.size()-1);
     }
 };
+*/
