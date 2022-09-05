@@ -6,8 +6,10 @@ public:
         reverse(s.begin(),s.end());
         int start = 0;
         while(s[start]==' ')
+        {
             s.erase(s.begin());
-        
+        }
+
         int end = 0;
         while(end<s.size())
         {
