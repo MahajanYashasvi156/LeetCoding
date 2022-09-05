@@ -1,10 +1,37 @@
 class Solution 
 {
+    //using sliding window
 public:
     bool rotateString(string s, string goal) 
     {
         if(goal.size()!=s.size())
             return false;
+        
+        s = s + s;
+        int n = goal.size();
+        
+        int i = 1;
+     
+        while(i<s.size()-goal.size())
+        {
+            if(s.substr(i,n)==goal)
+                return true;
+            i++;
+        }
+        return false;
+    }
+};
+
+//using KMP
+/*
+class Solution 
+{
+public:
+    bool rotateString(string s, string goal) 
+    {
+        if(goal.size()!=s.size())
+            return false;
+        
         s = s + s;
         int n = goal.size();
         
@@ -60,3 +87,4 @@ public:
         return false;
     }
 };
+*/
