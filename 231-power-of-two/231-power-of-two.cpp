@@ -11,5 +11,6 @@ public:
         if(pow(2,log2num) == num)
             return 1;
         return 0;
+        
     }
 };
