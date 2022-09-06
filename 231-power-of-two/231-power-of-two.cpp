@@ -3,6 +3,10 @@ class Solution
 public:
     bool isPowerOfTwo(int num) 
     {
+        if(num <= 0) return false;
+            return ceil(log2(num)) == floor(log2(num));
+        
+        /*
         if(num==1)
             return 1;
         if(num%2 or num<1)
@@ -11,6 +15,6 @@ public:
         if(pow(2,log2num) == num)
             return 1;
         return 0;
-        
+        */
     }
 };
