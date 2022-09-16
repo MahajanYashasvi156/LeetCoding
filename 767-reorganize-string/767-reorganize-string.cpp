@@ -1,4 +1,12 @@
-class Solution {
+/*
+
+    Intution - Each position pick an character with maximum remaining freq and not the prev character.
+    
+    TC - O(26*n)
+    SC - O(1)
+*/
+class Solution 
+{
 public:
     string reorganizeString(string s) 
     {
