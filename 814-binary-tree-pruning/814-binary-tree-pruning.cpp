@@ -11,27 +11,17 @@
  */
 class Solution
 {
-    int solve(TreeNode* &root)
-    {
-        if(root==NULL)
-            return 0;
-        
-        
-        int l = solve(root->left);
-        int r = solve(root->right);
-        
-        root->left = l==1?root->left:NULL;
-        root->right = r==1?root->right:NULL;
-        
-        return l || r || root->val;
-    }
 public:
     TreeNode* pruneTree(TreeNode* root) 
     {
-        
-        int ans = solve(root);
-        if(ans==0)
+        if(root==NULL)
             return NULL;
-        return root;
+
+        root->left = pruneTree(root->left);
+        root->right = pruneTree(root->right);
+ 
+        if(root->left!=NULL || root->right!=NULL || root->val==1)
+            return root;
+        return NULL;
     }
 };
