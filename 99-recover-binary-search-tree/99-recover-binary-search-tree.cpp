@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     void recoverTree(TreeNode* root) 
@@ -62,10 +63,6 @@ public:
         swap(first->val,second->val);
     }
 };
-
-
-
-
 
 
 
@@ -182,49 +179,6 @@ public:
             }
             prev = node;
             node = node->right;
-        }
-        swap(first->val,last->val);
-    }
-};
-*/
-/*
-class Solution 
-{
-public:
-    void recoverTree(TreeNode* root) 
-    {
-        TreeNode* curr = root;
-        TreeNode* prev = NULL;
-        TreeNode* first = NULL;
-        TreeNode* last = NULL;
-        
-        while(curr)
-        {
-            if(curr->left)
-            {
-                TreeNode* temp = curr->left;
-                while(temp->right)
-                {
-                    temp = temp->right;
-                }
-                temp->right = curr;
-                temp = curr->left;
-                curr->left = NULL;
-                curr = temp;
-            }
-            else
-            {
-                if(prev!=NULL and prev->val>curr->val)
-                {
-                    if(first==NULL)
-                    {
-                        first = prev;
-                    }
-                    last = curr;
-                }
-                prev = curr;
-                curr = curr->right;
-            }
         }
         swap(first->val,last->val);
     }
