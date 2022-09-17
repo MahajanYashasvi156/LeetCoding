@@ -9,6 +9,95 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+class Solution {
+public:
+    void recoverTree(TreeNode* root) 
+    {
+        TreeNode* curr = root;
+        TreeNode* first = NULL;
+        TreeNode* second = NULL;
+        TreeNode* prev = NULL; 
+        
+        while(curr)
+        {
+            if(curr->left)
+            {
+                TreeNode* temp = curr->left;
+                
+                while(temp->right and temp->right!=curr)
+                {
+                    temp = temp->right;
+                }
+                if(temp->right==curr)
+                {
+                    temp->right = NULL;
+                    if(prev==NULL)
+                        prev = curr;
+                    else if(prev->val>curr->val)
+                    {
+                        if(first==NULL)
+                            first = prev;
+                        second = curr;
+                        // cout<<"1 : "<<first->val<<" "<<second->val<<endl;
+                    }
+                   
+                    prev = curr;
+                    curr = curr->right;
+                }
+                else
+                {
+                    temp->right = curr;
+                    curr = curr->left;
+                } 
+            }
+            else 
+            {
+                if(prev==NULL)
+                    prev = curr;
+                else if(prev->val>curr->val)
+                {
+                    if(first==NULL)
+                        first = prev;
+                    second = curr;
+                    // cout<<"2 : "<<first->val<<" "<<second->val<<endl;
+                }
+               
+                prev = curr;
+                curr = curr->right;
+            }
+        }
+        swap(first->val,second->val);
+    }
+};
+
+
+
+
+
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 
 /*
 
@@ -70,7 +159,7 @@ public:
 /*
 TC - O(N)
 SC - O(N)
-*/
+
 class Solution 
 {
     
@@ -104,3 +193,47 @@ public:
         swap(first->val,last->val);
     }
 };
+*/
+/*
+class Solution 
+{
+public:
+    void recoverTree(TreeNode* root) 
+    {
+        TreeNode* curr = root;
+        TreeNode* prev = NULL;
+        TreeNode* first = NULL;
+        TreeNode* last = NULL;
+        
+        while(curr)
+        {
+            if(curr->left)
+            {
+                TreeNode* temp = curr->left;
+                while(temp->right)
+                {
+                    temp = temp->right;
+                }
+                temp->right = curr;
+                temp = curr->left;
+                curr->left = NULL;
+                curr = temp;
+            }
+            else
+            {
+                if(prev!=NULL and prev->val>curr->val)
+                {
+                    if(first==NULL)
+                    {
+                        first = prev;
+                    }
+                    last = curr;
+                }
+                prev = curr;
+                curr = curr->right;
+            }
+        }
+        swap(first->val,last->val);
+    }
+};
+*/
