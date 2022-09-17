@@ -43,7 +43,6 @@ public:
     int numberOfWays(int startPos, int endPos, int k) 
     {
         int newStartPos = k;
-
         int newEndPos = newStartPos + (endPos-startPos);
         vector<vector<int>> dp(2*k+1,vector<int>(k+1,-1));
         return solve(newStartPos,newEndPos,dp,k);
