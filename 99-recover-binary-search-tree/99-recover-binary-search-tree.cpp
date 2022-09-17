@@ -31,14 +31,11 @@ public:
                 if(temp->right==curr)
                 {
                     temp->right = NULL;
-                    if(prev==NULL)
-                        prev = curr;
-                    else if(prev->val>curr->val)
+                    if(prev and prev->val>curr->val)
                     {
                         if(first==NULL)
                             first = prev;
                         second = curr;
-                        // cout<<"1 : "<<first->val<<" "<<second->val<<endl;
                     }
                    
                     prev = curr;
@@ -52,16 +49,12 @@ public:
             }
             else 
             {
-                if(prev==NULL)
-                    prev = curr;
-                else if(prev->val>curr->val)
+                if(prev and prev->val>curr->val)
                 {
                     if(first==NULL)
                         first = prev;
                     second = curr;
-                    // cout<<"2 : "<<first->val<<" "<<second->val<<endl;
                 }
-               
                 prev = curr;
                 curr = curr->right;
             }
