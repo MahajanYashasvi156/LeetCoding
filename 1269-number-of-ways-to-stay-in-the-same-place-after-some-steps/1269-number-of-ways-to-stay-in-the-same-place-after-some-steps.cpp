@@ -26,6 +26,7 @@ class Solution
 public:
     int numWays(int steps, int arrLen)
     {
+        //Atmost we can reach to steps+1 in steps moves by always moving to the right. No need to take arrLen size dp
         vector<vector<int>> dp(steps+1,vector<int>(steps+1,-1));
         
         return solve(0,steps,arrLen,dp);
