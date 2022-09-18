@@ -10,14 +10,11 @@ class Solution
         int ans = 0;
         
         if(i+1<arrLen)
-        {
             ans = ans + solve(i+1,steps-1,arrLen,dp);
-        }
-        if(i-1>=0)
-        {
-            ans = ans + solve(i-1,steps-1,arrLen,dp);
-        }
         
+        if(i-1>=0)
+            ans = ans + solve(i-1,steps-1,arrLen,dp);
+    
         ans = (ans%1000000007 + solve(i,steps-1,arrLen,dp))%1000000007;
         
         return dp[i][steps] = ans;
