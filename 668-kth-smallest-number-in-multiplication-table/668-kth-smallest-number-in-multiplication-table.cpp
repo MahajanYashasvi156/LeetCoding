@@ -1,6 +1,7 @@
 class Solution 
 {
-    int findPos(int mid,int m,int n)
+    //findPos will return the count of numbers which are less than or equal to mid.
+    int findLessEqualCount(int mid,int m,int n)
     {
         int ans = 0;
         for(int i = 1;i<=n;i++)
@@ -20,7 +21,7 @@ public:
         while(low<=high)
         {
             mid = low + (high-low)/2;
-            int pos = findPos(mid,m,n);
+            int pos = findLessEqualCount(mid,m,n);
             if(pos>=k)
             {
                 ans = mid;
