@@ -21,8 +21,10 @@ public:
         while(low<=high)
         {
             mid = low + (high-low)/2;
-            int pos = findLessEqualCount(mid,m,n);
-            if(pos>=k)
+            int count = findLessEqualCount(mid,m,n);
+            
+            //if this count is = to k means we found the ans, but if this >k it may also possible that mid will be the ans when there are repeatations of mid element.
+            if(count>=k)
             {
                 ans = mid;
                  high = mid-1;
