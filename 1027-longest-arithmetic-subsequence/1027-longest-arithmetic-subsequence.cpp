@@ -12,10 +12,10 @@ public:
             for(int j = 0;j<i;j++)
             {
                 int diff = 500+nums[i]-nums[j];
-                dp[i][diff] = dp[j][diff]==0? 2: dp[j][diff]+1;
+                dp[i][diff] = dp[j][diff]+1;
                 ans = max(ans,dp[i][diff]);
             }
         }
-        return ans;
+        return ans+1;
     }
 };
