@@ -7,8 +7,6 @@ public:
     NumArray(vector<int>& arr) 
     {
         biTree.resize(arr.size()+1);
-        fill(biTree.begin(),biTree.end(),0);
-
         nums.resize(arr.size());
         
         for(int i = 0;i<nums.size();i++)
