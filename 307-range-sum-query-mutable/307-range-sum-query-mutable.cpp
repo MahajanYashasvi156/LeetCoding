@@ -1,3 +1,61 @@
+class NumArray 
+{
+    vector<int> biTree;
+    vector<int> nums;
+    int n;
+public:
+    NumArray(vector<int>& arr) 
+    {
+        biTree.resize(arr.size()+1);
+        fill(biTree.begin(),biTree.end(),0);
+
+        nums.resize(arr.size());
+        
+        for(int i = 0;i<nums.size();i++)
+        {
+            update(i,arr[i]);
+        } 
+    }
+    
+    void update(int index, int val) 
+    {
+        val =  val - nums[index];
+        nums[index]+= val;
+        
+        index = index + 1;
+        
+        while(index<biTree.size())
+        {
+            biTree[index]+=val;
+            index = index + (index & (-index));
+        }
+    }
+    
+    int getSum(int index)
+    {
+        int sum = 0;
+        
+        index = index +1 ;
+        
+        while(index>0)
+        {
+            sum = sum + biTree[index];
+            index = index - (index & (-index));
+        }
+        return sum;
+    }
+    
+    int sumRange(int left, int right) 
+    {
+    
+        if(left==0)
+            return getSum(right);
+        return getSum(right) - getSum(left-1);
+    }
+};
+
+
+/*
 class SegmentTree
 {   
     vector<int>st;
@@ -69,6 +127,7 @@ public:
         return st->calculateSum(0,0,nums.size()-1,left,right);
     }
 };
+*/
 
 /**
  * Your NumArray object will be instantiated and called as such:
