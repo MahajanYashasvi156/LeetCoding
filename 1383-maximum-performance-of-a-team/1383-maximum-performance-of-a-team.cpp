@@ -15,6 +15,7 @@ public:
         long long speedSum = 0;
         int M = 1000000007;
         long long ans = INT_MIN;
+        //to handle atmost k
         for(int i = 0;i<k;i++)
         {
             minHeap.push(effSpeed[i].second);
@@ -32,7 +33,6 @@ public:
                 minHeap.push(effSpeed[i].second);
                 ans = max(ans,speedSum*effSpeed[i].first);
             }
-            
         }
         return ans%M;
     }
