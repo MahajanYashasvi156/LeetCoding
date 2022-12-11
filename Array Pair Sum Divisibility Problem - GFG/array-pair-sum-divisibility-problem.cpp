@@ -15,13 +15,9 @@ class Solution
         {
             int mod = n%k;
             
-            if(mod==0 and m[mod]>0) 
+            if(m[(k-mod)%k]>0)
             {
-                m[mod]--;
-            }
-            else if(mod!=0 and m[k-mod]>0)
-            {
-                m[k-mod]--;
+                m[(k-mod)%k]--;
             }
             else
             {
