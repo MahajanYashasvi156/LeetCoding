@@ -9,8 +9,6 @@ using namespace std;
 
 class Solution 
 {
-    int time = 0;
-    
     vector<int> low;
     vector<int> disc;
     vector<int> ap;
@@ -18,6 +16,7 @@ class Solution
   
     int dfs(int u,int par,vector<int>adj[])
     {
+        static int time = 0;
         int children = 0;
         time++;
         low[u] = time;
@@ -43,15 +42,12 @@ class Solution
                 {
                     low[u] = min(low[u],low[n]);
                 }
-               
             }
             else
             {
                 low[u] = min(low[u],low[n]);
             }
-            
         }
-        
         return children;
     }
     vector<int> articulationPoints(int V, vector<int>adj[]) 
