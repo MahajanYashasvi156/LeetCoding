@@ -38,10 +38,12 @@ class Solution
                 if(disc[u]<=low[n])
                 {
                     ap[u] = 1;
-                    //cout<<"1 "<<u<<endl;
-                    
                 }
-               low[u] = min(low[u],low[n]);
+                else
+                {
+                    low[u] = min(low[u],low[n]);
+                }
+               
             }
             else
             {
