@@ -44,10 +44,8 @@ class Solution
         {
             int mid = low + (high-low)/2;
             
-           // cout<<mid<<" "<<low<<" "<<high<<endl;
             if(check(mid,arr,K,N))
             {
-                //cout<<mid<<endl;
                 ans = mid;
                 high = mid-1;
             }
