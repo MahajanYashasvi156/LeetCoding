@@ -5,6 +5,11 @@ using namespace std;
 
 // } Driver Code Ends
 
+/*
+
+    Variation of Kadane's Algorithm.
+    
+*/
 class Solution
 {
     public:
@@ -16,6 +21,8 @@ class Solution
             int r = -1;
             int tempL = 0;
             
+            vector<int> ans;
+            
             for(int i = 0;i<n;i++)
             {
                 currSumTillNow = currSumTillNow + (str[i]=='0'? 1 : -1);
@@ -26,15 +33,13 @@ class Solution
                     r = i;
                     maxSum = currSumTillNow;
                 }
-                
+
                 if(currSumTillNow<0)
                 {
                     currSumTillNow = 0;
                     tempL = i+1;
                 }
             }
-            
-            vector<int> ans;
             
             if(r==-1)
             {
