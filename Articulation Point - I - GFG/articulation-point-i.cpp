@@ -7,6 +7,10 @@ using namespace std;
 // } Driver Code Ends
 //User function Template for C++
 
+
+/*
+    https://codeforces.com/blog/entry/71146?f0a28=1
+*/
 class Solution 
 {
     vector<int> low;
@@ -34,6 +38,9 @@ class Solution
             
                 dfs(n,u,adj);
                 
+                //means there is no edge from descendant to its ancestor so the 
+                //current node has to be present to make its ancestor and descendant 
+                // a single component.
                 if(disc[u]<=low[n])
                 {
                     ap[u] = 1;
@@ -45,7 +52,8 @@ class Solution
             }
             else
             {
-                low[u] = min(low[u],low[n]);
+                //Backedge
+                low[u] = min(low[u],disc[n]);
             }
         }
         return children;
