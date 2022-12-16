@@ -7,21 +7,25 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
+/*
+https://www.youtube.com/watch?v=wKjpBNLLyUo
+*/
 class Solution{
 public:
     int hopscotch(int n, int m, vector<vector<int>> mat, int ty, int i, int j)
     {
-        
         int ans=0;
         if(ty==0) {
             if(isValid(i+1,j,n,m)) ans+=mat[i+1][j];    //down
             if(isValid(i-1,j,n,m)) ans+=mat[i-1][j];    //up
             if(isValid(i,j+1,n,m)) ans+=mat[i][j+1];    //right
             if(isValid(i,j-1,n,m)) ans+=mat[i][j-1];    //left
-            if(j%2==0) {
+            if(j%2==0) 
+            {
                 if(isValid(i-1,j+1,n,m)) ans+=mat[i-1][j+1];    // right-up
                 if(isValid(i-1,j-1,n,m)) ans+=mat[i-1][j-1];    // left-up
-            } else {
+            } else 
+            {
                 if(isValid(i+1,j+1,n,m)) ans+=mat[i+1][j+1];    // right-down
                 if(isValid(i+1,j-1,n,m)) ans+=mat[i+1][j-1];    // left-down
             }
