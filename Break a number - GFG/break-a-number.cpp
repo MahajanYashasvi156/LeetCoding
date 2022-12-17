@@ -8,10 +8,10 @@ using namespace std;
 //User function Template for C++
 class Solution{   
 public:
-    int waysToBreakNumber(long long N)
+    int waysToBreakNumber(int N)
     {
-        long long ans = (((N+1)%1000000007*(N+2)%1000000007)%1000000007)/2;
-        return ans%1000000007;
+        long mod = 1000000007;
+        return  (((N+1)%mod*(N+2)%mod)%mod)/2;
     }
 };
 
