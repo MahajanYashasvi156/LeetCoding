@@ -5,7 +5,9 @@ using namespace std;
 
 
 // } Driver Code Ends
-class Solution{
+class Solution
+{
+    //similar question - https://leetcode.com/problems/maximum-of-absolute-value-expression/
   public:
     int maxDistance(int arr[], int n) 
     { 
