@@ -41,60 +41,59 @@ struct Node
     int data;
 }; */
 
-/*Your method shouldn't print anything
- it should transform the passed linked list */
-class Solution{
+class Solution
+{
     
-public:
-    Node* sortList(Node* head)
-    {
-       Node* negHead = NULL;
-       Node* negTail;
-       Node* posHead = NULL;
-       Node* posTail = NULL;
-       
-       Node* curr = head;
-       
-       while(curr)
-       {
-           Node* nextNode = curr->next;
-           if(curr->data<0)
+    public:
+        Node* sortList(Node* head)
+        {
+           Node* negHead = NULL;
+           Node* negTail = NULL;
+           Node* posHead = NULL;
+           Node* posTail = NULL;
+           
+           Node* curr = head;
+           
+           while(curr)
            {
-               if(negHead)
+               Node* nextNode = curr->next;
+               if(curr->data<0)
                {
-                   curr->next = negHead;
+                   if(negHead)
+                   {
+                       curr->next = negHead;
+                   }
+                   else
+                   {
+                       curr->next = NULL;
+                        negTail = curr;
+                   }
+                   negHead = curr;
                }
                else
                {
+                   if(posHead)
+                   {
+                       posTail->next = curr;
+                   }
+                   else
+                   {
+                       posHead = curr;
+                   }
+                   posTail = curr;
                    curr->next = NULL;
-                    negTail = curr;
                }
-               negHead = curr;
-           }
-           else
-           {
-               if(posHead)
-               {
-                   posTail->next = curr;
-               }
-               else
-               {
-                   posHead = curr;
-               }
-               posTail = curr;
-               curr->next = NULL;
+               
+               curr = nextNode;
            }
            
-           curr = nextNode;
-       }
-       
-       if(negHead)
-       {
-           negTail->next = posHead;
-           return negHead;
-       }
-       return posHead;
-    }
+           if(negHead)
+           {
+               negTail->next = posHead;
+               return negHead;
+           }
+           return posHead;
+        }
 };
 
 
