@@ -14,26 +14,19 @@ class Solution
         {
             for(int i = 0;i<64;i++)
             {
-                
                 for(int j = i+1;j<64;j++)
                 {
-                
                     for(int k = j+1; k<64;k++)
                     {
- 
                         c.push_back(pow(2,i)+pow(2,j)+pow(2,k));
-                  
                     }
-           
                 }
-      
             }
             sort(c.begin(),c.end());
         }
         
         long long solve(long long l, long long r)
         {
-            // Code Here
             int i1 = lower_bound(c.begin(),c.end(),l) - c.begin();
             int i2 = upper_bound(c.begin(),c.end(),r) - c.begin();
             
