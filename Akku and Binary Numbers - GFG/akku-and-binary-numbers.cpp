@@ -4,10 +4,8 @@ using namespace std;
 
 
 // } Driver Code Ends
-
-
-class Solution
-{
+class Solution{
+public:
     vector<long long> c;
     public:
         void precompute()
@@ -18,7 +16,9 @@ class Solution
                 {
                     for(int k = j+1; k<64;k++)
                     {
-                        c.push_back(pow(2,i)+pow(2,j)+pow(2,k));
+                        long long  temp = 1L<<i | 1L<<j | 1L<<k;
+                        //c.push_back(pow(2,i)+pow(2,j)+pow(2,k));
+                        c.push_back(temp);
                     }
                 }
             }
@@ -32,6 +32,7 @@ class Solution
             
             return i2-i1;
         }
+    
 };
 
 
