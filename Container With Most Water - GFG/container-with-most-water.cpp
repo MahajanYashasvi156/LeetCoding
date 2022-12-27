@@ -25,7 +25,6 @@ long long maxArea(long long A[], int len)
     return ans;
 }
 
-
 //{ Driver Code Starts.
 
 // Driver code
