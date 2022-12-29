@@ -18,6 +18,10 @@ public:
         
         while(i<tasks.size())
         {
+            if(last<tasks[i][0] and minHeap.empty()==true)
+            {
+                last = tasks[i][0];
+            } 
             if(minHeap.empty()==false)
             {
                 last = last + minHeap.top()[0];
@@ -29,10 +33,7 @@ public:
                  minHeap.push({tasks[i][1],tasks[i][2]});
                 i++;
             }
-            if(i<tasks.size() and last<tasks[i][0] and minHeap.empty())
-            {
-                last = tasks[i][0];
-            } 
+            
         }
         while(minHeap.empty()==false)
         {
