@@ -16,33 +16,23 @@ class Solution
        while(i<N)
        {
            a.push_back(asteroids[i]);
-           while(a.size()>=2)
+           while(a.size()>=2 and a[a.size()-1]<0 and a[a.size()-2]>0)
            {
                int curr = a.back();
                a.pop_back();
                int last = a.back();
                a.pop_back();
                
-               if(curr<0 and last>0)
+               if(abs(curr)!=abs(last))
                {
-                   if(abs(curr)!=abs(last))
+                   if(abs(curr)>abs(last))
                    {
-                       if(abs(curr)>abs(last))
-                       {
-                           a.push_back(curr);
-                       }
-                       else
-                       {
-                           a.push_back(last);
-                       }
+                       a.push_back(curr);
                    }
-               }
-               else
-               {
-                   a.push_back(last);
-                    a.push_back(curr);
-                    
-                    break;
+                   else
+                   {
+                       a.push_back(last);
+                   }
                }
            }
            i++;
