@@ -33,7 +33,6 @@ public:
                  minHeap.push({tasks[i][1],tasks[i][2]});
                 i++;
             }
-            
         }
         while(minHeap.empty()==false)
         {
