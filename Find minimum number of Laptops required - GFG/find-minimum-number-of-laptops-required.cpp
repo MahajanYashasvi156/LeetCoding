@@ -24,16 +24,16 @@ class Solution {
         
         endTimes.push(A[0][1]);
         
-        int rooms = 1;
+        int Laptops = 1;
       
         for(int i =1;i<A.size();i++)
         {
             if(!endTimes.empty() and endTimes.top()<=A[i][0])
                 endTimes.pop();
             endTimes.push(A[i][1]);
-            rooms = max(rooms,int(endTimes.size()));
+            Laptops = max(Laptops,int(endTimes.size()));
         }
-        return rooms;
+        return Laptops;
     }
 };
 
