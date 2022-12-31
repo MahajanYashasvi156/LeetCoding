@@ -28,7 +28,7 @@ class Solution {
       
         for(int i =1;i<A.size();i++)
         {
-            if(!endTimes.empty() and endTimes.top()<=A[i][0])
+            while(!endTimes.empty() and endTimes.top()<=A[i][0])
                 endTimes.pop();
             endTimes.push(A[i][1]);
             Laptops = max(Laptops,int(endTimes.size()));
