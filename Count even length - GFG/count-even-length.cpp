@@ -3,7 +3,19 @@
 using namespace std;
 
 // } Driver Code Ends
-class Solution{
+
+/*
+    Note :- We want sum of last and first n bits sum equal. So if we are getting sum = 2 from 
+    first n bits then we need 2 bits set from that n bits and same we need 2 bits set 
+    from last n bits. 
+    
+    for n = 4
+
+    (4C0)^2 + (4C1)^2 + (4C2)^2 +  ...........(4C4)^2
+
+*/
+class Solution
+{
 	public:
 	int mod = 1000000007;
 	long long inv(long long int r)
