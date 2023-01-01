@@ -1,9 +1,11 @@
-class Solution {
+class Solution 
+{
 public:
     bool wordPattern(string pattern, string s) 
     {
         unordered_map<char,string>m;
         unordered_map<string,bool>taken;
+        
         int i = 0;
         int j = 0;
         
