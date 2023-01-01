@@ -12,6 +12,14 @@ using namespace std;
     for n = 4
 
     (4C0)^2 + (4C1)^2 + (4C2)^2 +  ...........(4C4)^2
+    
+    nCr = nC(r-1) *(n+1-r)/r 
+    
+    nCr = nC(r-1) *(n-(r-1))/r 
+    Examp
+    4C2 = (4*3)/(2*1) = 4C1 * 3/2
+    
+    5C3 = (5*4*3)/(3*2*1) = 5C2 * 3 /3 
 
 */
 class Solution
