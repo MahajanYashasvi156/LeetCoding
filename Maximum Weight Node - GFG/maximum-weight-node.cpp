@@ -11,22 +11,26 @@ class Solution
   int maxWeightCell(int N, vector<int> Edge)
   {
         vector<int> weight(N,0);
-        int ans = 0;
-        int maxWeight = INT_MIN;
         
         for(int i = 0;i<N;i++)
         {
             if(Edge[i]!=-1)
             {
                 weight[Edge[i]]+=i;
-                if(weight[Edge[i]]>=maxWeight)
-                {
-                    ans = Edge[i];
-                    maxWeight = weight[Edge[i]];
-                }
             }
         }
-    
+        
+        int ans = -1;
+        int maxWeight = INT_MIN;
+        
+        for(int i=0;i<N;i++)
+        {
+            if(weight[i]>=maxWeight)
+            {
+                ans = i;
+                maxWeight = weight[i];
+            }
+        }
         return ans;
   }
 };
