@@ -1,7 +1,7 @@
 class Solution 
 {
 public:
- /*   int snakesAndLadders(vector<vector<int>>& board) 
+  int snakesAndLadders(vector<vector<int>>& board) 
     {
         int n = board.size();
         vector<int>visited(n*n+1,0);
@@ -17,18 +17,18 @@ public:
             {
                 int curr = q.front();
                 q.pop();
-                cout<<curr<<" ";
+                //cout<<curr<<" ";
                 if(curr==n*n)
                     return step;
                 
                 for(int i = curr+1;i<=min(curr+6,n*n);i++)
                 {
-                    int r = n-1-i/n;
-                    int c = i%n;
+                    int r = n-1-(i-1)/n;
+                    int c = (i-1)%n;
                     
-                    if(r%2==0)
+                    if(r%2==n%2)
                         c=n-1-c;
-                    cout<<r<<" "<<c<<endl;
+                    //cout<<r<<" "<<c<<endl;
                     if(board[r][c]==-1 and visited[i]==0)
                     {
                         visited[i]=1;
@@ -47,8 +47,8 @@ public:
         }
         return -1;
     }
-    */
     
+    /*
     vector<int> findcordinates(int pos,int n){
           vector<int>temp;
             int r=n-(pos-1)/n-1;
@@ -80,11 +80,15 @@ public:
                     vector<int>pos=findcordinates(front+k,n);
                     int r=pos[0];
                     int c=pos[1];
-                    if(visited[r][c]==true) continue;
+                    if(visited[r][c]==true) 
+                        continue;
                     visited[r][c]=true;
-                    if(board[r][c]!=-1){
+                    if(board[r][c]!=-1)
+                    {
                         q.push(board[r][c]);
-                    }else{
+                    }
+                    else
+                    {
                         q.push(front+k);
                     }
 
@@ -93,5 +97,7 @@ public:
             ans++;
         }
         return -1;
-    }
+        }
+        */
+    
 };
