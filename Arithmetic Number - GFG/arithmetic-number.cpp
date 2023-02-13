@@ -13,6 +13,7 @@ public:
     {
         if(A==B)
             return 1;
+            
         if(A<B and C<0 or A>B and C>0 or C==0)
             return 0;
             
