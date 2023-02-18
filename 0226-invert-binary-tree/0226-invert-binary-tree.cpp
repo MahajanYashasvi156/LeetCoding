@@ -29,14 +29,9 @@ public:
         if(node==NULL)
             return node;
         
-        TreeNode* nl = node->left;
-        TreeNode* nr = node->right;
-        
-        invertTree(node->left);
-        invertTree(node->right);
-        
-        node->right = nl;
-        node->left = nr;
+        TreeNode* tempr = node->right;
+        node->right = invertTree(node->left);
+        node->left = invertTree(tempr);
         
         return node;
     }
