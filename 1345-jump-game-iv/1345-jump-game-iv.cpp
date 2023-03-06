@@ -1,3 +1,7 @@
+/*
+TC - O(N)
+SC - O(N)
+*/
 class Solution 
 {
     int bfs(unordered_map<int,vector<int>>&graph,vector<int>&arr )
@@ -28,9 +32,9 @@ class Solution
                     }
                 }
               graph.erase(arr[currIndex]); 
-// To prevent stepping back. Means if there are same values then we will go to the index which is most optimal to us. 0 0 0 0 _____ from first 0 we will directly go the 0 which is most optimal result to us. Then there is no need to go to 0->2->3 (index positions) we can directly go to 0->3.
+// To prevent stepping back. Means if there are same values then we will directly go to the index which is most optimal to us. 0 0 0 0 _____ from first 0 we will directly go the 0 which will give most optimal result to us. Then there is no need to go to 0->2->3 (index positions) we can directly go to 0->3.
                 
-// Cases - 0_ 4 5 6 1_ 3_ 2 10 1_ 0_ 7 8 9 3 jumps would be - 0->0->1->1->3->3 = 5 jumps here we can see that once we get higher index we can also jump to lower index in both case when arr[i]==arr[j] and when arr[i]!=arr[j]
+// Cases - 0_ 4 5 0 6 1_ 3_ 2 10 1_ 0_ 7 8 9 3 jumps would be - 0->0->1->1->3->3 = 5 jumps here we can see that once we get higher index we can also jump to lower index in both case when arr[i]==arr[j] and when arr[i]!=arr[j]
                 
                 if(currIndex+1<n and visited[currIndex+1]==0)
                 {
