@@ -8,7 +8,7 @@ Once the binary search is complete, we return the lower bound as the minimum tim
 '''
 class Solution:
     def minimumTime(self, time: List[int], totalTrips: int) -> int:
-        left, right = 1, totalTrips * max(time)
+        left, right = 1, totalTrips * min(time)
         while left < right:
             mid = (left + right) // 2
             trips = sum((mid // t) for t in time)
