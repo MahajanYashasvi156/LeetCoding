@@ -13,7 +13,7 @@ public:
     vector<int> values;
     Solution(ListNode* head) 
     {
-          ListNode* Node = head;
+        ListNode* Node = head;
         while(Node)
         {
             values.push_back(Node->val);
