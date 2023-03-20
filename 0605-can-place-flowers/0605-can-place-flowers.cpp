@@ -21,7 +21,7 @@ public:
                  count = count + ceil((j-i+1)/2.0);
             }
         }
-        cout<<count;
+     
         return count>=n;
     }
 };
