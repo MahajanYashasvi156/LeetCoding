@@ -1,3 +1,4 @@
+//We can't find minimum path score directly by traversing in roads 2d-vector because graph might be disconnected. So, First we mark the visited nodes in vis vector by using bfs then we find minimum score by checking whether ai and bi are visited in roads and calculate minimum value.
 class Solution 
 {
 public:
