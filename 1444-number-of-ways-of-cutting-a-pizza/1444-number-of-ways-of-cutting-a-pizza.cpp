@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/number-of-ways-of-cutting-a-pizza/discuss/3360907/Image-Explanation-DP-%2B-Prefix-Sum-C%2B%2BJavaPython
 class Solution {
 public:
     int ways(vector<string>& pizza, int k) {
